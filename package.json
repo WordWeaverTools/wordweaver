@@ -120,7 +120,7 @@
     "eslint-plugin-jsdoc": "41.1.2",
     "eslint-plugin-prefer-arrow": "latest",
     "eslint-plugin-react": "latest",
-    "express": "^4.16.4",
+    "express": "^4.22.0",
     "husky": "^4.2.1",
     "jasmine-core": ">=3.8",
     "jasmine-spec-reporter": "~5.0.0",
