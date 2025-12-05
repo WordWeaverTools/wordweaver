@@ -1,9 +1,15 @@
+export interface Speaker {
+  display: string;
+  slug: string;
+}
+
 export interface EveryVoiceConfig {
   enableTTS: boolean;
   requiresAuth: boolean;
   apiUrl?: string;
   developmentBearerToken?: string; // Optional: Token for authentication
-  speakerID?: string; // Optional: Speaker ID for TTS
+  availableSpeakers?: Speaker[]; // Optional: Available Speaker IDs for TTS
+  defaultSpeaker?: Speaker; // Optional: Speaker ID for TTS
   diffusionSteps?: number; // Optional: Number of steps for TTS
   domain?: string; // Optional: Auth0 Domain
   clientId?: string; // Optional: Auth0 ClientId
