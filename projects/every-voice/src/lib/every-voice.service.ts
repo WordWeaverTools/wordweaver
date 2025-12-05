@@ -99,7 +99,7 @@ export class EveryVoiceService {
       trigger: null,
     };
     if (this.speakerID) {
-      body.data.push(this.speakerID);
+      body.data.push(this.speakerID.slug);
     } else {
       return throwError(
         () => new Error("SpeakerID is required for synthesis.")
@@ -373,7 +373,7 @@ export class EveryVoiceService {
       trigger: null,
     };
     if (this.speakerID) {
-      body.data.push(this.speakerID);
+      body.data.push(this.speakerID.slug);
     } else {
       return throwError(
         () => new Error("SpeakerID is required for synthesis.")
@@ -500,7 +500,7 @@ export class EveryVoiceService {
                     case "voice":
                       options.speakers = parameter["type"]["enum"];
                       options.defaultSpeaker =
-                        this.speakerID || parameter["parameter_default"];
+                        this.speakerID.slug || parameter["parameter_default"];
                       break;
                     case "lngsteps":
                       options.defaultDiffusionSteps =

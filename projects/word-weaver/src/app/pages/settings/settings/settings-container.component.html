@@ -86,7 +86,7 @@
             >
               <mat-option
                 *ngFor="let s of this.tts.speakers$ | async"
-                [value]="s['slug']"
+                [value]="s"
               >
                 {{ s["display"] }}
               </mat-option>
