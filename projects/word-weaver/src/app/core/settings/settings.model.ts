@@ -5,6 +5,7 @@ import {
   ThemeName,
 } from "../../../config/config";
 import { AppState } from "../core.module";
+import { Speaker } from "@everyvoice/every-voice";
 
 export const NIGHT_MODE_THEME: ThemeName = "DARK-THEME";
 
@@ -29,7 +30,7 @@ export interface SettingsState {
   };
   ttsSettings?: {
     diffusionSteps?: number;
-    speaker?: string;
+    speaker?: Speaker;
   };
 }
 

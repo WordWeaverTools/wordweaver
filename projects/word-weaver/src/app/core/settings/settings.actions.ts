@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { AvailableLanguages, ThemeName } from "../../../config/config";
+import { Speaker } from "@everyvoice/every-voice";
 
 export const actionSettingsChangeLanguage = createAction(
   "[Settings] Change Language",
@@ -73,7 +74,7 @@ export const actionSettingsChangeTtsDiffusionSteps = createAction(
 
 export const actionSettingsChangeTtsSpeaker = createAction(
   "[Settings] Change TTS Speaker",
-  props<{ speaker: string }>()
+  props<{ speaker: Speaker }>()
 );
 
 export const actionSettingsChangeHour = createAction(

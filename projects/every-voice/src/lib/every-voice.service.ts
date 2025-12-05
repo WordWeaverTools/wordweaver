@@ -6,15 +6,9 @@ import {
   EveryVoiceConfig,
   EveryVoiceServiceStatus,
   EveryVoiceServiceMiddlewareInfoResponse,
+  Speaker,
 } from "./every-voice.config";
-import {
-  BehaviorSubject,
-  from,
-  Subject,
-  Observable,
-  throwError,
-  of,
-} from "rxjs";
+import { BehaviorSubject, from, Subject, Observable, throwError } from "rxjs";
 import { catchError, finalize, map, switchMap, tap } from "rxjs/operators";
 import { AuthService } from "@auth0/auth0-angular";
 
@@ -23,8 +17,8 @@ export class EveryVoiceService {
   public status$: Subject<{ id: string; status: EveryVoiceServiceStatus }>;
   public ttsEnabledAndAuthenticated$ = new BehaviorSubject<boolean>(false);
   public loading$ = new BehaviorSubject<boolean>(false);
-  public speakers$ = new BehaviorSubject<string[]>([]);
-  public speakerID: string | undefined;
+  public speakers$ = new BehaviorSubject<Speaker[]>([]);
+  public speakerID: Speaker | undefined;
   public diffusionSteps: number | undefined;
   private enableTTS: boolean;
   private requiresAuth: boolean;
@@ -52,36 +46,16 @@ export class EveryVoiceService {
         ? config.enableTTS
         : config?.apiUrl?.length > 0; // Only enable TTS by default if apiUrl is defined
     this.bearerToken = config?.developmentBearerToken;
-    this.speakerID = config?.speakerID;
+    this.speakers$.next(config?.availableSpeakers);
+    const speakers = Array.isArray(this.speakers$.value)
+      ? this.speakers$.value
+      : [];
+    // If there is no default speaker defined, then pick the first available
+    this.speakerID = config?.defaultSpeaker ?? speakers[0] ?? null;
     this.diffusionSteps = config?.diffusionSteps;
     this.requiresAuth = config?.requiresAuth;
     // If authentication is not required, then we set the default to true
     this.ttsEnabledAndAuthenticated$.next(this.enableTTS && !this.requiresAuth);
-    // If tts enabled and authenticated, then look for fetch and set the tts options
-    this.ttsEnabledAndAuthenticated$
-      .pipe(
-        switchMap((isAuthenticated) => {
-          if (isAuthenticated && this.requiresAuth) {
-            return this.setTTSOptions().pipe(
-              tap((response) => {
-                this.speakers$.next(response.speakers || []);
-
-                this.speakerID = this.speakerID || response.defaultSpeaker;
-
-                this.diffusionSteps =
-                  this.diffusionSteps || response.defaultDiffusionSteps;
-              })
-            );
-          } else {
-            return of(isAuthenticated);
-          }
-        }),
-        catchError((err) => {
-          console.error("[ERROR] Failed to set TTS options:", err);
-          return throwError(err);
-        })
-      )
-      .subscribe();
     console.log("[DEBUG] initialized EveryVoiceService with config:", config);
     this.status$.next({ id: "all", status: "READY" });
   }
@@ -514,7 +488,7 @@ export class EveryVoiceService {
           const options: EveryVoiceServiceMiddlewareInfoResponse = {
             speakers: [],
             defaultDiffusionSteps: this.diffusionSteps,
-            defaultSpeaker: this.speakerID,
+            defaultSpeaker: this.speakerID.slug,
           };
           if (infoResponse["named_endpoints"]) {
             const namedEndpoints = infoResponse["named_endpoints"];

@@ -16,6 +16,7 @@ const packageJson = require("../../../../package.json");
 export const everyVoiceConfig: EveryVoiceConfig = {
   enableTTS: true,
   requiresAuth: false,
+  availableSpeakers: [{ display: "test", slug: "test" }],
 };
 
 export const environment = {

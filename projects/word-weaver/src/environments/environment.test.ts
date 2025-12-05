@@ -18,7 +18,7 @@ export const everyVoiceConfig: EveryVoiceConfig = {
   domain: "unbq-everyvoice.ca.auth0.com",
   clientId: "7jLB2de2XqEGsAbXLEnUjB49P35r8gQH",
   audience: "https://unbq.everyvoice.middleware.ca",
-  speakerID: "tina",
+  defaultSpeaker: { display: "Tina", slug: "tina" },
   diffusionSteps: 3,
 };
 

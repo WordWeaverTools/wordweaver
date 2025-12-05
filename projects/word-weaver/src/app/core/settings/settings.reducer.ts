@@ -42,7 +42,7 @@ const initialBaseState: SettingsState = {
   hour: new Date().getHours(),
   ttsSettings: {
     diffusionSteps: environment.ttsConfig.diffusionSteps,
-    speaker: environment.ttsConfig.speakerID,
+    speaker: environment.ttsConfig.defaultSpeaker,
   },
 };
 
