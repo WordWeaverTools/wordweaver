@@ -8,9 +8,12 @@
   </div>
   <div class="row">
     <div class="col-sm12" *ngIf="auth.isAuthenticated$ | async">
-      <p *ngIf="auth.user$ | async as user">
-        {{ "ww.pages.profile.welcome" | translate : { name: user.name } }}
-      </p>
+      <p
+        *ngIf="auth.user$ | async as user"
+        [innerHTML]="
+          'ww.pages.profile.welcome' | translate : { name: user.name }
+        "
+      ></p>
     </div>
     <div class="col-sm12" *ngIf="(auth.isAuthenticated$ | async) === false">
       <p>{{ "ww.pages.profile.welcome-no-auth" | translate }}</p>
