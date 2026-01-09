@@ -58,7 +58,9 @@ export class EveryVoiceService {
     this.ttsEnabledAndAuthenticated$.next(this.enableTTS && !this.requiresAuth);
     console.log(
       "[DEBUG] initialized EveryVoiceService with config EnableTTS:",
-      config.enableTTS
+      config.enableTTS,
+      " Endpoint defined: ",
+      config.middlewareEndpoint !== undefined
     );
     this.status$.next({ id: "all", status: "READY" });
   }
