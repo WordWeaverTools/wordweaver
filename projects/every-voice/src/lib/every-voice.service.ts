@@ -56,7 +56,10 @@ export class EveryVoiceService {
     this.requiresAuth = config?.requiresAuth;
     // If authentication is not required, then we set the default to true
     this.ttsEnabledAndAuthenticated$.next(this.enableTTS && !this.requiresAuth);
-    console.log("[DEBUG] initialized EveryVoiceService with config:", config);
+    console.log(
+      "[DEBUG] initialized EveryVoiceService with config EnableTTS:",
+      config.enableTTS
+    );
     this.status$.next({ id: "all", status: "READY" });
   }
 
