@@ -3,10 +3,43 @@
   "version": "1.1.0",
   "description": "WordWeaver",
   "homepage": "https://github.com/WordWeaverTools/wordweaver",
+  "license": "MIT",
   "author": {
     "name": "Aidan Pine",
     "email": "aidan.pine@nrc-cnrc.gc.ca"
   },
+  "contributors": [
+    {
+      "name": "Eric Joanis",
+      "email": "eric.joanis@nrc-cnrc.gc.ca"
+    },
+    {
+      "name": "Delaney Lothian",
+      "email": "delaney.lothian@nrc-cnrc.gc.ca"
+    },
+    {
+      "name": "Delasie Torkornoo",
+      "email": "delasie.torkornoo@nrc-cnrc.gc.ca"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "Aidan Pine",
+      "email": "aidan.pine@nrc-cnrc.gc.ca"
+    },
+    {
+      "name": "Eric Joanis",
+      "email": "eric.joanis@nrc-cnrc.gc.ca"
+    },
+    {
+      "name": "Delaney Lothian",
+      "email": "delaney.lothian@nrc-cnrc.gc.ca"
+    },
+    {
+      "name": "Delasie Torkornoo",
+      "email": "delasie.torkornoo@nrc-cnrc.gc.ca"
+    }
+  ],
   "keywords": [
     "angular",
     "angular 8",

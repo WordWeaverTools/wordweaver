@@ -77,7 +77,10 @@ $ npm start
 
 ## Maintainers
 
-[@roedoejet](https://github.com/roedoejet).
+- [@roedoejet](https://github.com/roedoejet)
+- [@joanise](https://github.com/joanise)
+- [@dlothian](https://github.com/dlothian)
+- [@deltork](https://github.com/deltork)
 
 ## Contributing
 
@@ -112,4 +115,4 @@ This project exists thanks to all the people who contribute.
 
 ## License
 
-[MIT](LICENSE) © National Research Council Canada
+[MIT](LICENSE) © 2025, 2026, National Research Council Canada

@@ -1,6 +1,8 @@
 {
   "name": "@everyvoice/every-voice",
   "version": "0.0.9",
+  "license": "MIT",
+  "homepage": "https://github.com/WordWeaverTools/wordweaver",
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0",
@@ -8,5 +10,30 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WordWeaverTools/wordweaver",
+    "directory": "projects/every-voice"
+  },
+  "author": {
+    "name": "Aidan Pine",
+    "email": "aidan.pine@nrc-cnrc.gc.ca"
+  },
+  "contributors": [
+    {
+      "name": "Delasie Torkornoo",
+      "email": "delasie.torkornoo@nrc-cnrc.gc.ca"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "Aidan Pine",
+      "email": "aidan.pine@nrc-cnrc.gc.ca"
+    },
+    {
+      "name": "Eric Joanis",
+      "email": "eric.joanis@nrc-cnrc.gc.ca"
+    }
+  ]
 }
