@@ -190,7 +190,7 @@ export const META_DATA: Meta = {
   links: {
     github: {
       display: true,
-      url: "https://www.github.com/roedoejet/wordweaver",
+      url: "https://www.github.com/WordWeaverTools/wordweaver",
     },
     medium: {
       display: false,
