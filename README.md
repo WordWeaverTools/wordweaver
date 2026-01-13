@@ -45,6 +45,12 @@ $ cd wordweaver
 $ npm install
 ```
 
+Then, compile the Every Voice module:
+
+```sh
+$ npm run build-ev
+```
+
 Then, you can create a new repo on GitHub and reset the origin remote to your new repo:
 
 ```sh
