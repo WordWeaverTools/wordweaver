@@ -148,6 +148,7 @@ SOFTWARE.
 
 
 @everyvoice/every-voice
+MIT
 
 @fortawesome/angular-fontawesome
 MIT
