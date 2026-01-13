@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/WordWeaverTools/wordweaver",
+    "url": "git+https://github.com/WordWeaverTools/wordweaver.git",
     "directory": "projects/every-voice"
   },
   "author": {
