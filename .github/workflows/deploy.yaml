@@ -17,6 +17,8 @@ jobs:
     #concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      contents: write # to deploy to GitHub Pages
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
@@ -31,7 +33,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           folder: dist/word-weaver # The folder the action should deploy.
 
   on-failure:

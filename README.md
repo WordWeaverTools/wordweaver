@@ -1,10 +1,10 @@
 # WordWeaver
 
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/roedoejet/wordweaver)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/WordWeaverTools/wordweaver)
 ![POEditor](https://img.shields.io/poeditor/progress/331037/en?token=611d3987e3a7e94e57b049c0df8de613)
 ![POEditor](https://img.shields.io/poeditor/progress/331037/fr?token=611d3987e3a7e94e57b049c0df8de613)
 
-> A web app for visualizing data from [WordWeaver](https://github.com/roedoejet/wordweaver)
+> A web app for visualizing data from [WordWeaver](https://github.com/WordWeaverTools/wordweaver)
 
 This is an Angular web application for visualizing data from WordWeaver.
 
@@ -37,12 +37,18 @@ This is a tool for creating interactive conjugation tools for your language.
 
 ## Install
 
-If using with a new language, it is recommended to clone the repo.
+If using with a new language, it is recommended to clone the repo and install all packages.
 
 ```sh
-$ git clone https://github.com/roedoejet/wordweaver.git
+$ git clone https://github.com/WordWeaverTools/wordweaver.git
 $ cd wordweaver
 $ npm install
+```
+
+Then, compile the Every Voice module:
+
+```sh
+$ npm run build-ev
 ```
 
 Then, you can create a new repo on GitHub and reset the origin remote to your new repo:
@@ -54,7 +60,7 @@ git remote set-url origin https://github.com/<yourusername>/<yourrepo>
 Then, add a new repo and set the url to this:
 
 ```sh
-git remote add ww https://github.com/roedoejet/wordweaver.git
+git remote add ww https://github.com/WordWeaverTools/wordweaver.git
 ```
 
 That way, you can make changes in your repo, push them to your origin, but still pull new changes to the gui using `git pull ww main`
@@ -77,11 +83,14 @@ $ npm start
 
 ## Maintainers
 
-[@roedoejet](https://github.com/roedoejet).
+- [@roedoejet](https://github.com/roedoejet)
+- [@joanise](https://github.com/joanise)
+- [@dlothian](https://github.com/dlothian)
+- [@deltork](https://github.com/deltork)
 
 ## Contributing
 
-Feel free to dive in! [Open an issue](https://github.com/roedoejet/wordweaver/issues/new) or submit PRs.
+Feel free to dive in! [Open an issue](https://github.com/WordWeaverTools/wordweaver/issues/new) or submit PRs.
 
 This repo follows the [Contributor Covenant](http://contributor-covenant.org/version/1/3/0/) Code of Conduct.
 
@@ -112,4 +121,4 @@ This project exists thanks to all the people who contribute.
 
 ## License
 
-[MIT](LICENSE) © National Research Council Canada
+[MIT](LICENSE) © 2025, 2026, National Research Council Canada

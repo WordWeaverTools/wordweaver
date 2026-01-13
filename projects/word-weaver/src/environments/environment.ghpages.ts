@@ -25,7 +25,7 @@ export const environment = {
     level: LEVELS,
     meta: META_DATA,
   },
-  plausibleAnalyticsDataDomain: "roedoejet.github.io/wordweaver",
+  plausibleAnalyticsDataDomain: "wordweavertools.github.io/wordweaver",
   production: true,
   test: false,
   base: "/wordweaver",
