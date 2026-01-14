@@ -177,10 +177,22 @@ If you're using this package locally during development:
    ng build every-voice
    ```
 
+   or from the monorepo root:
+
+   ```bash
+   npm run build-ev
+   ```
+
 2. Use a local path in your app’s `package.json`:
 
    ```json
-   "@everyvoice/every-voice": "file:../path/to/every-voice/dist/every-voice"
+   "@everyvoice/every-voice": "file:/path/to/wordweaver/dist/every-voice"
+   ```
+
+   or use npm to apply the same change for you:
+
+   ```bash
+   npm install --save /path/to/wordweaver/dist/every-voice
    ```
 
 Contributions and issues are welcome — feel free to submit a pull request or open an issue!
