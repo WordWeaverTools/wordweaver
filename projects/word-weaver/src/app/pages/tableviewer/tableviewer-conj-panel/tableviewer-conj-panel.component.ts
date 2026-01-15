@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { saveAs } from "file-saver-es";
 import { FormControl } from "@angular/forms";
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from "@angular/material/legacy-dialog";
 import { marker } from "@colsen1991/ngx-translate-extract-marker";
 import { select, Store } from "@ngrx/store";
 import { EChartsOption } from "echarts";
