@@ -1,4 +1,4 @@
-import { MatPaginatorIntl } from "@angular/material/paginator";
+import { MatLegacyPaginatorIntl as MatPaginatorIntl } from "@angular/material/legacy-paginator";
 import { marker } from "@colsen1991/ngx-translate-extract-marker";
 import { TranslateParser, TranslateService } from "@ngx-translate/core";
 
