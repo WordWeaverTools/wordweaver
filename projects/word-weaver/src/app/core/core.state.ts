@@ -32,25 +32,17 @@ if (!environment.production) {
   }
 }
 
-export const selectSettingsState = createFeatureSelector<
-  AppState,
-  SettingsState
->("settings");
+export const selectSettingsState =
+  createFeatureSelector<AppState["settings"]>("settings");
 
-export const selectTableviewerState = createFeatureSelector<
-  AppState,
-  TableviewerState
->("tableviewer");
+export const selectTableviewerState =
+  createFeatureSelector<AppState["tableviewer"]>("tableviewer");
 
-export const selectWordmakerState = createFeatureSelector<
-  AppState,
-  WordmakerState
->("wordmaker");
+export const selectWordmakerState =
+  createFeatureSelector<AppState["wordmaker"]>("wordmaker");
 
-export const selectRouterState = createFeatureSelector<
-  AppState,
-  RouterReducerState<RouterStateUrl>
->("router");
+export const selectRouterState =
+  createFeatureSelector<AppState["router"]>("router");
 
 export interface AppState {
   settings: SettingsState;
