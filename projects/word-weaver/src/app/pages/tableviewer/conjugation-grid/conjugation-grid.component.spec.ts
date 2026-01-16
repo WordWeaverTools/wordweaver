@@ -35,8 +35,8 @@ describe("ConjugationGridComponent", () => {
     component = fixture.componentInstance;
     component.data$ = of([]);
     fixture.detectChanges();
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => {

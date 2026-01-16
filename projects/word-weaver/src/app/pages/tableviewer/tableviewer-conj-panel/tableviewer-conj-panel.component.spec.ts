@@ -44,8 +44,8 @@ describe("TableviewerConjPanelComponent", () => {
       nativeElement: jasmine.createSpyObj("nativeElement", ["focus"]),
     };
     fixture.detectChanges();
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   // it("should create", () => {
