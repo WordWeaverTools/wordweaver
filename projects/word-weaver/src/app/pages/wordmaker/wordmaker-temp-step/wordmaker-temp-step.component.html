@@ -24,10 +24,10 @@
         *ngIf="displayTier !== 'default'"
         class="option__container custom-scroll centered pwidth-50--desktop pwidth-100--mobile"
       >
-        <mat-chip-list
+        <mat-chip-listbox
           *ngIf="conjugatedOptions$ | async as options; else loading"
         >
-          <mat-chip
+          <mat-chip-option
             (click)="onChipClick(conjugation.input.option)"
             class="bg-white color-black border-accent"
             *ngFor="let conjugation of options"
@@ -36,8 +36,8 @@
               [tier]="returnOptionTierFromName()"
               [data]="conjugation"
             ></ww-tier>
-          </mat-chip>
-        </mat-chip-list>
+          </mat-chip-option>
+        </mat-chip-listbox>
       </div>
       <div
         *ngIf="displayTier === 'default'"
@@ -52,30 +52,34 @@
             *ngFor="let option of possibleOptionsByType$ | async as options"
           >
             <h3>{{ "ww-data.options.types." + option.type | translate }}</h3>
-            <mat-chip-list>
-              <mat-chip
+            <mat-chip-listbox>
+              <mat-chip-option
                 (click)="onChipClick(opt.tag)"
                 class="bg-white color-black border-accent"
                 *ngFor="let opt of option.options"
-                >{{ "ww-data.options.items." + opt.tag | translate }}</mat-chip
+                >{{
+                  "ww-data.options.items." + opt.tag | translate
+                }}</mat-chip-option
               >
-            </mat-chip-list>
+            </mat-chip-listbox>
           </div>
         </div>
         <div
           *ngIf="(optionService.optionsUseType$() | async) === false"
           class="option__container custom-scroll centered pwidth-50--desktop pwidth-100--mobile"
         >
-          <mat-chip-list
+          <mat-chip-listbox
             *ngIf="possibleOptions$ | async as options; else loading"
           >
-            <mat-chip
+            <mat-chip-option
               (click)="onChipClick(option.tag)"
               class="bg-white color-black border-accent"
               *ngFor="let option of options"
-              >{{ "ww-data.options.items." + option.tag | translate }}</mat-chip
+              >{{
+                "ww-data.options.items." + option.tag | translate
+              }}</mat-chip-option
             >
-          </mat-chip-list>
+          </mat-chip-listbox>
         </div>
       </div>
     </div>
