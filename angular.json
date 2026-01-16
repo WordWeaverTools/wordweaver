@@ -232,7 +232,6 @@
       }
     }
   },
-  "defaultProject": "word-weaver",
   "cli": {
     "analytics": false,
     "schematicCollections": [
