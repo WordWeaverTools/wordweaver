@@ -1,5 +1,5 @@
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-import { TestBed, async } from "@angular/core/testing";
+import { TestBed, waitForAsync } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { TranslateModule } from "@ngx-translate/core";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
@@ -22,7 +22,7 @@ describe("AppComponent", () => {
   let store: MockStore;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         SharedModule,
@@ -42,7 +42,7 @@ describe("AppComponent", () => {
     store.overrideSelector(selectEffectiveTheme, "default");
   }));
 
-  // it("should create the app", async(() => {
+  // it("should create the app", waitForAsync(() => {
   //   const fixture = TestBed.createComponent(AppComponent);
   //   const app = fixture.debugElement.componentInstance;
   //   expect(app).toBeTruthy();
