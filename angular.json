@@ -130,21 +130,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "word-weaver:build"
+            "buildTarget": "word-weaver:build"
           },
           "configurations": {
             "fr": {
-              "browserTarget": "word-weaver:build:fr"
+              "buildTarget": "word-weaver:build:fr"
             },
             "test": {
-              "browserTarget": "word-weaver:build:test"
+              "buildTarget": "word-weaver:build:test"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "word-weaver:build"
+            "buildTarget": "word-weaver:build"
           }
         },
         "test": {
