@@ -17,8 +17,7 @@
 
   .settings-container {
     background-color: $background;
-    /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version. */
-    .mat-checkbox-frame {
+    .mdc-checkbox__background {
       border-color: $foreground !important;
     }
 
@@ -31,12 +30,12 @@
     p,
     label,
     input,
-    mat-placeholder,
+    mat-label,
     span {
       color: $foreground;
     }
-    /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
-    .mat-select-arrow,
+
+    .mat-mdc-select-arrow,
     mat-label {
       color: $foreground !important;
     }
@@ -52,8 +51,7 @@
 
   .settings-container {
     background-color: $background;
-    /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version. */
-    .mat-checkbox-frame {
+    .mdc-checkbox__background {
       border-color: $foreground !important;
     }
 
@@ -66,12 +64,12 @@
     p,
     label,
     input,
-    mat-placeholder,
+    mat-label,
     span {
       color: $foreground;
     }
-    /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
-    .mat-select-arrow,
+
+    .mat-mdc-select-arrow,
     mat-label {
       color: $foreground !important;
     }

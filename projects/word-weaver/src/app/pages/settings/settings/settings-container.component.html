@@ -97,22 +97,21 @@
           <mat-icon color="accent">
             <fa-icon icon="bars" color="accent"></fa-icon>
           </mat-icon>
-          <mat-placeholder
+          <mat-label
             >{{ "ww.pages.settings.sticky-header" | translate }}
-          </mat-placeholder>
+          </mat-label>
           <mat-slide-toggle
             [checked]="settings.stickyHeader"
             (change)="onStickyHeaderToggle($event)"
-          >
-          </mat-slide-toggle>
+          />
         </div>
         <div class="icon-form-field" *ngIf="usesAnalytics">
           <mat-icon color="accent">
             <fa-icon icon="bars" color="accent"></fa-icon>
           </mat-icon>
-          <mat-placeholder
+          <mat-label
             >{{ "ww.pages.settings.analytics" | translate }}
-          </mat-placeholder>
+          </mat-label>
           <mat-slide-toggle
             [checked]="settings.analytics"
             (change)="onAnalyticsToggle($event)"
@@ -120,9 +119,7 @@
           </mat-slide-toggle>
         </div>
         <div class="icon-form-field">
-          <mat-placeholder
-            >{{ "ww.pages.settings.advanced" | translate }}
-          </mat-placeholder>
+          <mat-label>{{ "ww.pages.settings.advanced" | translate }} </mat-label>
           <mat-slide-toggle
             [checked]="settings.testApi"
             (change)="onTestApiToggle($event)"
@@ -154,9 +151,9 @@
           <mat-icon color="accent">
             <fa-icon icon="lightbulb" color="accent"></fa-icon>
           </mat-icon>
-          <mat-placeholder
+          <mat-label
             >{{ "ww.pages.settings.night-mode" | translate }}
-          </mat-placeholder>
+          </mat-label>
           <mat-slide-toggle
             [checked]="settings.autoNightMode"
             (change)="onAutoNightModeToggle($event)"
