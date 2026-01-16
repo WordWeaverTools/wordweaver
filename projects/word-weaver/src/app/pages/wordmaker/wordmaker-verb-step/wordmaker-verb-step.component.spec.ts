@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { SharedModule } from "../../../shared/shared.module";
 import { TranslateModule } from "@ngx-translate/core";
@@ -12,7 +12,7 @@ describe("WordmakerVerbStepComponent", () => {
   let component: WordmakerVerbStepComponent;
   let fixture: ComponentFixture<WordmakerVerbStepComponent>;
   let store: MockStore;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [WordmakerVerbStepComponent],
       providers: [provideMockStore()],

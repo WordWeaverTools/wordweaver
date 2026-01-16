@@ -1,6 +1,6 @@
 import { By } from "@angular/platform-browser";
 import { MatSlideToggle } from "@angular/material/slide-toggle";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { TranslateModule } from "@ngx-translate/core";
 import { provideMockStore, MockStore } from "@ngrx/store/testing";
@@ -37,7 +37,7 @@ describe("SettingsComponent", () => {
   const getSelectOptions = () =>
     fixture.debugElement.queryAll(By.css("mat-option"));
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         FontAwesomeModule,

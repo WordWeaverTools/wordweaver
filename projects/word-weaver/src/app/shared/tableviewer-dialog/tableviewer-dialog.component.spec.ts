@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
 import { TranslateModule } from "@ngx-translate/core";
 import {
@@ -13,7 +13,7 @@ describe("TableViewerDialogComponent", () => {
   let component: TableViewerDialogComponent;
   let fixture: ComponentFixture<TableViewerDialogComponent>;
   let store: MockStore;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [MatDialogModule, TranslateModule.forRoot()],
       declarations: [TableViewerDialogComponent],
