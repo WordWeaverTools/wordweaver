@@ -7,21 +7,21 @@
   $warn: map-get($theme, warn);
   $foreground-palette: map-get($theme, foreground);
 
-  th.mat-header-cell {
+  th.mat-mdc-header-cell {
     border-bottom: 1px solid mat-color($foreground-palette, base);
   }
 
-  th.mat-header-cell:first-of-type,
-  td.mat-cell:first-of-type,
-  td.mat-footer-cell:first-of-type {
+  th.mat-mdc-header-cell:first-of-type,
+  td.mat-mdc-cell:first-of-type,
+  td.mat-mdc-footer-cell:first-of-type {
     padding: 0;
     border-right: 1px solid mat-color($foreground-palette, base);
   }
 
-  td.mat-cell {
+  td.mat-mdc-cell {
     padding: 16px 0;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of option that may no longer apply for the MDC version.*/
   .mat-option-text {
     color: mat-color($foreground-palette, base);
   }
@@ -61,8 +61,8 @@
     }
 
     ww-tableviewer-conj-panel,
-    .mat-table,
-    .mat-paginator {
+    .mat-mdc-table,
+    .mat-mdc-paginator {
       background-color: $background;
     }
   }
@@ -79,26 +79,29 @@
   $foreground: mat-color($foreground-palette, base);
 
   .control {
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
     .mat-form-field-underline {
       background-color: $foreground;
     }
   }
 
   .control.mat-focused {
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
     .mat-form-field-underline {
       background-color: transparent;
     }
-
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
     .mat-form-field-ripple {
       background-color: $foreground !important;
     }
   }
 
   ww-tableviewer {
+    /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
     .mat-checkbox-frame {
       border-color: $foreground !important;
     }
-
+    /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
     mat-checkbox {
       label,
       span {
@@ -109,7 +112,7 @@
     .mat-drawer-container {
       background-color: $foreground !important;
     }
-
+    /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version.*/
     .mat-select-arrow,
     mat-label {
       color: $foreground !important;
@@ -149,8 +152,8 @@
     }
 
     ww-tableviewer-conj-panel,
-    .mat-table,
-    .mat-paginator {
+    .mat-mdc-table,
+    .mat-mdc-paginator {
       background-color: $background;
     }
   }

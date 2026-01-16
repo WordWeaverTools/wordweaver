@@ -129,8 +129,8 @@
             {{ "ww.pages.wordmaker.steps.pers.agent-informal" | translate }}
           </h5>
           <div class="pronoun__container custom-scroll">
-            <mat-chip-list>
-              <mat-chip
+            <mat-chip-listbox>
+              <mat-chip-option
                 class="border-accent"
                 (click)="onAgentSelect(pn)"
                 *ngFor="let pn of pronouns"
@@ -148,8 +148,8 @@
                   "
                   >person
                 </mat-icon>
-              </mat-chip>
-            </mat-chip-list>
+              </mat-chip-option>
+            </mat-chip-listbox>
           </div>
         </div>
         <div
@@ -181,8 +181,8 @@
             {{ "ww.pages.wordmaker.steps.pers.patient-informal" | translate }}
           </h5>
           <div class="pronoun__container custom-scroll">
-            <mat-chip-list>
-              <mat-chip
+            <mat-chip-listbox>
+              <mat-chip-option
                 class="bg-white border-accent"
                 (click)="onPatientSelect(pn)"
                 *ngFor="let pn of pronouns"
@@ -201,8 +201,8 @@
                 >
                   person
                 </mat-icon>
-              </mat-chip>
-            </mat-chip-list>
+              </mat-chip-option>
+            </mat-chip-listbox>
           </div>
         </div>
       </div>

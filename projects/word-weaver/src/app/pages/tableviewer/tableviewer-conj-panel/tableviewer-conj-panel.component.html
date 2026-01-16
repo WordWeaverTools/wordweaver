@@ -23,8 +23,8 @@
         >
           {{ "ww.pages.tableviewer.panels.conj.conjugate" | translate }}
         </button>
+        <!-- TODO: The 'tickInterval' property no longer exists -->
         <mat-slider
-          (change)="onChangeTreeDepth($event)"
           *ngIf="selection.view === 'tree'"
           [matTooltip]="
             'ww.pages.tableviewer.panels.conj.depth-tip' | translate
@@ -32,12 +32,22 @@
           [matTooltipShowDelay]="showDelay.value"
           [matTooltipHideDelay]="hideDelay.value"
           [matTooltipPosition]="tooltipPosition"
-          value="1"
           step="1"
-          tickInterval="1"
           min="0"
           max="3"
-        ></mat-slider>
+          #ngSlider
+          ><input
+            matSliderThumb
+            (change)="
+              onChangeTreeDepth({
+                source: ngSliderThumb,
+                parent: ngSlider,
+                value: ngSliderThumb.value
+              })
+            "
+            #ngSliderThumb="matSliderThumb"
+            value="1"
+        /></mat-slider>
         <button
           *ngIf="selection.view === 'tree'"
           class="toolbar__tool ui-button"
