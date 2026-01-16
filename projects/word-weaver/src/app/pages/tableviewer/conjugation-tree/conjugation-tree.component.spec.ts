@@ -39,8 +39,8 @@ describe("ConjugationTreeComponent", () => {
     // @ts-ignore
     component.data$ = of([]);
     fixture.detectChanges();
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it("should create", () => {

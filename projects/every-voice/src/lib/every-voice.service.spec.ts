@@ -27,8 +27,8 @@ describe("EveryVoiceService", () => {
       ],
     });
     service = TestBed.inject(EveryVoiceService);
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it("should be created", () => {

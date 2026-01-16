@@ -34,8 +34,8 @@ describe("AppComponent", () => {
       providers: [provideMockStore()],
       declarations: [AppComponent],
     }).compileComponents();
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
     store = TestBed.inject(MockStore);
     store.overrideSelector(selectSettingsStickyHeader, true);
     store.overrideSelector(selectSettingsLanguage, "en");
