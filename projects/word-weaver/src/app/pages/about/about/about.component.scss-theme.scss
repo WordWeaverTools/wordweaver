@@ -1,5 +1,5 @@
-@import "@angular/material/theming";
-@import "../../../../scss/utilities/config";
+@use "@angular/material" as mat;
+
 @mixin ww-about-component-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -7,14 +7,14 @@
   $background: map-get($theme, background);
   ww-about {
     .background {
-      color: mat-color($foreground, text);
-      background-color: mat-color($background, background);
+      color: mat.get-color-from-palette($foreground, text);
+      background-color: mat.get-color-from-palette($background, background);
       .gradient {
         &::before {
           background: linear-gradient(
             to bottom,
-            mat-color($background, background, 0) 0%,
-            mat-color($background, background, 1) 100%
+            mat.get-color-from-palette($background, background, 0) 0%,
+            mat.get-color-from-palette($background, background, 1) 100%
           );
         }
       }
@@ -22,18 +22,18 @@
     .follow-releases,
     .contributors {
       p {
-        background-color: mat-color($background, background);
+        background-color: mat.get-color-from-palette($background, background);
         a {
-          color: mat-color($accent);
+          color: mat.get-color-from-palette($accent);
           &:hover {
-            color: mat-color($accent, darker);
+            color: mat.get-color-from-palette($accent, darker);
           }
         }
       }
     }
     .contributors {
       img {
-        border-color: mat-color($accent) !important;
+        border-color: mat.get-color-from-palette($accent) !important;
       }
     }
   }

@@ -1,33 +1,35 @@
+@use "../utilities/colors";
+
 .highlight.agent {
-  color: map-get($verb-highlight-colors, agent);
+  color: map-get(colors.$verb-highlight-colors, agent);
 }
 
 .highlight.patient {
-  color: map-get($verb-highlight-colors, patient);
+  color: map-get(colors.$verb-highlight-colors, patient);
 }
 
 .highlight.agent.patient {
-  color: map-get($verb-highlight-colors, transitive);
+  color: map-get(colors.$verb-highlight-colors, transitive);
 }
 
 .root.highlight {
-  color: map-get($other-highlights, 1);
+  color: map-get(colors.$other-highlights, 1);
 }
 
 .aspect.highlight {
-  color: map-get($other-highlights, 3);
+  color: map-get(colors.$other-highlights, 3);
 }
 
 .prepronominal_prefix.highlight {
-  color: map-get($other-highlights, 5);
+  color: map-get(colors.$other-highlights, 5);
 }
 
 .post_aspectual_suffix.highlight {
-  color: map-get($other-highlights, 4);
+  color: map-get(colors.$other-highlights, 4);
 }
 
 .tmp_affix.highlight {
-  color: map-get($other-highlights, 6);
+  color: map-get(colors.$other-highlights, 6);
 }
 
 .circle {

@@ -1,4 +1,4 @@
-@import "@angular/material/theming";
+@use "@angular/material" as mat;
 
 @mixin ww-settings-component-theme-common($theme) {
   $primary: map-get($theme, primary);
@@ -12,8 +12,11 @@
   $background-palette: map-get($theme, background);
   $foreground-palette: map-get($theme, foreground);
 
-  $background: lighten(mat-color($background-palette, background), 10%);
-  $foreground: mat-color($foreground-palette, base);
+  $background: lighten(
+    mat.get-color-from-palette($background-palette, background),
+    10%
+  );
+  $foreground: mat.get-color-from-palette($foreground-palette, base);
 
   .settings-container {
     background-color: $background;
@@ -46,8 +49,14 @@
   $background-palette: map-get($theme, background);
   $foreground-palette: map-get($theme, foreground);
 
-  $background: darken(mat-color($background-palette, background), 10%);
-  $foreground: lighten(mat-color($foreground-palette, base), 20%);
+  $background: darken(
+    mat.get-color-from-palette($background-palette, background),
+    10%
+  );
+  $foreground: lighten(
+    mat.get-color-from-palette($foreground-palette, base),
+    20%
+  );
 
   .settings-container {
     background-color: $background;

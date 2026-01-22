@@ -1,3 +1,5 @@
+@use "config";
+
 // Mixins
 
 // Reset List
@@ -58,8 +60,8 @@
 // $type - Defaults to `screen`.
 
 @mixin mq($breakpoint, $query: "min-width", $type: "screen") {
-  @if $fix-mqs {
-    @if $fix-mqs >= $breakpoint {
+  @if config.$fix-mqs {
+    @if config.$fix-mqs >= $breakpoint {
       @content;
     }
   } @else {

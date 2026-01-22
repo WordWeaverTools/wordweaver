@@ -1,5 +1,5 @@
-@import "../../../scss/utilities/colors";
-@import "@angular/material/theming";
+@use "@angular/material" as mat;
+
 @mixin ww-logo-component-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -13,14 +13,14 @@
       // fill: transparent;
     }
     50% {
-      // fill: mat-color($accent);
+      // fill: mat.get-color-from-palette($accent);
     }
     100% {
-      // fill: mat-color($primary, default-contrast);
+      // fill: mat.get-color-from-palette($primary, default-contrast);
     }
   }
   #svgGroup {
-    stroke: mat-color($accent, default-contrast);
-    fill: mat-color($accent);
+    stroke: mat.get-color-from-palette($accent, default-contrast);
+    fill: mat.get-color-from-palette($accent);
   }
 }

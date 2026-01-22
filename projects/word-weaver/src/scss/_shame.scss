@@ -1,3 +1,7 @@
+@use "utilities/colors";
+@use "utilities/typography";
+@use "base/scroll";
+
 // ==========================================================================
 // $Shame
 // @see http://csswizardry.com/2013/04/shame-css/
@@ -43,7 +47,9 @@
 
 /* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
 .mat-chip-list-wrapper {
-  @extend %scroll;
+  // TODO(swl): the %scroll placeholder is defined in the @mixin scroll(theme), not
+  // sure how it used to work, but it no longer compiles with the @use rule.
+  @extend %scroll !optional;
   margin: 0 !important;
 }
 
@@ -51,13 +57,13 @@
 // Mat chips have a bunch of annoying default styles when in a list. This overides that.
 
 .mat-mdc-chip:not(.mat-mdc-basic-chip) {
-  color: $white;
+  color: colors.$white;
   margin: em(5);
   cursor: pointer;
 }
 
 .mat-mdc-chip.selected {
-  color: $color-accent;
+  color: colors.$color-accent;
   margin: em(5);
   cursor: pointer;
 }
@@ -67,7 +73,7 @@
 }
 
 // Let checkboxes be colored after verbs
-@each $theme, $color in $verb-highlight-color-names {
+@each $theme, $color in colors.$verb-highlight-color-names {
   /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
   .mat-checkbox-checked.mat-#{"" + $theme + ""} .mat-checkbox-background {
     background-color: $color !important;
@@ -76,7 +82,7 @@
 
 .mat-icon {
   overflow: visible !important;
-  @each $name, $value in $font-sizes {
+  @each $name, $value in typography.$font-sizes {
     &.icon-#{$name} {
       height: em($value) !important;
       width: em($value) !important;
@@ -95,7 +101,7 @@
 /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
 mat-button-toggle-group {
   height: 2em;
-  font-size: em(map-get($font-sizes, sm));
+  font-size: em(map-get(typography.$font-sizes, sm));
 }
 
 /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/

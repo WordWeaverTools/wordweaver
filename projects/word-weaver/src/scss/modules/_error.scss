@@ -1,18 +1,20 @@
+@use "../utilities/colors";
+
 .error {
   &__container {
     margin: em(50);
-    border: em(1) solid map-get($ui-colors, black);
+    border: em(1) solid map-get(colors.$ui-colors, black);
     padding: em(20);
     border-radius: em(5);
-    background: map-get($ui-colors, accent);
+    background: map-get(colors.$ui-colors, accent);
   }
 
   &__header {
     text-decoration: underline;
-    color: map-get($ui-colors, white);
+    color: map-get(colors.$ui-colors, white);
   }
 
   &__message {
-    color: map-get($ui-colors, white);
+    color: map-get(colors.$ui-colors, white);
   }
 }

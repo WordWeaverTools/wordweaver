@@ -1,17 +1,29 @@
-@import "palettes.scss";
-$ww-purple-gold-theme-primary: mat-palette($mat-deep-purple, 400);
-// $ww-purple-gold-theme-primary: mat-palette($mat-deep-purple, 700, 400, 700);
-$ww-purple-gold-theme-accent: mat-palette($mat-amber, 600);
-$ww-purple-gold-theme-warn: mat-palette($mat-red, 200);
+@use "@angular/material" as mat;
 
-$ww-purple-gold-theme--light: mat-light-theme(
-  $ww-purple-gold-theme-primary,
-  $ww-purple-gold-theme-accent,
-  $ww-purple-gold-theme-warn
+$ww-purple-gold-theme-primary: mat.define-palette(
+  mat.$deep-purple-palette,
+  400
+);
+// $ww-purple-gold-theme-primary: mat.define-palette(mat.$deep-purple-palette, 700, 400, 700);
+$ww-purple-gold-theme-accent: mat.define-palette(mat.$amber-palette, 600);
+$ww-purple-gold-theme-warn: mat.define-palette(mat.$red-palette, 200);
+
+$ww-purple-gold-theme--light: mat.define-light-theme(
+  (
+    color: (
+      primary: $ww-purple-gold-theme-primary,
+      accent: $ww-purple-gold-theme-accent,
+      warn: $ww-purple-gold-theme-warn,
+    ),
+  )
 );
 
-$ww-purple-gold-theme--dark: mat-dark-theme(
-  $ww-purple-gold-theme-primary,
-  $ww-purple-gold-theme-accent,
-  $ww-purple-gold-theme-warn
+$ww-purple-gold-theme--dark: mat.define-dark-theme(
+  (
+    color: (
+      primary: $ww-purple-gold-theme-primary,
+      accent: $ww-purple-gold-theme-accent,
+      warn: $ww-purple-gold-theme-warn,
+    ),
+  )
 );

@@ -1,9 +1,14 @@
+@use "../utilities/colors";
+@use "../utilities/typography";
+@use "../utilities/mixins";
+@use "../utilities/config";
+
 @viewport {
   width: device-width;
 }
 
 html {
-  background-color: $color-background;
+  background-color: colors.$color-background;
   box-sizing: border-box;
   height: 100%;
 }
@@ -17,8 +22,8 @@ html {
 
 body {
   -webkit-font-smoothing: antialiased;
-  color: $color-text;
-  font-family: $font-family-default;
+  color: colors.$color-text;
+  font-family: typography.$font-family-default;
   min-height: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -27,7 +32,7 @@ body {
 
 a {
   background: transparent;
-  color: $color-link;
+  color: colors.$color-link;
   text-decoration: none;
   transition: color 0.2s;
   outline: none;
@@ -49,10 +54,10 @@ h4,
 h5,
 h6 {
   // font-family: $font-family-display;
-  font-family: $font-family-accent;
+  font-family: typography.$font-family-accent;
   font-weight: normal;
-  @include colors($ui-colors);
-  @include colors($verb-highlight-colors);
+  @include mixins.colors(colors.$ui-colors);
+  @include mixins.colors(colors.$verb-highlight-colors);
 }
 
 /* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
@@ -62,7 +67,7 @@ mat-tab-label,
 span,
 button,
 a {
-  font-family: $font-family-display;
+  font-family: typography.$font-family-display;
 }
 
 .shadow-box {
@@ -73,9 +78,9 @@ a {
 }
 
 // Colors
-@for $i from 1 through length($other-highlights) {
+@for $i from 1 through length(colors.$other-highlights) {
   .highlight-#{$i} {
-    color: map-get($other-highlights, $i);
+    color: map-get(colors.$other-highlights, $i);
   }
 }
 
@@ -86,8 +91,8 @@ mat-chip,
 mat-button-toggle,
 button,
 mat-icon {
-  @include colors($ui-colors);
-  @include colors($verb-highlight-color-names);
+  @include mixins.colors(colors.$ui-colors);
+  @include mixins.colors(colors.$verb-highlight-color-names);
 }
 
 /* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
@@ -97,7 +102,7 @@ button,
 mat-chip,
 mat-toolbar,
 mat-grid-tile {
-  @include bg-colors($ui-colors);
+  @include mixins.bg-colors(colors.$ui-colors);
 }
 
 /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
@@ -105,10 +110,10 @@ div,
 mat-chip,
 mat-button-toggle,
 button {
-  @include bg-colors($verb-highlight-color-names);
+  @include mixins.bg-colors(colors.$verb-highlight-color-names);
 }
 
-@each $name, $value in $font-sizes {
+@each $name, $value in typography.$font-sizes {
   .font-#{$name} {
     font-size: em($value);
   }
@@ -124,5 +129,5 @@ table {
 }
 
 .container {
-  max-width: em(map-get($breakpoints, xlarge));
+  max-width: em(map-get(config.$breakpoints, xlarge));
 }

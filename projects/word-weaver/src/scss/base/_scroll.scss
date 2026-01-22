@@ -1,8 +1,12 @@
-@import "@angular/material/theming";
+@use "@angular/material" as mat;
+
 @mixin ww-scroll($theme) {
   $accent: map-get($theme, accent);
   $background-palette: map-get($theme, background);
-  $background: lighten(mat-color($background-palette, background), 20%);
+  $background: lighten(
+    mat.get-color-from-palette($background-palette, background),
+    20%
+  );
   %scroll {
     &::-webkit-scrollbar {
       width: em(8);
@@ -16,7 +20,7 @@
     &::-webkit-scrollbar-thumb {
       box-shadow: 0 0 em(5) $background;
       // box-shadow: inset 0 0 em(5) map-get($ui-colors, shadow);
-      background: rgba(mat-color($accent), 0.6);
+      background: rgba(mat.get-color-from-palette($accent), 0.6);
       border-radius: em(5);
     }
   }
