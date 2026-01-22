@@ -1,0 +1,9 @@
+projects/word-weaver/src/environments/environment.test.ts
+projects/word-weaver/src/environments/environment.netlify.ts
+projects/word-weaver/src/app/i18n/i18n.ts
+projects/word-weaver/src/config/config.fr.ts
+projects/word-weaver/src/config/schema.fr.ts
+projects/word-weaver/src/environments/environment.ghpages.ts
+
+
+
