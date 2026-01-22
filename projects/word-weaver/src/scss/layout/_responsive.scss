@@ -1,11 +1,14 @@
+@use "../utilities/mixins";
+@use "../utilities/config";
+
 .desktop-only {
-  @include mq(em(map-get($breakpoints, medium)), "max-width") {
+  @include mixins.mq(em(map-get(config.$breakpoints, medium)), "max-width") {
     display: none;
   }
 }
 
 .mobile-only {
-  @include mq(em(map-get($breakpoints, medium))) {
+  @include mixins.mq(em(map-get(config.$breakpoints, medium))) {
     display: none;
   }
 }

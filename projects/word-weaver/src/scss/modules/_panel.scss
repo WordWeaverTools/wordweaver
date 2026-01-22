@@ -1,3 +1,7 @@
+@use "../utilities/config";
+@use "../layout/spacing";
+@use "extends";
+
 $panel-size: 402;
 $panel-header-size: 0.25;
 $panel-content-size: 0.75;
@@ -10,7 +14,7 @@ $panel-adjustment: 0.1;
 }
 
 .panel {
-  max-width: em(map-get($breakpoints, xlarge));
+  max-width: em(map-get(config.$breakpoints, xlarge));
 
   &__header {
     justify-content: space-between;
@@ -81,7 +85,7 @@ $panel-adjustment: 0.1;
 
 .toolbar {
   width: fit-content;
-  z-index: map-get($zindex, ui-button);
+  z-index: map-get(config.$zindex, ui-button);
 
   &__tool {
     margin: em(5) !important;

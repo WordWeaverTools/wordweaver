@@ -1,5 +1,5 @@
-@import "../../scss/utilities/colors";
-@import "@angular/material/theming";
+@use "@angular/material" as mat;
+@use "../../scss/utilities/colors";
 
 @mixin ww-app-component-theme($theme) {
   $primary: map-get($theme, primary);
@@ -10,39 +10,42 @@
     mat-toolbar {
       button {
         &.active {
-          color: mat-color($accent, default-contrast);
-          background-color: mat-color($accent);
+          color: mat.get-color-from-palette($accent, default-contrast);
+          background-color: mat.get-color-from-palette($accent);
         }
       }
 
       .link {
-        color: mat-color($primary, default-contrast);
+        color: mat.get-color-from-palette($primary, default-contrast);
       }
     }
 
     mat-sidenav {
       .mat-mdc-list-item {
         &.active {
-          color: mat-color($accent, default-contrast);
-          background-color: mat-color($accent) !important;
+          color: mat.get-color-from-palette($accent, default-contrast);
+          background-color: mat.get-color-from-palette($accent) !important;
 
           &:hover {
-            background-color: mat-color($accent, darker) !important;
+            background-color: mat.get-color-from-palette(
+              $accent,
+              darker
+            ) !important;
           }
         }
       }
     }
 
     .footer {
-      color: mat-color($primary, lighter);
-      background-color: mat-color($primary, darker);
+      color: mat.get-color-from-palette($primary, lighter);
+      background-color: mat.get-color-from-palette($primary, darker);
 
       .links,
       .signature {
         a {
-          color: mat-color($primary, lighter);
+          color: mat.get-color-from-palette($primary, lighter);
           &:hover {
-            color: mat-color($accent);
+            color: mat.get-color-from-palette($accent);
           }
         }
       }
@@ -50,22 +53,22 @@
   }
 
   .error-notification-overlay {
-    color: mat-color($warn, default-contrast);
-    background-color: mat-color($warn);
+    color: mat.get-color-from-palette($warn, default-contrast);
+    background-color: mat.get-color-from-palette($warn);
   }
 
   .info-notification-overlay {
-    color: mat-color($accent, default-contrast);
-    background-color: mat-color($accent);
+    color: mat.get-color-from-palette($accent, default-contrast);
+    background-color: mat.get-color-from-palette($accent);
   }
 
   .success-notification-overlay {
-    color: mat-color($success-colors, default-contrast);
-    background-color: mat-color($success-colors);
+    color: mat.get-color-from-palette(colors.$success-colors, default-contrast);
+    background-color: mat.get-color-from-palette(colors.$success-colors);
   }
 
   .warning-notification-overlay {
-    color: mat-color($warning-colors, default-contrast);
-    background-color: mat-color($warning-colors);
+    color: mat.get-color-from-palette(colors.$warning-colors, default-contrast);
+    background-color: mat.get-color-from-palette(colors.$warning-colors);
   }
 }

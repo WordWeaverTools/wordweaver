@@ -1,29 +1,28 @@
 @charset 'utf-8';
+@use "@angular/material" as mat;
 
-@import "bootstrap/scss/bootstrap-reboot";
-@import "bootstrap/scss/bootstrap-grid";
-@import "styles-reset";
-
-@import "@angular/material/theming";
-
-@include mat-core();
+@use "bootstrap/scss/bootstrap-reboot";
+@use "bootstrap/scss/bootstrap-grid";
+@use "styles-reset";
 
 // Themes
-@import "./themes/dark-theme";
-@import "./themes/light-theme";
-@import "./themes/purple-theme.scss";
-@import "./themes/purple-blue-theme";
-@import "./themes/purple-gold-theme";
+@use "./themes/dark-theme";
+@use "./themes/light-theme";
+@use "./themes/purple-theme";
+@use "./themes/purple-blue-theme";
+@use "./themes/purple-gold-theme";
 
 // Custom themes and instance css
-@import "styles-reset.scss-theme";
-@import "./app/app/app.component.scss-theme";
-@import "./app/pages/about/about/about.component.scss-theme";
-@import "./app/pages/tableviewer/tableviewer/tableviewer.component.scss-theme.scss";
-@import "./app/pages/settings/settings/settings-container.component.scss-theme.scss";
-@import "./app/shared/logo/logo.component.scss-theme.scss";
-@import "./scss/config/background";
-@import "./themes/custom.scss";
+@use "styles-reset.scss-theme" as reset-theme;
+@use "./app/app/app.component.scss-theme" as app-component;
+@use "./app/pages/about/about/about.component.scss-theme" as about-component;
+@use "./app/pages/tableviewer/tableviewer/tableviewer.component.scss-theme.scss"
+  as tableviewer-component;
+@use "./app/pages/settings/settings/settings-container.component.scss-theme.scss"
+  as settings-component;
+@use "./app/shared/logo/logo.component.scss-theme.scss" as logo-component;
+@use "./scss/config/background";
+@use "./themes/custom.scss";
 
 // ==========================================================================
 // Sassy Starter by Mina Markham
@@ -38,42 +37,69 @@
 // Date:    10/25/15
 // ==========================================================================
 
-// CSS Debugging
+// ==========================================================================
+// $Libs and CSS Debugging
+// ==========================================================================
 //
 // Toggle layout debugging with CSS Pesticide.
 //
 // $pesticide-debug-outline - {boolean} adds outlines to all elements.
 // $pesticide-debug-depth - {boolean} adds shadows to all elements.
 // @source - http://pesticide.io/
-
-$pesticide-debug-outline: false;
-$pesticide-debug-depth: false;
-
-// ==========================================================================
-// $Libs
-// ==========================================================================
-@import "scss/libs/index";
+@use "scss/libs" with (
+  $pesticide-debug-outline: false,
+  $pesticide-debug-depth: false
+);
 
 // ==========================================================================
 // $Utilities
 // ==========================================================================
-@import "scss/utilities/index";
+@use "scss/utilities";
 
 // ==========================================================================
 // $Base
 // ==========================================================================
-@import "scss/base/index";
+@use "scss/base";
 
 // ==========================================================================
 // $Layout
 // ==========================================================================
-@import "scss/layout/index";
+@use "scss/layout";
+
+// ==========================================================================
+// $Modules
+// ==========================================================================
+@use "scss/modules";
+
+// ==========================================================================
+// $States
+// ==========================================================================
+@use "scss/states";
+
+// ==========================================================================
+// $Overrides
+// ==========================================================================
+@use "scss/overrides";
+
+// ==========================================================================
+// $Print
+// ==========================================================================
+@use "scss/states/print";
+
+// ==========================================================================
+// $Fonts
+// ==========================================================================
+@use "scss/utilities/fonts";
+
+// ==========================================================================
+// $Shame
+// ==========================================================================
+@use "scss/shame";
 
 // ==========================================================================
 // $Angular Material
 // ==========================================================================
 /* You can add global styles to this file, and also import other style files */
-@import "@angular/material/theming";
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -90,116 +116,106 @@ $pesticide-debug-depth: false;
 //     }
 //   }
 
-@include mat-core();
+@include mat.core();
 
 @mixin custom-components-theme-common($theme) {
-  @include ww-styles-reset-theme($theme);
-  @include ww-app-component-theme($theme);
-  @include ww-logo-component-theme($theme);
-  @include ww-about-component-theme($theme);
-  @include ww-tableviewer-component-theme-common($theme);
-  @include ww-settings-component-theme-common($theme);
-  @include ww-scroll($theme);
-  @include ww-custom-highlights-theme-common-moh($theme);
-  @include ww-custom-highlights-theme-common-fr($theme);
+  @include reset-theme.ww-styles-reset-theme($theme);
+  @include app-component.ww-app-component-theme($theme);
+  @include logo-component.ww-logo-component-theme($theme);
+  @include about-component.ww-about-component-theme($theme);
+  @include tableviewer-component.ww-tableviewer-component-theme-common($theme);
+  @include settings-component.ww-settings-component-theme-common($theme);
+  @include base.ww-scroll($theme);
+  @include custom.ww-custom-highlights-theme-common-moh($theme);
+  @include custom.ww-custom-highlights-theme-common-fr($theme);
 }
 
 @mixin custom-components-theme-light($theme) {
-  @include ww-tableviewer-component-theme-light($theme);
-  @include ww-background-theme-light($theme);
-  @include ww-settings-component-theme-light($theme);
+  @include tableviewer-component.ww-tableviewer-component-theme-light($theme);
+  @include background.ww-background-theme-light($theme);
+  @include settings-component.ww-settings-component-theme-light($theme);
 }
 
 @mixin custom-components-theme-dark($theme) {
-  @include ww-tableviewer-component-theme-dark($theme);
-  @include ww-background-theme-dark($theme);
-  @include ww-settings-component-theme-dark($theme);
+  @include tableviewer-component.ww-tableviewer-component-theme-dark($theme);
+  @include background.ww-background-theme-dark($theme);
+  @include settings-component.ww-settings-component-theme-dark($theme);
 }
 
 @mixin custom-highlights-theme-common($theme, $highlight) {
-  @include ww-custom-highlights-theme-common($theme, $highlight);
+  @include common.ww-custom-highlights-theme-common($theme, $highlight);
 }
 
-.default-theme {
-  @include angular-material-theme($ww-light-theme);
-  @include custom-components-theme-common($ww-light-theme);
-  @include custom-components-theme-light($ww-light-theme);
-}
-
+.default-theme,
 .light-theme {
-  @include angular-material-theme($ww-light-theme);
-  @include custom-components-theme-common($ww-light-theme);
-  @include custom-components-theme-light($ww-light-theme);
+  @include mat.all-component-colors(light-theme.$ww-light-theme);
+  //mat.all-component-colors($ww-light-theme);
+  @include custom-components-theme-common(light-theme.$ww-light-theme);
+  @include custom-components-theme-light(light-theme.$ww-light-theme);
 }
 
 .dark-theme {
-  @include angular-material-theme($ww-dark-theme);
-  @include custom-components-theme-common($ww-dark-theme);
-  @include custom-components-theme-dark($ww-dark-theme);
+  @include mat.all-component-colors(dark-theme.$ww-dark-theme);
+  @include custom-components-theme-common(dark-theme.$ww-dark-theme);
+  @include custom-components-theme-dark(dark-theme.$ww-dark-theme);
 }
 
 .purple-theme--light {
-  @include angular-material-theme($ww-purple-theme--light);
-  @include custom-components-theme-common($ww-purple-theme--light);
-  @include custom-components-theme-light($ww-purple-theme--light);
+  @include mat.all-component-colors(purple-theme.$ww-purple-theme--light);
+  @include custom-components-theme-common(purple-theme.$ww-purple-theme--light);
+  @include custom-components-theme-light(purple-theme.$ww-purple-theme--light);
 }
 
 .purple-theme--dark {
-  @include angular-material-theme($ww-purple-theme--dark);
-  @include custom-components-theme-common($ww-purple-theme--dark);
-  @include custom-components-theme-dark($ww-purple-theme--dark);
+  @include mat.all-component-colors(purple-theme.$ww-purple-theme--dark);
+  @include custom-components-theme-common(purple-theme.$ww-purple-theme--dark);
+  @include custom-components-theme-dark(purple-theme.$ww-purple-theme--dark);
 }
 
 .purple-blue-theme--light {
-  @include angular-material-theme($ww-purple-blue-theme--light);
-  @include custom-components-theme-common($ww-purple-blue-theme--light);
-  @include custom-components-theme-light($ww-purple-blue-theme--light);
+  @include mat.all-component-colors(
+    purple-blue-theme.$ww-purple-blue-theme--light
+  );
+  @include custom-components-theme-common(
+    purple-blue-theme.$ww-purple-blue-theme--light
+  );
+  @include custom-components-theme-light(
+    purple-blue-theme.$ww-purple-blue-theme--light
+  );
 }
 
 .purple-blue-theme--dark {
-  @include angular-material-theme($ww-purple-blue-theme--dark);
-  @include custom-components-theme-common($ww-purple-blue-theme--dark);
-  @include custom-components-theme-dark($ww-purple-blue-theme--dark);
+  @include mat.all-component-colors(
+    purple-blue-theme.$ww-purple-blue-theme--dark
+  );
+  @include custom-components-theme-common(
+    purple-blue-theme.$ww-purple-blue-theme--dark
+  );
+  @include custom-components-theme-dark(
+    purple-blue-theme.$ww-purple-blue-theme--dark
+  );
 }
 
 .purple-gold-theme--light {
-  @include angular-material-theme($ww-purple-gold-theme--light);
-  @include custom-components-theme-common($ww-purple-gold-theme--light);
-  @include custom-components-theme-light($ww-purple-gold-theme--light);
+  @include mat.all-component-colors(
+    purple-gold-theme.$ww-purple-gold-theme--light
+  );
+  @include custom-components-theme-common(
+    purple-gold-theme.$ww-purple-gold-theme--light
+  );
+  @include custom-components-theme-light(
+    purple-gold-theme.$ww-purple-gold-theme--light
+  );
 }
 
 .purple-gold-theme--dark {
-  @include angular-material-theme($ww-purple-gold-theme--dark);
-  @include custom-components-theme-common($ww-purple-gold-theme--dark);
-  @include custom-components-theme-dark($ww-purple-gold-theme--dark);
+  @include mat.all-component-colors(
+    purple-gold-theme.$ww-purple-gold-theme--dark
+  );
+  @include custom-components-theme-common(
+    purple-gold-theme.$ww-purple-gold-theme--dark
+  );
+  @include custom-components-theme-dark(
+    purple-gold-theme.$ww-purple-gold-theme--dark
+  );
 }
-
-// ==========================================================================
-// $Modules
-// ==========================================================================
-@import "scss/modules/index";
-
-// ==========================================================================
-// $States
-// ==========================================================================
-@import "scss/states/index";
-
-// ==========================================================================
-// $Overrides
-// ==========================================================================
-@import "scss/overrides/index";
-
-// ==========================================================================
-// $Print
-// ==========================================================================
-@import "scss/states/print";
-
-// ==========================================================================
-// $Fonts
-// ==========================================================================
-@import "scss/utilities/fonts";
-
-// ==========================================================================
-// $Shame
-// ==========================================================================
-@import "scss/shame";

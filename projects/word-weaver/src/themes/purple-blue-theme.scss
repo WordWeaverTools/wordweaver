@@ -1,17 +1,21 @@
-@import "palettes.scss";
-$ww-purple-blue-theme-primary: mat-palette($mat-deep-purple, 400);
-$ww-purple-blue-theme-accent: mat-palette($mat-blue, 200);
-$ww-purple-blue-theme-accent-light: mat-palette($mat-blue, 300);
-$ww-purple-blue-theme-warn: mat-palette($mat-red, 200);
+@use "@angular/material" as mat;
 
-$ww-purple-blue-theme--light: mat-light-theme(
-  $ww-purple-blue-theme-primary,
-  $ww-purple-blue-theme-accent-light,
-  $ww-purple-blue-theme-warn
+$ww-purple-blue-theme--dark: mat.define-dark-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$deep-purple-palette, 400),
+      accent: mat.define-palette(mat.$blue-palette, 300),
+      warn: mat.define-palette(mat.$red-palette, 200),
+    ),
+  )
 );
 
-$ww-purple-blue-theme--dark: mat-dark-theme(
-  $ww-purple-blue-theme-primary,
-  $ww-purple-blue-theme-accent,
-  $ww-purple-blue-theme-warn
+$ww-purple-blue-theme--light: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$deep-purple-palette, 400),
+      accent: mat.define-palette(mat.$blue-palette, 200),
+      warn: mat.define-palette(mat.$red-palette, 200),
+    ),
+  )
 );

@@ -1,13 +1,17 @@
+@use "../utilities/colors";
+@use "../utilities/typography";
+@use "../base/borders";
+
 .progress {
   min-width: 25%;
   // width: 50% !important;
   width: fit-content !important;
   max-width: 25%;
   margin-bottom: em(16);
-  // background: map-get($ui-colors, accent);
+  // background: map-get(colors.$ui-colors, accent);
   background: transparent;
-  border: em(1) solid map-get($ui-colors, black);
-  border-radius: $border-radius-default;
+  border: em(1) solid map-get(colors.$ui-colors, black);
+  border-radius: borders.$border-radius-default;
   padding-bottom: em(5);
   &__row {
     overflow: auto;
@@ -17,7 +21,7 @@
     }
     &--previous {
       .font-sm {
-        font-size: em(map-get($font-sizes, sm)) !important;
+        font-size: em(map-get(typography.$font-sizes, sm)) !important;
       }
       margin-bottom: em(8);
     }
@@ -30,7 +34,7 @@
   }
 }
 #start-over {
-  border: em(1) solid map-get($ui-colors, black);
+  border: em(1) solid map-get(colors.$ui-colors, black);
   // color: white;
   margin-left: em(32);
   height: em(36);
