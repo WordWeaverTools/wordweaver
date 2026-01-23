@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
-import { HttpClientModule } from "@angular/common/http";
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
 import { TranslateModule } from "@ngx-translate/core";
@@ -24,12 +27,10 @@ describe("WordmakerComponent", () => {
         WordmakerVerbStepComponent,
         WordmakerPersStepComponent,
       ],
-      providers: [provideMockStore()],
-      imports: [
-        SharedModule,
-        NoopAnimationsModule,
-        TranslateModule.forRoot(),
-        HttpClientModule,
+      imports: [SharedModule, NoopAnimationsModule, TranslateModule.forRoot()],
+      providers: [
+        provideMockStore(),
+        provideHttpClient(withInterceptorsFromDi()),
       ],
     }).compileComponents();
   }));

@@ -16,16 +16,17 @@
       "prefix": "ww",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "stylePreprocessorOptions": {
               "includePaths": ["./node_modules"]
             },
             "sourceMap": true,
-            "outputPath": "dist/word-weaver",
+            "outputPath": {
+              "base": "dist/word-weaver"
+            },
             "index": "projects/word-weaver/src/index.html",
-            "main": "projects/word-weaver/src/main.ts",
-            "polyfills": "projects/word-weaver/src/polyfills.ts",
+            "polyfills": ["projects/word-weaver/src/polyfills.ts"],
             "tsConfig": "projects/word-weaver/tsconfig.app.json",
             "aot": true,
             "assets": [
@@ -47,7 +48,8 @@
               "projects/word-weaver/src/styles-app-loading.scss",
               "projects/word-weaver/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/word-weaver/src/main.ts"
           },
           "configurations": {
             "fr": {
@@ -77,8 +79,6 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "bundle",
@@ -106,8 +106,7 @@
                   "maximumWarning": "6kb"
                 }
               ],
-              "serviceWorker": true,
-              "ngswConfigPath": "projects/word-weaver/ngsw-config.json"
+              "serviceWorker": "projects/word-weaver/ngsw-config.json"
             },
             "ghpages": {
               "fileReplacements": [

@@ -1,7 +1,11 @@
-import { HttpClient } from "@angular/common/http";
 import {
-  HttpClientTestingModule,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
+import {
   HttpTestingController,
+  provideHttpClientTesting,
 } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
@@ -14,6 +18,7 @@ describe("EveryVoiceComponent", () => {
   let httpTestingController: HttpTestingController;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      declarations: [EveryVoiceComponent],
       imports: [
         EveryVoiceModule.forRoot({
           apiUrl: "test",
@@ -24,9 +29,11 @@ describe("EveryVoiceComponent", () => {
           middlewareEndpoint: "",
           domain: "",
         }),
-        HttpClientTestingModule,
       ],
-      declarations: [EveryVoiceComponent],
+      providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(EveryVoiceComponent);

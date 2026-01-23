@@ -6,7 +6,10 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { provideMockStore } from "@ngrx/store/testing";
 
 import { WordmakerConjStepComponent } from "./wordmaker-conj-step.component";
-import { HttpClientModule } from "@angular/common/http";
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
 
 describe("WordmakerConjStepComponent", () => {
   let component: WordmakerConjStepComponent;
@@ -15,13 +18,11 @@ describe("WordmakerConjStepComponent", () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [WordmakerConjStepComponent],
-      imports: [
-        SharedModule,
-        NoopAnimationsModule,
-        TranslateModule.forRoot(),
-        HttpClientModule,
+      imports: [SharedModule, NoopAnimationsModule, TranslateModule.forRoot()],
+      providers: [
+        provideMockStore(),
+        provideHttpClient(withInterceptorsFromDi()),
       ],
-      providers: [provideMockStore()],
     }).compileComponents();
   }));
 
