@@ -92,8 +92,8 @@ $color-selection: #b3d4fc;
 
 // Messages
 $color-message: #f4ecbb;
-$success-colors: mat.define-palette(mat.$green-palette, 400);
-$warning-colors: mat.define-palette(mat.$amber-palette, 400);
+$success-colors: mat.m2-define-palette(mat.$m2-green-palette, 400);
+$warning-colors: mat.m2-define-palette(mat.$m2-amber-palette, 400);
 $color-success: map-get($success-colors, 500);
 $color-warning: map-get($warning-colors, 500);
 $color-important: #d00;

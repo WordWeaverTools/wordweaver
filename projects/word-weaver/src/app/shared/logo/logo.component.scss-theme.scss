@@ -20,7 +20,7 @@
     }
   }
   #svgGroup {
-    stroke: mat.get-color-from-palette($accent, default-contrast);
-    fill: mat.get-color-from-palette($accent);
+    stroke: mat.m2-get-color-from-palette($accent, default-contrast);
+    fill: mat.m2-get-color-from-palette($accent);
   }
 }
