@@ -6,6 +6,7 @@ import { EveryVoiceModule } from "./every-voice.module";
 
 @Component({
   template: `<span [libEveryVoice]="testText">Play</span>`,
+  standalone: false,
 })
 class TestHostComponent {
   testText = "Hello world";

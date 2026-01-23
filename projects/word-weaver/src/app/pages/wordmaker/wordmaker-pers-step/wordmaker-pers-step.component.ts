@@ -30,6 +30,7 @@ import { takeUntil } from "rxjs/operators";
   templateUrl: "./wordmaker-pers-step.component.html",
   styleUrls: ["./wordmaker-pers-step.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class WordmakerPersStepComponent implements OnDestroy, OnInit {
   @Output() selectedAgent = new EventEmitter<Pronoun>();

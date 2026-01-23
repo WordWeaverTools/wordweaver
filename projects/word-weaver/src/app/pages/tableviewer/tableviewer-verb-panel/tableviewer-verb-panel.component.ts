@@ -20,6 +20,7 @@ import { selectTableViewerRoot } from "../../../core/tableviewer-selection/table
   templateUrl: "./tableviewer-verb-panel.component.html",
   styleUrls: ["./tableviewer-verb-panel.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableviewerVerbPanelComponent implements OnDestroy, OnInit {
   verbs$: Observable<Verb[]> = this.verbService.verbs$;

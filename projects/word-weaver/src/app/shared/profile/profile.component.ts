@@ -6,6 +6,7 @@ import { DOCUMENT } from "@angular/common";
   selector: "ww-app-user-profile",
   templateUrl: "./profile.component.html",
   styleUrls: ["./profile.component.scss"],
+  standalone: false,
 })
 export class UserProfileComponent {
   constructor(

@@ -1,6 +1,9 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
-@Pipe({ name: "decapitalize" })
+@Pipe({
+  name: "decapitalize",
+  standalone: false,
+})
 export class DecapitalizePipe implements PipeTransform {
   transform(value: any) {
     // Move all uppercase characters to lowercase except 'I'

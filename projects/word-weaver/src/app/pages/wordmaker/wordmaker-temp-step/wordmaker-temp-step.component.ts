@@ -28,6 +28,7 @@ import { META_DATA } from "../../../../config/config";
   templateUrl: "./wordmaker-temp-step.component.html",
   styleUrls: ["./wordmaker-temp-step.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class WordmakerTempStepComponent implements OnDestroy, OnInit {
   @Output() selectedTemp = new EventEmitter<Option>();

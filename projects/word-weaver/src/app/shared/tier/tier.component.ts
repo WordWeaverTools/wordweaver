@@ -17,6 +17,7 @@ import { EveryVoiceService } from "@everyvoice/every-voice";
   templateUrl: "./tier.component.html",
   styleUrls: ["./tier.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TierComponent implements OnInit {
   @Input() data: ConjugationObject;

@@ -14,6 +14,7 @@ import { takeUntil } from "rxjs/operators";
 
 @Directive({
   selector: "[libEveryVoice]",
+  standalone: false,
 })
 export class EveryVoiceDirective implements AfterViewInit, OnDestroy, OnInit {
   @Input("libEveryVoice") text!: string;

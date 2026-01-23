@@ -6,6 +6,7 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from "../../../core/core.module";
   templateUrl: "./wordmaker-home.component.html",
   styleUrls: ["./wordmaker-home.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class WordmakerHomeComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;

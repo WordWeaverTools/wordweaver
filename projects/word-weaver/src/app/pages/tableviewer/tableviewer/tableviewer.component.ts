@@ -32,6 +32,7 @@ import { GridOrderOptions } from "../conjugation-grid/conjugation-grid.component
   templateUrl: "./tableviewer.component.html",
   styleUrls: ["./tableviewer.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableviewerComponent implements OnInit {
   @ViewChild("conjPanel") conjPanel;

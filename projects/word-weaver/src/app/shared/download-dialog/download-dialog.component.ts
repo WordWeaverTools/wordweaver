@@ -25,6 +25,7 @@ import { TableviewerState } from "../../core/tableviewer-selection/tableviewer-s
   templateUrl: "./download-dialog.component.html",
   styleUrls: ["./download-dialog.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DownloadDialogComponent implements OnInit {
   objectkeys = Object.keys;

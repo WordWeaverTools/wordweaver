@@ -31,6 +31,7 @@ import { TableviewerState } from "../../../core/tableviewer-selection/tableviewe
   templateUrl: "./conjugation-tree.component.html",
   styleUrls: ["./conjugation-tree.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ConjugationTreeComponent implements OnDestroy, OnInit {
   @Input() data$: Observable<Partial<TableviewerState>>;

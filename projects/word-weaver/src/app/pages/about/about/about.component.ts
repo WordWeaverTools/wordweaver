@@ -14,6 +14,7 @@ export interface Contributor {
   templateUrl: "./about.component.html",
   styleUrls: ["./about.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AboutComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
