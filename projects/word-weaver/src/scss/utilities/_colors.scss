@@ -1,6 +1,7 @@
 // Color Palette
 // examples based on the official Sass styleguide
 
+@use "sass:map";
 @use "@angular/material" as mat;
 @use "palettes";
 
@@ -29,8 +30,8 @@ $seance: #6a1b9a; //500 of md-purple
 
 // main color palette
 // =============
-$color-primary: map-get(palettes.$md-primary, 500);
-$color-accent: map-get(palettes.$md-accent, 400);
+$color-primary: map.get(palettes.$md-primary, 500);
+$color-accent: map.get(palettes.$md-accent, 400);
 $color-shadow: rgba($black, 0.125);
 $color-note: #666;
 
@@ -56,15 +57,15 @@ $color-text-strong-invert: $color-background;
 
 // Verb highlight colors
 $verb-highlight-colors: (
-  agent: map-get(palettes.$md-red, 600),
-  patient: map-get(palettes.$md-blue, 600),
-  transitive: map-get(palettes.$md-purple, 600),
+  agent: map.get(palettes.$md-red, 600),
+  patient: map.get(palettes.$md-blue, 600),
+  transitive: map.get(palettes.$md-purple, 600),
 );
 
 $verb-highlight-color-names: (
-  red: map-get($verb-highlight-colors, agent),
-  blue: map-get($verb-highlight-colors, patient),
-  purple: map-get($verb-highlight-colors, transitive),
+  red: map.get($verb-highlight-colors, agent),
+  blue: map.get($verb-highlight-colors, patient),
+  purple: map.get($verb-highlight-colors, transitive),
 );
 
 $other-highlights: (
@@ -94,7 +95,7 @@ $color-selection: #b3d4fc;
 $color-message: #f4ecbb;
 $success-colors: mat.m2-define-palette(mat.$m2-green-palette, 400);
 $warning-colors: mat.m2-define-palette(mat.$m2-amber-palette, 400);
-$color-success: map-get($success-colors, 500);
-$color-warning: map-get($warning-colors, 500);
+$color-success: map.get($success-colors, 500);
+$color-warning: map.get($warning-colors, 500);
 $color-important: #d00;
 $color-notice: #66b;

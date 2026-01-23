@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../utilities/typography";
 @use "../utilities/config";
 
@@ -8,7 +9,7 @@
   // top: em(14);
   margin-top: em(5);
   margin-right: em(20);
-  font-size: em(map-get(typography.$font-sizes, lg));
+  font-size: em(map.get(typography.$font-sizes, lg));
   // position: absolute;
   z-index: 999;
   float: right;
@@ -19,7 +20,7 @@
   font-size: em(20);
   line-height: em(28);
   margin: 0 em(1);
-  z-index: map-get(config.$zindex, nav);
+  z-index: map.get(config.$zindex, nav);
 }
 
 %nav-link {
@@ -30,7 +31,7 @@
   }
   font-family: typography.$font-family-accent;
   font-weight: normal;
-  z-index: map-get(config.$zindex, nav);
+  z-index: map.get(config.$zindex, nav);
 }
 
 %title {

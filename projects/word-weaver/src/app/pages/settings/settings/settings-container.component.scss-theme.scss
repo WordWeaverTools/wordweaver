@@ -1,16 +1,17 @@
+@use "sass:map";
 @use "@angular/material" as mat;
 
 @mixin ww-settings-component-theme-common($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background-palette: map.get($theme, background);
+  $foreground-palette: map.get($theme, foreground);
 }
 
 @mixin ww-settings-component-theme-dark($theme) {
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $background-palette: map.get($theme, background);
+  $foreground-palette: map.get($theme, foreground);
 
   $background: lighten(
     mat.m2-get-color-from-palette($background-palette, background),
@@ -46,8 +47,8 @@
 }
 
 @mixin ww-settings-component-theme-light($theme) {
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $background-palette: map.get($theme, background);
+  $foreground-palette: map.get($theme, foreground);
 
   $background: darken(
     mat.m2-get-color-from-palette($background-palette, background),

@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../utilities/typography";
 @use "../utilities/config";
 @use "../utilities/colors";
@@ -8,17 +9,17 @@
   display: inline-flex;
   background: transparent;
   height: 6em;
-  background: map-get(colors.$ui-colors, white);
+  background: map.get(colors.$ui-colors, white);
   &__subheader {
     left: em(35);
     top: em(80);
     font-size: em(12);
     position: absolute;
-    z-index: map-get(config.$zindex, nav);
+    z-index: map.get(config.$zindex, nav);
   }
   &__content {
     @extend %nav-content;
-    @include mixins.mq(em(map-get(config.$breakpoints, medium)), "max-width") {
+    @include mixins.mq(em(map.get(config.$breakpoints, medium)), "max-width") {
       display: none;
     }
     &--mobile {
@@ -26,7 +27,7 @@
       right: em(20);
       @extend %nav-content;
       @include mixins.mq(
-        em(map-get(config.$breakpoints, medium)),
+        em(map.get(config.$breakpoints, medium)),
         "min-width"
       ) {
         display: none !important;
@@ -46,9 +47,9 @@
     @extend %nav-item;
     &--active {
       margin-top: em(1);
-      background: map-get(colors.$ui-colors, black);
+      background: map.get(colors.$ui-colors, black);
       a {
-        color: map-get(colors.$ui-colors, white);
+        color: map.get(colors.$ui-colors, white);
       }
     }
   }
@@ -59,5 +60,5 @@
 }
 
 #lineDrawing {
-  z-index: map-get(config.$zindex, nav);
+  z-index: map.get(config.$zindex, nav);
 }
