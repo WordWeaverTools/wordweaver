@@ -12,7 +12,7 @@ import { FormControl } from "@angular/forms";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { marker } from "@colsen1991/ngx-translate-extract-marker";
 import { select, Store } from "@ngrx/store";
-import { EChartsOption } from "echarts";
+import { EChartsOption } from "echarts/index.common";
 import { TranslateService } from "@ngx-translate/core";
 import { BehaviorSubject, from, of, Observable, Subject, zip } from "rxjs";
 import { map, switchMap, take, takeUntil } from "rxjs/operators";

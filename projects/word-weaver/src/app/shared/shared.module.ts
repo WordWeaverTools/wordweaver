@@ -120,7 +120,7 @@ import { TierComponent } from "./tier/tier.component";
     MatExpansionModule,
     MatPaginatorModule,
     NgxEchartsModule.forRoot({
-      echarts: () => import("echarts"),
+      echarts: () => import("echarts/index.common"),
     }),
     FontAwesomeModule,
     ClipboardModule,
