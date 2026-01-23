@@ -132,7 +132,7 @@
     "@ngx-translate/core": "14.0.0",
     "@ngx-translate/http-loader": "4.0.0",
     "@playwright/test": "^1.39.0",
-    "@types/echarts": "^4.4.4",
+    "@types/echarts": "^5.0.0",
     "@types/file-saver-es": "^2.0.1",
     "@types/jasmine": "3.3.16",
     "@types/jasminewd2": "2.0.8",
@@ -195,9 +195,9 @@
     "@auth0/auth0-angular": "^2.2.3",
     "@ngrx/data": "^19.0.0",
     "docx": "^8.2.3",
-    "echarts": "^5.4.2",
+    "echarts": "^6.0.0",
     "file-saver-es": "^2.0.5",
-    "ngx-echarts": "^14.0.0",
+    "ngx-echarts": "^19.0.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5"
   }

@@ -22,6 +22,12 @@ import { TableviewerComponent } from "./tableviewer/tableviewer.component";
     ConjugationGridComponent,
     ConjugationListComponent,
   ],
-  imports: [SharedModule, TableviewerRoutingModule, NgxEchartsModule],
+  imports: [
+    SharedModule,
+    TableviewerRoutingModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import("echarts/index.common"),
+    }),
+  ],
 })
 export class TableviewerModule {}

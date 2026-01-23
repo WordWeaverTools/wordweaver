@@ -6,7 +6,7 @@ import {
   OnInit,
 } from "@angular/core";
 import { select, Store } from "@ngrx/store";
-import { EChartsOption, EChartsType } from "echarts";
+import { EChartsOption, EChartsType } from "echarts/index.common";
 import { merge as _merge } from "lodash";
 import { TranslateService } from "@ngx-translate/core";
 import { Observable, of, Subject } from "rxjs";
