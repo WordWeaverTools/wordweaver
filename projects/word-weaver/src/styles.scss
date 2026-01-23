@@ -116,7 +116,8 @@
 //     }
 //   }
 
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 
 @mixin custom-components-theme-common($theme) {
   @include reset-theme.ww-styles-reset-theme($theme);
