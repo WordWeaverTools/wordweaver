@@ -1,6 +1,5 @@
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { TestBed, waitForAsync } from "@angular/core/testing";
-import { RouterTestingModule } from "@angular/router/testing";
 import { TranslateModule } from "@ngx-translate/core";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
 
@@ -17,6 +16,8 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from "@angular/common/http/testing";
+import { provideRouter } from "@angular/router";
+import { routes } from "../app-routing.module";
 
 describe("AppComponent", () => {
   let store: MockStore;
@@ -26,12 +27,11 @@ describe("AppComponent", () => {
     TestBed.configureTestingModule({
       imports: [
         SharedModule,
-        RouterTestingModule,
         NoopAnimationsModule,
         TranslateModule.forRoot(),
         HttpClientTestingModule,
       ],
-      providers: [provideMockStore()],
+      providers: [provideRouter(routes), provideMockStore()],
       declarations: [AppComponent],
     }).compileComponents();
     httpClient = TestBed.inject(HttpClient);

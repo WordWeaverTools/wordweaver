@@ -4,7 +4,7 @@ import { AuthGuard } from "@auth0/auth0-angular";
 import { UserProfileComponent } from "./shared/profile/profile.component";
 import { AuthCallbackComponent } from "./shared/auth/auth-callback.component";
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: "",
     redirectTo: "wordmaker",
