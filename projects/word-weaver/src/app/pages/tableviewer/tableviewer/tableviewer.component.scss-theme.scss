@@ -9,7 +9,7 @@
 
   th.mat-mdc-header-cell {
     border-bottom: 1px solid
-      mat.get-color-from-palette($foreground-palette, base);
+      mat.m2-get-color-from-palette($foreground-palette, base);
   }
 
   th.mat-mdc-header-cell:first-of-type,
@@ -17,7 +17,7 @@
   td.mat-mdc-footer-cell:first-of-type {
     padding: 0;
     border-right: 1px solid
-      mat.get-color-from-palette($foreground-palette, base);
+      mat.m2-get-color-from-palette($foreground-palette, base);
   }
 
   td.mat-mdc-cell {
@@ -25,7 +25,7 @@
   }
   /* TODO(mdc-migration): The following rule targets internal classes of option that may no longer apply for the MDC version.*/
   .mat-option-text {
-    color: mat.get-color-from-palette($foreground-palette, base);
+    color: mat.m2-get-color-from-palette($foreground-palette, base);
   }
 
   // .error__container {
@@ -38,7 +38,7 @@
   // }
 
   .mat-pseudo-checkbox-checked {
-    background-color: mat.get-color-from-palette($accent) !important;
+    background-color: mat.m2-get-color-from-palette($accent) !important;
   }
 }
 
@@ -50,10 +50,10 @@
   $foreground-palette: map-get($theme, foreground);
 
   $background: lighten(
-    mat.get-color-from-palette($background-palette, background),
+    mat.m2-get-color-from-palette($background-palette, background),
     10%
   );
-  $foreground: mat.get-color-from-palette($foreground-palette, base);
+  $foreground: mat.m2-get-color-from-palette($foreground-palette, base);
 
   ww-tableviewer {
     .mat-figure,
@@ -80,8 +80,8 @@
   $background-palette: map-get($theme, background);
   $foreground-palette: map-get($theme, foreground);
 
-  $background: mat.get-color-from-palette($background-palette, background);
-  $foreground: mat.get-color-from-palette($foreground-palette, base);
+  $background: mat.m2-get-color-from-palette($background-palette, background);
+  $foreground: mat.m2-get-color-from-palette($foreground-palette, base);
 
   .control {
     /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
@@ -147,7 +147,7 @@
       label,
       input,
       span {
-        color: mat.get-color-from-palette($accent, default-contrast);
+        color: mat.m2-get-color-from-palette($accent, default-contrast);
       }
     }
 

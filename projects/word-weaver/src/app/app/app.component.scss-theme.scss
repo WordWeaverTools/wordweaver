@@ -10,24 +10,24 @@
     mat-toolbar {
       button {
         &.active {
-          color: mat.get-color-from-palette($accent, default-contrast);
-          background-color: mat.get-color-from-palette($accent);
+          color: mat.m2-get-color-from-palette($accent, default-contrast);
+          background-color: mat.m2-get-color-from-palette($accent);
         }
       }
 
       .link {
-        color: mat.get-color-from-palette($primary, default-contrast);
+        color: mat.m2-get-color-from-palette($primary, default-contrast);
       }
     }
 
     mat-sidenav {
       .mat-mdc-list-item {
         &.active {
-          color: mat.get-color-from-palette($accent, default-contrast);
-          background-color: mat.get-color-from-palette($accent) !important;
+          color: mat.m2-get-color-from-palette($accent, default-contrast);
+          background-color: mat.m2-get-color-from-palette($accent) !important;
 
           &:hover {
-            background-color: mat.get-color-from-palette(
+            background-color: mat.m2-get-color-from-palette(
               $accent,
               darker
             ) !important;
@@ -37,15 +37,15 @@
     }
 
     .footer {
-      color: mat.get-color-from-palette($primary, lighter);
-      background-color: mat.get-color-from-palette($primary, darker);
+      color: mat.m2-get-color-from-palette($primary, lighter);
+      background-color: mat.m2-get-color-from-palette($primary, darker);
 
       .links,
       .signature {
         a {
-          color: mat.get-color-from-palette($primary, lighter);
+          color: mat.m2-get-color-from-palette($primary, lighter);
           &:hover {
-            color: mat.get-color-from-palette($accent);
+            color: mat.m2-get-color-from-palette($accent);
           }
         }
       }
@@ -53,22 +53,28 @@
   }
 
   .error-notification-overlay {
-    color: mat.get-color-from-palette($warn, default-contrast);
-    background-color: mat.get-color-from-palette($warn);
+    color: mat.m2-get-color-from-palette($warn, default-contrast);
+    background-color: mat.m2-get-color-from-palette($warn);
   }
 
   .info-notification-overlay {
-    color: mat.get-color-from-palette($accent, default-contrast);
-    background-color: mat.get-color-from-palette($accent);
+    color: mat.m2-get-color-from-palette($accent, default-contrast);
+    background-color: mat.m2-get-color-from-palette($accent);
   }
 
   .success-notification-overlay {
-    color: mat.get-color-from-palette(colors.$success-colors, default-contrast);
-    background-color: mat.get-color-from-palette(colors.$success-colors);
+    color: mat.m2-get-color-from-palette(
+      colors.$success-colors,
+      default-contrast
+    );
+    background-color: mat.m2-get-color-from-palette(colors.$success-colors);
   }
 
   .warning-notification-overlay {
-    color: mat.get-color-from-palette(colors.$warning-colors, default-contrast);
-    background-color: mat.get-color-from-palette(colors.$warning-colors);
+    color: mat.m2-get-color-from-palette(
+      colors.$warning-colors,
+      default-contrast
+    );
+    background-color: mat.m2-get-color-from-palette(colors.$warning-colors);
   }
 }

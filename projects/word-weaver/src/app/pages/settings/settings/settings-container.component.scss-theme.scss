@@ -13,10 +13,10 @@
   $foreground-palette: map-get($theme, foreground);
 
   $background: lighten(
-    mat.get-color-from-palette($background-palette, background),
+    mat.m2-get-color-from-palette($background-palette, background),
     10%
   );
-  $foreground: mat.get-color-from-palette($foreground-palette, base);
+  $foreground: mat.m2-get-color-from-palette($foreground-palette, base);
 
   .settings-container {
     background-color: $background;
@@ -50,11 +50,11 @@
   $foreground-palette: map-get($theme, foreground);
 
   $background: darken(
-    mat.get-color-from-palette($background-palette, background),
+    mat.m2-get-color-from-palette($background-palette, background),
     10%
   );
   $foreground: lighten(
-    mat.get-color-from-palette($foreground-palette, base),
+    mat.m2-get-color-from-palette($foreground-palette, base),
     20%
   );
 

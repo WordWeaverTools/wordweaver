@@ -4,7 +4,7 @@
   $accent: map-get($theme, accent);
   $background-palette: map-get($theme, background);
   $background: lighten(
-    mat.get-color-from-palette($background-palette, background),
+    mat.m2-get-color-from-palette($background-palette, background),
     20%
   );
   %scroll {
@@ -20,7 +20,7 @@
     &::-webkit-scrollbar-thumb {
       box-shadow: 0 0 em(5) $background;
       // box-shadow: inset 0 0 em(5) map-get($ui-colors, shadow);
-      background: rgba(mat.get-color-from-palette($accent), 0.6);
+      background: rgba(mat.m2-get-color-from-palette($accent), 0.6);
       border-radius: em(5);
     }
   }
