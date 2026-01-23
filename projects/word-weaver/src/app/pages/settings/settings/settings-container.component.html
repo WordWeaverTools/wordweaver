@@ -71,7 +71,7 @@
           class="icon-form-field"
           *ngIf="
             (tts.ttsEnabledAndAuthenticated$ | async) &&
-            (this.tts.speakers$ | async)?.length > 0
+            (tts.speakers$ | async)?.length > 0
           "
         >
           <mat-icon color="accent"> record_voice_over </mat-icon>
@@ -84,10 +84,7 @@
               (selectionChange)="onTtsSpeakerChange($event)"
               name="speaker"
             >
-              <mat-option
-                *ngFor="let s of this.tts.speakers$ | async"
-                [value]="s"
-              >
+              <mat-option *ngFor="let s of tts.speakers$ | async" [value]="s">
                 {{ s["display"] }}
               </mat-option>
             </mat-select>
