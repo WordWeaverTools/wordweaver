@@ -37,6 +37,7 @@ export interface GridOrder {
   templateUrl: "./conjugation-grid.component.html",
   styleUrls: ["./conjugation-grid.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ConjugationGridComponent
   implements AfterViewInit, OnDestroy, OnInit

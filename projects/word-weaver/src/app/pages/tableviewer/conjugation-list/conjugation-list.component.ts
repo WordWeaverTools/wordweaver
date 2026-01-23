@@ -17,6 +17,7 @@ import { selectSettings } from "../../../core/settings/settings.selectors";
   templateUrl: "./conjugation-list.component.html",
   styleUrls: ["./conjugation-list.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ConjugationListComponent implements OnDestroy, OnInit {
   @Input() data$: Observable<Conjugations>;

@@ -33,6 +33,7 @@ import { EveryVoiceService } from "@everyvoice/every-voice";
   templateUrl: "./settings-container.component.html",
   styleUrls: ["./settings-container.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SettingsContainerComponent implements OnDestroy, OnInit {
   objectkeys = Object.keys;

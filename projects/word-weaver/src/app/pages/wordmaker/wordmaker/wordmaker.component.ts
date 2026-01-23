@@ -24,6 +24,7 @@ import { TranslateService } from "@ngx-translate/core";
   templateUrl: "./wordmaker.component.html",
   styleUrls: ["./wordmaker.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class WordmakerComponent implements OnDestroy, OnInit, AfterViewInit {
   @ViewChild("stepper") private stepper;

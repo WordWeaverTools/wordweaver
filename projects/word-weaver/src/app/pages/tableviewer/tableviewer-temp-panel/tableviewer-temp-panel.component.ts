@@ -21,6 +21,7 @@ import { selectTableViewerOption } from "../../../core/tableviewer-selection/tab
   templateUrl: "./tableviewer-temp-panel.component.html",
   styleUrls: ["./tableviewer-temp-panel.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableviewerTempPanelComponent implements OnDestroy, OnInit {
   possibleOptions$: Observable<Option[]>;

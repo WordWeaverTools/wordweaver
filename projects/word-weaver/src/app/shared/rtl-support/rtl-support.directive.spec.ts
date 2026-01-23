@@ -14,6 +14,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
     <h2>No Highlight</h2>
     <div rtl>Vasili</div>
   `,
+  standalone: false,
 })
 class TestComponent {}
 

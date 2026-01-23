@@ -43,6 +43,7 @@ const safeLoad = <T>(obs$: Observable<T>) =>
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
   animations: [routeAnimations, specialAnimations],
+  standalone: false,
 })
 export class AppComponent implements OnInit {
   isProd = env.production;

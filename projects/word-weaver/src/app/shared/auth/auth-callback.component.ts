@@ -9,6 +9,7 @@ import { of, Subject } from "rxjs";
 @Component({
   selector: "ww-app-auth-callback",
   template: `<p>Processing login...</p>`,
+  standalone: false,
 })
 export class AuthCallbackComponent implements OnInit, OnDestroy {
   unsubscribe$ = new Subject();

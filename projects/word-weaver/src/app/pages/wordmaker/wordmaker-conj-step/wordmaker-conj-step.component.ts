@@ -19,6 +19,7 @@ import { TIERS } from "../../../../config/config";
   templateUrl: "./wordmaker-conj-step.component.html",
   styleUrls: ["./wordmaker-conj-step.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class WordmakerConjStepComponent implements OnDestroy, OnInit {
   settings$: Observable<SettingsState>;

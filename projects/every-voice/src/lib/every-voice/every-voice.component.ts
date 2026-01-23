@@ -13,6 +13,7 @@ import { filter, takeUntil } from "rxjs/operators";
   selector: "lib-every-voice",
   templateUrl: "./every-voice.component.html",
   styleUrls: ["./every-voice.component.css"],
+  standalone: false,
 })
 export class EveryVoiceComponent implements OnInit, OnDestroy {
   @Input() textToGenerate: string;

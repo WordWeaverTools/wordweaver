@@ -56,6 +56,7 @@ import { utils, write } from "xlsx";
   templateUrl: "./tableviewer-conj-panel.component.html",
   styleUrls: ["./tableviewer-conj-panel.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableviewerConjPanelComponent
   implements AfterViewInit, OnDestroy, OnInit

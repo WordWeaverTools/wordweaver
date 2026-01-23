@@ -26,6 +26,7 @@ import { TranslateService } from "@ngx-translate/core";
   styleUrls: ["./wordmaker-verb-step.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeAnimation, listAnimation],
+  standalone: false,
 })
 export class WordmakerVerbStepComponent implements OnDestroy, OnInit {
   @Output() selectedVerb = new EventEmitter<Verb>();

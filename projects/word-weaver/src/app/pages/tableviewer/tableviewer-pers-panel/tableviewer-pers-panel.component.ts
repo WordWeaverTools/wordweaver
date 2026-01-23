@@ -25,6 +25,7 @@ import { selectTableviewerPronouns } from "../../../core/tableviewer-selection/t
   templateUrl: "./tableviewer-pers-panel.component.html",
   styleUrls: ["./tableviewer-pers-panel.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableviewerPersPanelComponent implements OnDestroy, OnInit {
   possiblePronouns$: Observable<Pronoun[]>;
