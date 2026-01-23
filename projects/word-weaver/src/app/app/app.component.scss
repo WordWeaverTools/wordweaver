@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../../scss/utilities/config";
 
 .theme-wrapper {
@@ -54,7 +55,7 @@ mat-sidenav-container {
       font-size: 14px;
     }
 
-    @media (max-width: map-get(config.$breakpoints, lg)) {
+    @media (max-width: map.get(config.$breakpoints, lg)) {
       .nav-button {
         min-width: 0;
         padding: 0 10px;
@@ -114,13 +115,13 @@ mat-sidenav-container {
             }
           }
 
-          @media (min-width: map-get(config.$breakpoints, lg)) {
+          @media (min-width: map.get(config.$breakpoints, lg)) {
             a {
               padding: 20px 10px;
             }
           }
 
-          @media (max-width: map-get(config.$breakpoints, md)) {
+          @media (max-width: map.get(config.$breakpoints, md)) {
             a {
               padding: 20px;
 
@@ -131,14 +132,14 @@ mat-sidenav-container {
             }
           }
 
-          @media (max-width: map-get(config.$breakpoints, sm)) {
+          @media (max-width: map.get(config.$breakpoints, sm)) {
             a {
               padding: 20px 5px;
             }
           }
         }
 
-        @media (min-width: map-get(config.$breakpoints, sm)) {
+        @media (min-width: map.get(config.$breakpoints, sm)) {
           .signature {
             position: relative;
 

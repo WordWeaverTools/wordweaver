@@ -22,14 +22,15 @@
 //  verb: boolean;
 // }
 
+@use "sass:map";
 @use "@angular/material" as mat;
 
 @mixin ww-custom-highlights-theme-common-moh($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background-palette: map.get($theme, background);
+  $foreground-palette: map.get($theme, foreground);
 
   .aspect {
     .aspect.affix {
@@ -112,16 +113,16 @@
 // }
 
 @mixin ww-custom-highlights-theme-common-fr($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background-palette: map.get($theme, background);
+  $foreground-palette: map.get($theme, foreground);
 
   .ending {
     .ending {
       color: mix(
-        map-get(map-get($primary, contrast), A100),
+        map.get(map.get($primary, contrast), A100),
         mat.m2-get-color-from-palette($accent, A100),
         50%
       );
@@ -140,17 +141,17 @@
 }
 
 // @mixin ww-custom-highlights-theme-light($theme) {
-//   $primary: map-get($theme, primary);
-//   $accent: map-get($theme, accent);
-//   $warn: map-get($theme, warn);
-//   $background-palette: map-get($theme, background);
-//   $foreground-palette: map-get($theme, foreground);
+//   $primary: map.get($theme, primary);
+//   $accent: map.get($theme, accent);
+//   $warn: map.get($theme, warn);
+//   $background-palette: map.get($theme, background);
+//   $foreground-palette: map.get($theme, foreground);
 // }
 
 // @mixin ww-custom-highlights-theme-dark($theme) {
-//   $primary: map-get($theme, primary);
-//   $accent: map-get($theme, accent);
-//   $warn: map-get($theme, warn);
-//   $background-palette: map-get($theme, background);
-//   $foreground-palette: map-get($theme, foreground);
+//   $primary: map.get($theme, primary);
+//   $accent: map.get($theme, accent);
+//   $warn: map.get($theme, warn);
+//   $background-palette: map.get($theme, background);
+//   $foreground-palette: map.get($theme, foreground);
 // }

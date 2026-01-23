@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../utilities/colors";
 @use "../utilities/typography";
 @use "../utilities/mixins";
@@ -80,7 +81,7 @@ a {
 // Colors
 @for $i from 1 through length(colors.$other-highlights) {
   .highlight-#{$i} {
-    color: map-get(colors.$other-highlights, $i);
+    color: map.get(colors.$other-highlights, $i);
   }
 }
 
@@ -129,5 +130,5 @@ table {
 }
 
 .container {
-  max-width: em(map-get(config.$breakpoints, xlarge));
+  max-width: em(map.get(config.$breakpoints, xlarge));
 }

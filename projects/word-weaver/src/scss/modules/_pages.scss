@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../utilities/mixins";
 @use "../utilities/config";
 
@@ -8,7 +9,7 @@
     @include mixins.mq(em(1920), "min-width") {
       margin-top: 10vh;
     }
-    @include mixins.mq(em(map-get(config.$breakpoints, medium)), "max-width") {
+    @include mixins.mq(em(map.get(config.$breakpoints, medium)), "max-width") {
       width: 100%;
       padding: 0;
       margin: 0 !important;
@@ -19,7 +20,7 @@
 }
 
 .welcome {
-  @include mixins.mq(em(map-get(config.$breakpoints, medium)), "max-width") {
+  @include mixins.mq(em(map.get(config.$breakpoints, medium)), "max-width") {
     margin-top: 0;
   }
 }

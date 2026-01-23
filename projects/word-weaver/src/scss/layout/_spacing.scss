@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../utilities/mixins";
 @use "../utilities/config";
 
@@ -130,13 +131,13 @@ $size: 5;
   .vwidth-#{$size} {
     width: #{$size}vw;
     &--desktop {
-      @include mixins.mq(em(map-get(config.$breakpoints, medium))) {
+      @include mixins.mq(em(map.get(config.$breakpoints, medium))) {
         width: #{$size}vw;
       }
     }
     &--mobile {
       @include mixins.mq(
-        em(map-get(config.$breakpoints, medium)),
+        em(map.get(config.$breakpoints, medium)),
         "max-width"
       ) {
         width: #{$size}vw;
@@ -149,13 +150,13 @@ $size: 5;
   .pwidth-#{$size} {
     width: percentage(calc($size/100));
     &--desktop {
-      @include mixins.mq(em(map-get(config.$breakpoints, medium))) {
+      @include mixins.mq(em(map.get(config.$breakpoints, medium))) {
         width: percentage(calc($size/100));
       }
     }
     &--mobile {
       @include mixins.mq(
-        em(map-get(config.$breakpoints, medium)),
+        em(map.get(config.$breakpoints, medium)),
         "max-width"
       ) {
         width: percentage(calc($size/100));

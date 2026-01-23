@@ -1,3 +1,5 @@
+@use "sass:map";
+
 h1 {
   text-align: center;
   font-size: 3em;
@@ -130,7 +132,7 @@ h2 {
 //   }
 // }
 
-// @media (max-width: map-get($breakpoints, md)) {
+// @media (max-width: map.get($breakpoints, md)) {
 //   .background {
 //     .actions {
 //       margin: 50px 0;
@@ -147,7 +149,7 @@ h2 {
 //   }
 // }
 
-// @media (max-width: map-get($breakpoints, sm)) {
+// @media (max-width: map.get($breakpoints, sm)) {
 //   .background {
 //     padding: 40px 0 0 0;
 

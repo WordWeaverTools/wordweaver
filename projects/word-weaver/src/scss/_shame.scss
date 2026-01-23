@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "utilities/colors";
 @use "utilities/typography";
 @use "base/scroll";
@@ -101,7 +102,7 @@
 /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
 mat-button-toggle-group {
   height: 2em;
-  font-size: em(map-get(typography.$font-sizes, sm));
+  font-size: em(map.get(typography.$font-sizes, sm));
 }
 
 /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/

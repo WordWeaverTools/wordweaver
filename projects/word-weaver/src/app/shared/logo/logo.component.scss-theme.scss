@@ -1,9 +1,10 @@
+@use "sass:map";
 @use "@angular/material" as mat;
 
 @mixin ww-logo-component-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
   .animated {
     animation: dash 2s;
     -webkit-animation-fill-mode: forwards;

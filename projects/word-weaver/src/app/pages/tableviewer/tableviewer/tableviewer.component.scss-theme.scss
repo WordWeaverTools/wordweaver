@@ -1,11 +1,12 @@
+@use "sass:map";
 @use "@angular/material" as mat;
 @use "../../../../scss/utilities/colors";
 
 @mixin ww-tableviewer-component-theme-common($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $foreground-palette: map-get($theme, foreground);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $foreground-palette: map.get($theme, foreground);
 
   th.mat-mdc-header-cell {
     border-bottom: 1px solid
@@ -43,11 +44,11 @@
 }
 
 @mixin ww-tableviewer-component-theme-dark($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background-palette: map.get($theme, background);
+  $foreground-palette: map.get($theme, foreground);
 
   $background: lighten(
     mat.m2-get-color-from-palette($background-palette, background),
@@ -74,11 +75,11 @@
 }
 
 @mixin ww-tableviewer-component-theme-light($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background-palette: map.get($theme, background);
+  $foreground-palette: map.get($theme, foreground);
 
   $background: mat.m2-get-color-from-palette($background-palette, background);
   $foreground: mat.m2-get-color-from-palette($foreground-palette, base);
