@@ -1,7 +1,11 @@
-import { HttpClient } from "@angular/common/http";
 import {
-  HttpClientTestingModule,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
+import {
   HttpTestingController,
+  provideHttpClientTesting,
 } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -28,9 +32,12 @@ describe("TableviewerConjPanelComponent", () => {
         TranslateModule.forRoot(),
         MatInputModule,
         MatFormFieldModule,
-        HttpClientTestingModule,
       ],
-      providers: [provideMockStore()],
+      providers: [
+        provideMockStore(),
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
   }));
 

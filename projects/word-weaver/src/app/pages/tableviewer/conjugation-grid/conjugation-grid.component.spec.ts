@@ -1,7 +1,11 @@
-import { HttpClient } from "@angular/common/http";
 import {
-  HttpClientTestingModule,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
+import {
   HttpTestingController,
+  provideHttpClientTesting,
 } from "@angular/common/http/testing";
 import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { TranslateModule } from "@ngx-translate/core";
@@ -18,14 +22,13 @@ describe("ConjugationGridComponent", () => {
   let store: MockStore;
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        SharedModule,
-        NoopAnimationsModule,
-        TranslateModule.forRoot(),
-        HttpClientTestingModule,
-      ],
       declarations: [ConjugationGridComponent],
-      providers: [provideMockStore()],
+      imports: [SharedModule, NoopAnimationsModule, TranslateModule.forRoot()],
+      providers: [
+        provideMockStore(),
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
   }));
 

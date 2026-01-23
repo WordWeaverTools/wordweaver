@@ -1,7 +1,11 @@
-import { HttpClient } from "@angular/common/http";
 import {
-  HttpClientTestingModule,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
+import {
   HttpTestingController,
+  provideHttpClientTesting,
 } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
 
@@ -23,7 +27,10 @@ describe("EveryVoiceService", () => {
           middlewareEndpoint: "",
           domain: "",
         }),
-        HttpClientTestingModule,
+      ],
+      providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
       ],
     });
     service = TestBed.inject(EveryVoiceService);

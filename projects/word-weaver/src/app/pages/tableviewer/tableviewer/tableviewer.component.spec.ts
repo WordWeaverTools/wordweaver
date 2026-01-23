@@ -1,7 +1,11 @@
-import { HttpClient } from "@angular/common/http";
 import {
-  HttpClientTestingModule,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
+import {
   HttpTestingController,
+  provideHttpClientTesting,
 } from "@angular/common/http/testing";
 import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
@@ -21,13 +25,13 @@ describe("TableviewerComponent", () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TableviewerComponent],
-      imports: [
-        SharedModule,
-        NoopAnimationsModule,
-        TranslateModule.forRoot(),
-        HttpClientTestingModule,
+      imports: [SharedModule, NoopAnimationsModule, TranslateModule.forRoot()],
+      providers: [
+        provideRouter(routes),
+        provideMockStore(),
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
       ],
-      providers: [provideRouter(routes), provideMockStore()],
     }).compileComponents();
   }));
 

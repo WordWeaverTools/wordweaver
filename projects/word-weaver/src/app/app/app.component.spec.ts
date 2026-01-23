@@ -11,10 +11,14 @@ import {
 import { SharedModule } from "../shared/shared.module";
 
 import { AppComponent } from "./app.component";
-import { HttpClient } from "@angular/common/http";
 import {
-  HttpClientTestingModule,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
+import {
   HttpTestingController,
+  provideHttpClientTesting,
 } from "@angular/common/http/testing";
 import { provideRouter } from "@angular/router";
 import { routes } from "../app-routing.module";
@@ -25,14 +29,14 @@ describe("AppComponent", () => {
   let httpTestingController: HttpTestingController;
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        SharedModule,
-        NoopAnimationsModule,
-        TranslateModule.forRoot(),
-        HttpClientTestingModule,
-      ],
-      providers: [provideRouter(routes), provideMockStore()],
       declarations: [AppComponent],
+      imports: [SharedModule, NoopAnimationsModule, TranslateModule.forRoot()],
+      providers: [
+        provideRouter(routes),
+        provideMockStore(),
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
     httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);

@@ -3,7 +3,10 @@ import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { SharedModule } from "../../../shared/shared.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-import { HttpClientModule } from "@angular/common/http";
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
 
 import { WordmakerTempStepComponent } from "./wordmaker-temp-step.component";
@@ -15,13 +18,11 @@ describe("WordmakerTempStepComponent", () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [WordmakerTempStepComponent],
-      imports: [
-        SharedModule,
-        NoopAnimationsModule,
-        TranslateModule.forRoot(),
-        HttpClientModule,
+      imports: [SharedModule, NoopAnimationsModule, TranslateModule.forRoot()],
+      providers: [
+        provideMockStore(),
+        provideHttpClient(withInterceptorsFromDi()),
       ],
-      providers: [provideMockStore()],
     }).compileComponents();
   }));
 

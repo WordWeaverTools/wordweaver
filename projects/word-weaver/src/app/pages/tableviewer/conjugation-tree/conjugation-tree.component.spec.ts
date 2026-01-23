@@ -1,7 +1,11 @@
-import { HttpClient } from "@angular/common/http";
 import {
-  HttpClientTestingModule,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
+import {
   HttpTestingController,
+  provideHttpClientTesting,
 } from "@angular/common/http/testing";
 import { TranslateModule } from "@ngx-translate/core";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
@@ -20,15 +24,18 @@ describe("ConjugationTreeComponent", () => {
   let store: MockStore;
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      declarations: [ConjugationTreeComponent],
       imports: [
         SharedModule,
         NoopAnimationsModule,
         TranslateModule.forRoot(),
-        HttpClientTestingModule,
         EveryVoiceModule.forRoot(environment.ttsConfig),
       ],
-      declarations: [ConjugationTreeComponent],
-      providers: [provideMockStore()],
+      providers: [
+        provideMockStore(),
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
   }));
 

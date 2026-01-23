@@ -1,7 +1,11 @@
-import { HttpClient } from "@angular/common/http";
 import {
-  HttpClientTestingModule,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from "@angular/common/http";
+import {
   HttpTestingController,
+  provideHttpClientTesting,
 } from "@angular/common/http/testing";
 import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { EveryVoiceModule } from "@everyvoice/every-voice";
@@ -14,11 +18,12 @@ describe("TierComponent", () => {
   let httpTestingController: HttpTestingController;
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        EveryVoiceModule.forRoot(everyVoiceConfig),
-        HttpClientTestingModule,
-      ],
       declarations: [TierComponent],
+      imports: [EveryVoiceModule.forRoot(everyVoiceConfig)],
+      providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
   }));
 

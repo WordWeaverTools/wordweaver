@@ -1,8 +1,9 @@
 import { CommonModule } from "@angular/common";
 import {
   HttpClient,
-  HttpClientModule,
   HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
 } from "@angular/common/http";
 import { ErrorHandler, NgModule, Optional, SkipSelf } from "@angular/core";
 import { FormsModule } from "@angular/forms";
@@ -151,13 +152,10 @@ export const httpLoaderFactory = (http: HttpClient) =>
   ]);
 
 @NgModule({
-  imports: [
+  declarations: [],
+  exports: [
     // angular
-    CommonModule,
-    HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,
-
     // material
     MatSidenavModule,
     MatToolbarModule,
@@ -168,7 +166,25 @@ export const httpLoaderFactory = (http: HttpClient) =>
     MatTooltipModule,
     MatSnackBarModule,
     MatButtonModule,
-
+    // 3rd party
+    FontAwesomeModule,
+    TranslateModule,
+  ],
+  imports: [
+    // angular
+    CommonModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    // material
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatMenuModule,
+    MatIconModule,
+    MatSelectModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatButtonModule,
     // ngrx
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
@@ -182,7 +198,6 @@ export const httpLoaderFactory = (http: HttpClient) =>
       : StoreDevtoolsModule.instrument({
           name: "Word Weaver",
         }),
-
     // 3rd party
     FontAwesomeModule,
     TranslateModule.forRoot({
@@ -193,7 +208,6 @@ export const httpLoaderFactory = (http: HttpClient) =>
       },
     }),
   ],
-  declarations: [],
   providers: [
     ConjugationService,
     OptionService,
@@ -212,25 +226,7 @@ export const httpLoaderFactory = (http: HttpClient) =>
       },
       skipRedirectCallback: true,
     }),
-  ],
-  exports: [
-    // angular
-    FormsModule,
-
-    // material
-    MatSidenavModule,
-    MatToolbarModule,
-    MatListModule,
-    MatMenuModule,
-    MatIconModule,
-    MatSelectModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatButtonModule,
-
-    // 3rd party
-    FontAwesomeModule,
-    TranslateModule,
+    provideHttpClient(withInterceptorsFromDi()),
   ],
 })
 export class CoreModule {
