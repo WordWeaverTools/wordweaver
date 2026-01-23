@@ -5,12 +5,13 @@ import {
 } from "@angular/common/http/testing";
 import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-import { RouterTestingModule } from "@angular/router/testing";
 import { provideMockStore } from "@ngrx/store/testing";
 import { TranslateModule } from "@ngx-translate/core";
 
 import { SharedModule } from "../../../shared/shared.module";
 import { TableviewerComponent } from "./tableviewer.component";
+import { provideRouter } from "@angular/router";
+import { routes } from "../../../app-routing.module";
 
 describe("TableviewerComponent", () => {
   let component: TableviewerComponent;
@@ -25,9 +26,8 @@ describe("TableviewerComponent", () => {
         NoopAnimationsModule,
         TranslateModule.forRoot(),
         HttpClientTestingModule,
-        RouterTestingModule,
       ],
-      providers: [provideMockStore()],
+      providers: [provideRouter(routes), provideMockStore()],
     }).compileComponents();
   }));
 

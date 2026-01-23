@@ -8,6 +8,7 @@ import {
 } from "@angular/material/dialog";
 
 import { TableViewerDialogComponent } from "./tableviewer-dialog.component";
+import { MatTooltip } from "@angular/material/tooltip";
 
 describe("TableViewerDialogComponent", () => {
   let component: TableViewerDialogComponent;
@@ -15,7 +16,7 @@ describe("TableViewerDialogComponent", () => {
   let store: MockStore;
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [MatDialogModule, TranslateModule.forRoot()],
+      imports: [MatDialogModule, TranslateModule.forRoot(), MatTooltip],
       declarations: [TableViewerDialogComponent],
       providers: [
         provideMockStore(),
