@@ -204,6 +204,18 @@ export class EveryVoiceService {
         }
         console.log("[DEBUG] Audio is playing");
         this.status$.next({ id: audioId, status: "PLAYING" });
+        //opted into plausible
+        if ((window as any).plausible) {
+          try {
+            const win = window;
+
+            (win as any).plausible(`Used TTS`, {
+              props: {},
+            });
+          } catch (err) {
+            console.error(err);
+          }
+        }
       };
 
       this.audioPlayer.onerror = (event) => {

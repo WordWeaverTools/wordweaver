@@ -82,6 +82,7 @@ export class ConjugationService {
         }
       }
     });
+    this.generatePlausibleEvent();
     return conjugations.filter((x) =>
       ["option", "agent", "patient", "root"].every(
         (k) =>
@@ -92,6 +93,8 @@ export class ConjugationService {
   }
 
   conjugate$(selection: TableviewerState | WordmakerState) {
+    this.generatePlausibleEvent();
+
     return this.conjugations$.pipe(
       map((conjugations) => this.filterConjugations(conjugations, selection))
     );
@@ -138,5 +141,19 @@ export class ConjugationService {
       structuredData.push(mainData);
     });
     return { structuredData, uniqueMain, uniqueCol, uniqueRow };
+  }
+  private generatePlausibleEvent(
+    eventName: string = "Conjugate",
+    eventProps: object = {}
+  ) {
+    if ((window as any).plausible)
+      try {
+        const win = window;
+        (win as any).plausible(eventName, {
+          props: eventProps,
+        });
+      } catch (err) {
+        console.error(err);
+      }
   }
 }
