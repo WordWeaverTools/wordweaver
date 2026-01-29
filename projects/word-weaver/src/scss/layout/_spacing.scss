@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:math";
 @use "../utilities/mixins";
 @use "../utilities/config";
 
@@ -145,13 +146,13 @@ $size: 5;
     }
   }
   .pheight-#{$size} {
-    height: percentage(calc($size/100));
+    height: math.percentage(calc($size/100));
   }
   .pwidth-#{$size} {
-    width: percentage(calc($size/100));
+    width: math.percentage(calc($size/100));
     &--desktop {
       @include mixins.mq(em(map.get(config.$breakpoints, medium))) {
-        width: percentage(calc($size/100));
+        width: math.percentage(calc($size/100));
       }
     }
     &--mobile {
@@ -159,7 +160,7 @@ $size: 5;
         em(map.get(config.$breakpoints, medium)),
         "max-width"
       ) {
-        width: percentage(calc($size/100));
+        width: math.percentage(calc($size/100));
       }
     }
   }

@@ -1,3 +1,4 @@
+@use "sass:list";
 @use "config";
 
 // Mixins
@@ -199,7 +200,7 @@
 //
 
 @mixin animate-palette($map) {
-  $no-of-colors: length($map);
+  $no-of-colors: list.length($map);
   @each $name, $color in $map {
     $i: index($map, $name $color);
     $percent: ($i / $no-of-colors) * 100;

@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:list";
 @use "../utilities/colors";
 @use "../utilities/typography";
 @use "../utilities/mixins";
@@ -79,7 +80,7 @@ a {
 }
 
 // Colors
-@for $i from 1 through length(colors.$other-highlights) {
+@for $i from 1 through list.length(colors.$other-highlights) {
   .highlight-#{$i} {
     color: map.get(colors.$other-highlights, $i);
   }
