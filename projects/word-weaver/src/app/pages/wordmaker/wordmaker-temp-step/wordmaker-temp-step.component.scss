@@ -4,13 +4,14 @@
 }
 
 .default-type {
+  margin: 0 50px;
+  width: 250px;
+
   &__container {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
   }
-  margin: 0 50px;
-  width: 250px;
 }
 
 .option__container {
