@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:color";
 @use "@angular/material" as mat;
 @use "../../../../scss/utilities/colors";
 
@@ -50,16 +51,16 @@
   $background-palette: map.get($theme, background);
   $foreground-palette: map.get($theme, foreground);
 
-  $background: lighten(
+  $background: color.adjust(
     mat.m2-get-color-from-palette($background-palette, background),
-    10%
+    $lightness: 10%
   );
   $foreground: mat.m2-get-color-from-palette($foreground-palette, base);
 
   ww-tableviewer {
     .mat-figure,
     .selected-verb-panel {
-      background-color: darken($background, 3%);
+      background-color: color.adjust($background, $lightness: -3%);
     }
 
     .draggable-item {
@@ -154,7 +155,7 @@
 
     .mat-figure,
     .selected-verb-panel {
-      background-color: darken($background, 2%);
+      background-color: color.adjust($background, $lightness: -2%);
     }
 
     ww-tableviewer-conj-panel,

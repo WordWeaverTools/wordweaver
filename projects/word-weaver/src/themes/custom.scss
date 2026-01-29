@@ -23,6 +23,7 @@
 // }
 
 @use "sass:map";
+@use "sass:color";
 @use "@angular/material" as mat;
 
 @mixin ww-custom-highlights-theme-common-moh($theme) {
@@ -34,7 +35,7 @@
 
   .aspect {
     .aspect.affix {
-      color: mix(
+      color: color.mix(
         mat.m2-get-color-from-palette($foreground-palette, base),
         mediumseagreen,
         30%
@@ -44,7 +45,7 @@
 
   .post-aspectual {
     .post_aspectual_suffix.affix {
-      color: mix(
+      color: color.mix(
         mat.m2-get-color-from-palette($foreground-palette, base),
         mediumseagreen,
         30%
@@ -54,7 +55,7 @@
 
   .pronouns {
     .pronoun.transitive {
-      color: mix(
+      color: color.mix(
         mat.m2-get-color-from-palette($foreground-palette, base),
         mediumpurple,
         30%
@@ -62,7 +63,7 @@
     }
 
     .pronoun.agent {
-      color: mix(
+      color: color.mix(
         mat.m2-get-color-from-palette($foreground-palette, base),
         indianred,
         20%
@@ -70,7 +71,7 @@
     }
 
     .pronoun.patient {
-      color: mix(
+      color: color.mix(
         mat.m2-get-color-from-palette($foreground-palette, base),
         cornflowerblue,
         30%
@@ -83,7 +84,7 @@
 
   .temp {
     .tmp_affix.affix {
-      color: mix(
+      color: color.mix(
         mat.m2-get-color-from-palette($foreground-palette, base),
         mediumseagreen,
         30%
@@ -93,7 +94,7 @@
 
   .verb {
     .root {
-      color: mix(
+      color: color.mix(
         mat.m2-get-color-from-palette($foreground-palette, base),
         orangered,
         40%
@@ -121,7 +122,7 @@
 
   .ending {
     .ending {
-      color: mix(
+      color: color.mix(
         map.get(map.get($primary, contrast), A100),
         mat.m2-get-color-from-palette($accent, A100),
         50%
@@ -131,7 +132,7 @@
 
   .root {
     .root {
-      color: mix(
+      color: color.mix(
         mat.m2-get-color-from-palette($foreground-palette, base),
         mat.m2-get-color-from-palette($accent, A100),
         80%

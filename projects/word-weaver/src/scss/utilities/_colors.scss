@@ -2,6 +2,7 @@
 // examples based on the official Sass styleguide
 
 @use "sass:map";
+@use "sass:color";
 @use "@angular/material" as mat;
 @use "palettes";
 
@@ -19,7 +20,7 @@ $iron: #dadbdf;
 $regent-grey: #808c99;
 $pale-sky: #6b717f;
 $midnight-blue: #036;
-$black: darken(#08090e, 2%);
+$black: color.adjust(#08090e, $lightness: -2%);
 $white: #fff;
 // Added
 $steel-blue: #427fb8; //500 of md-primary
@@ -47,7 +48,7 @@ $ui-colors: (
 $color-background: $white;
 $color-background-shade: $iron;
 $color-background-invert: $hopbush;
-// $color-text:                darken($pale-sky, 15);
+// $color-text:                color.adjust($pale-sky, $lightness: -15%);
 $color-text: $black;
 $color-text-weak: $regent-grey;
 $color-text-strong: $midnight-blue;

@@ -1,12 +1,13 @@
 @use "sass:map";
+@use "sass:color";
 @use "@angular/material" as mat;
 
 @mixin ww-scroll($theme) {
   $accent: map.get($theme, accent);
   $background-palette: map.get($theme, background);
-  $background: lighten(
+  $background: color.adjust(
     mat.m2-get-color-from-palette($background-palette, background),
-    20%
+    $lightness: 20%
   );
   %scroll {
     &::-webkit-scrollbar {

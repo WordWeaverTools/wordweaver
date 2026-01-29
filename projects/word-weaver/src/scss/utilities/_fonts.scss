@@ -2,12 +2,13 @@
 // $FONT-FACE
 // ==========================================================================
 @use "sass:map";
+@use "sass:meta";
 
-@if variable-exists(google-fonts-url) {
+@if meta.variable-exists(google-fonts-url) {
   @import url($google-fonts-url);
 }
 
-@if variable-exists(typefaces) {
+@if meta.variable-exists(typefaces) {
   @each $file, $option in $typefaces {
     @font-face {
       font-family: map.get(map.get($typefaces, $file), family);
