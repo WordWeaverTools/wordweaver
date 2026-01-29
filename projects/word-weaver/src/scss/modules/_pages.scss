@@ -4,6 +4,8 @@
 
 .page {
   min-height: em(644);
+  max-height: em(644);
+
   &__content {
     margin-top: em(50);
     @include mixins.mq(em(1920), "min-width") {
@@ -15,7 +17,6 @@
       margin: 0 !important;
       min-height: 100%;
     }
-    max-height: em(644);
   }
 }
 
