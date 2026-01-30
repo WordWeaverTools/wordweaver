@@ -16,7 +16,6 @@
     "module": "es2020",
     "target": "ES2022",
     "typeRoots": ["node_modules/@types", "node_modules/echarts/types/dist"],
-    "lib": ["es2018", "dom"],
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
