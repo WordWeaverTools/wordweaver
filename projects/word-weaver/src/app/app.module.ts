@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, provideZoneChangeDetection } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServiceWorkerModule } from "@angular/service-worker";
@@ -39,6 +39,7 @@ import { AuthService } from "@auth0/auth0-angular";
       provide: AUTH0_INSTANCE,
       useExisting: AuthService, // Use the existing instance
     },
+    provideZoneChangeDetection(),
   ],
 })
 export class AppModule {}
