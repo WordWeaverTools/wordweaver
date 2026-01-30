@@ -1,8 +1,10 @@
-<div class="margin-top-20 full-width centered panel" *ngIf="lang$ | async">
+@if (lang$ | async) {
+<div class="margin-top-20 full-width centered panel">
   <div class="panel__header container">
     <div class="row">
       <div class="col-sm-12">
-        <form class="margin-left-25 font-md" *ngIf="viewableVerbs$ | async">
+        @if (viewableVerbs$ | async) {
+        <form class="margin-left-25 font-md">
           <mat-form-field class="margin-bottom-20" [formGroup]="verbForm">
             <input
               autocomplete="off"
@@ -17,45 +19,49 @@
             />
           </mat-form-field>
         </form>
+        }
       </div>
     </div>
-    <div class="row" *ngIf="viewableVerbs$ | async as viewableVerbs">
-      <div class="instructions col-sm-12" [ngSwitch]="viewableVerbs.length">
-        <p *ngSwitchDefault>
+    @if (viewableVerbs$ | async; as viewableVerbs) {
+    <div class="row">
+      <div class="instructions col-sm-12">
+        @switch (viewableVerbs.length) { @default {
+        <p>
           {{
             "ww.pages.wordmaker.steps.verb.select-verb-multiple"
               | translate : { number: viewableVerbs.length }
           }}
         </p>
-        <p *ngSwitchCase="1">
+        } @case (1) {
+        <p>
           {{ "ww.pages.wordmaker.steps.verb.select-verb-single" | translate }}
         </p>
+        } @case (0) {
         <p
-          *ngSwitchCase="0"
           [innerHTML]="
             'ww.pages.wordmaker.steps.verb.no-matching-verbs'
               | translate : { value: searchField.value }
           "
         ></p>
+        } }
       </div>
     </div>
+    }
   </div>
-  <hr *ngIf="viewableVerbs$ | async" class="margin-bottom-50" />
+  @if (viewableVerbs$ | async) {
+  <hr class="margin-bottom-50" />
+  }
   <div class="panel__content custom-scroll-y">
-    <ng-template #loading>
-      <mat-spinner class="centered"></mat-spinner>
-    </ng-template>
-    <mat-chip-listbox
-      class="panel__list"
-      *ngIf="viewableVerbs$ | async as verbs; else loading"
-    >
-      <p *ngIf="verbs.length === 0">
+    @if (viewableVerbs$ | async; as verbs) {
+    <mat-chip-listbox class="panel__list">
+      @if (verbs.length === 0) {
+      <p>
         {{ "ww.pages.wordmaker.steps.verb.try-again" | translate }}
       </p>
+      } @for (verb of verbs; track verb) {
       <mat-chip-option
         class="margin-5 bg-white border-accent"
         (click)="onVerbSelect(verb)"
-        *ngFor="let verb of verbs"
       >
         <span class="centered color-black">{{
           "ww-data.verbs." + verb.tag | translate
@@ -64,6 +70,11 @@
           >brightness_1
         </mat-icon>
       </mat-chip-option>
+      }
     </mat-chip-listbox>
+    } @else {
+    <mat-spinner class="centered"></mat-spinner>
+    }
   </div>
 </div>
+}

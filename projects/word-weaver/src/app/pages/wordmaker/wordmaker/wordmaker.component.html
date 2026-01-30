@@ -6,10 +6,13 @@
           verbLabel | async | translate
         }}</ng-template>
         <div class="step-container">
+          @if (stepper.selectedIndex === 0) {
           <ww-wordmaker-verb-step
             (selectedVerb)="onVerbSelect($event)"
-            *ngIf="stepper.selectedIndex === 0; else loading"
           ></ww-wordmaker-verb-step>
+          } @else {
+          <ng-template [ngTemplateOutlet]="loading"></ng-template>
+          }
         </div>
         <div class="margin-top-30">
           <button
@@ -27,11 +30,14 @@
         <ng-template matStepLabel>{{
           persLabel | async | translate
         }}</ng-template>
+        @if (stepper.selectedIndex === 1) {
         <ww-wordmaker-pers-step
           (selectedAgent)="onAgentSelect($event)"
           (selectedPatient)="onPatientSelect($event)"
-          *ngIf="stepper.selectedIndex === 1; else loading"
         ></ww-wordmaker-pers-step>
+        } @else {
+        <ng-template [ngTemplateOutlet]="loading"></ng-template>
+        }
         <div class="margin-top-30">
           <button
             mat-raised-button
@@ -55,10 +61,13 @@
         <ng-template matStepLabel>{{
           tempLabel | async | translate
         }}</ng-template>
+        @if (stepper.selectedIndex === 2) {
         <ww-wordmaker-temp-step
           (selectedTemp)="onTempSelect($event)"
-          *ngIf="stepper.selectedIndex === 2; else loading"
         ></ww-wordmaker-temp-step>
+        } @else {
+        <ng-template [ngTemplateOutlet]="loading"></ng-template>
+        }
         <div class="margin-top-30">
           <button
             mat-raised-button
@@ -81,9 +90,11 @@
       <ng-template matStepLabel>{{
         "ww.pages.wordmaker.steps.conj.finished" | translate
       }}</ng-template>
-      <ww-wordmaker-conj-step
-        *ngIf="stepper.selectedIndex === 3; else loading"
-      ></ww-wordmaker-conj-step>
+      @if (stepper.selectedIndex === 3) {
+      <ww-wordmaker-conj-step></ww-wordmaker-conj-step>
+      } @else {
+      <ng-template [ngTemplateOutlet]="loading"></ng-template>
+      }
       <div class="margin-top-30">
         <button
           mat-raised-button

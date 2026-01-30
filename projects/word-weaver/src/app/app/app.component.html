@@ -6,18 +6,19 @@
         <span>{{ "ww.common.title-short" | translate }}</span>
       </div>
       <mat-nav-list>
+        @for (item of navigationSideMenu; track item) {
         <a
           mat-list-item
-          *ngFor="let item of navigationSideMenu"
           (click)="sidenav.close()"
           [routerLink]="[item.link]"
           routerLinkActive="active"
         >
           {{ item.label | translate }}
         </a>
+        }
         <!-- <a mat-list-item href="https://github.com/WordWeaverTools/wordweaver" target="_blank">
-          Github
-        </a> -->
+        Github
+      </a> -->
       </mat-nav-list>
     </mat-sidenav>
 
@@ -49,29 +50,31 @@
             <ww-logo class="branding ui-button"></ww-logo>
           </span>
           <span class="d-none d-md-inline">
+            @for (item of navigation; track item) {
             <button
               mat-button
               class="nav-button"
-              *ngFor="let item of navigation"
               [routerLink]="[item.link]"
               routerLinkActive="active"
             >
               {{ item.label | translate }}
             </button>
+            }
           </span>
 
           <span class="margin-right-20 desktop-only">|</span>
+          @if (requiresAuth) {
           <button
             class="nav-button"
             routerLinkActive="active"
             mat-icon-button
             routerLink="profile"
-            *ngIf="requiresAuth"
           >
             <mat-icon>{{
               (authService.isAuthenticated$ | async) ? "person" : "login"
             }}</mat-icon>
           </button>
+          }
           <button
             class="nav-button"
             routerLinkActive="active"
@@ -82,20 +85,24 @@
             <fa-icon icon="cog"></fa-icon>
           </button>
           <!-- <a [matTooltip]="'ww.header.github' | translate" matTooltipPosition="before" mat-icon-button
-            class="link d-none d-sm-inline" href="https://github.com/ReadAlongs/Studio" target="_blank">
-            <fa-icon [icon]="['fab','github']"></fa-icon>
-          </a> -->
+        class="link d-none d-sm-inline" href="https://github.com/ReadAlongs/Studio" target="_blank">
+        <fa-icon [icon]="['fab','github']"></fa-icon>
+      </a> -->
 
-          <span *ngIf="language$ | async as language">
+          @if (language$ | async; as language) {
+          <span>
             <mat-select
               [ngModel]="language"
               (selectionChange)="onLanguageSelect($event)"
             >
-              <mat-option *ngFor="let l of languages" [value]="l.value">
+              @for (l of languages; track l) {
+              <mat-option [value]="l.value">
                 {{ l.label.toUpperCase() }}
               </mat-option>
+              }
             </mat-select>
           </span>
+          }
         </mat-toolbar>
       </div>
 
@@ -127,44 +134,35 @@
               href="https://github.com/WordWeaverTools/wordweaver"
             >
               <fa-icon icon="rocket"></fa-icon>
-              {{ version }} <span *ngIf="!isProd">[{{ envName }}]</span>
+              {{ version }} @if (!isProd) {
+              <span>[{{ envName }}]</span>
+              }
             </a>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12 links">
-            <a
-              *ngIf="metaData.links.github.display"
-              [href]="metaData.links.github.url"
-              target="_blank"
-            >
+            @if (metaData.links.github.display) {
+            <a [href]="metaData.links.github.url" target="_blank">
               <fa-icon [icon]="['fab', 'github']"></fa-icon>
               <span>Github</span>
             </a>
-            <a
-              *ngIf="metaData.links.medium.display"
-              [href]="metaData.links.medium.url"
-              target="_blank"
-            >
+            } @if (metaData.links.medium.display) {
+            <a [href]="metaData.links.medium.url" target="_blank">
               <fa-icon [icon]="['fab', 'medium-m']"></fa-icon>
               <span>Medium</span>
             </a>
-            <a
-              *ngIf="metaData.links.facebook.display"
-              [href]="metaData.links.facebook.url"
-              target="_blank"
-            >
+            } @if (metaData.links.facebook.display) {
+            <a [href]="metaData.links.facebook.url" target="_blank">
               <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
               <span>Facebook</span>
             </a>
-            <a
-              *ngIf="metaData.links.youtube.display"
-              [href]="metaData.links.youtube.url"
-              target="_blank"
-            >
+            } @if (metaData.links.youtube.display) {
+            <a [href]="metaData.links.youtube.url" target="_blank">
               <fa-icon [icon]="['fab', 'youtube']"></fa-icon>
               <span>Youtube</span>
             </a>
+            }
           </div>
         </div>
       </div>

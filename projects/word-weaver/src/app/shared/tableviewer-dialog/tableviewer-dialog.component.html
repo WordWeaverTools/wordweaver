@@ -2,16 +2,15 @@
   <h2 mat-dialog-title>
     {{ "ww.pages.tableviewer.dialog.advanced.title" | translate }}
   </h2>
-  <div mat-dialog-content *ngIf="selection$ | async as selection">
+  @if (selection$ | async; as selection) {
+  <div mat-dialog-content>
     <mat-radio-group
       class="radio-group"
       [ngModel]="selection.view"
       (change)="onSelecteViewMode($event)"
     >
-      <mat-radio-button
-        *ngFor="let mode of metaData.tableviewer.viewModes"
-        [value]="mode"
-      >
+      @for (mode of metaData.tableviewer.viewModes; track mode) {
+      <mat-radio-button [value]="mode">
         <h5 class="margin-0">
           {{
             "ww.pages.tableviewer.dialog.advanced.view-modes." + mode
@@ -25,8 +24,10 @@
           }}
         </p>
       </mat-radio-button>
+      }
     </mat-radio-group>
   </div>
+  }
 
   <mat-dialog-actions>
     <div class="centered dialog__buttons__container">

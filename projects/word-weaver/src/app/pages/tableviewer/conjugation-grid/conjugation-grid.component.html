@@ -1,16 +1,9 @@
-<div
-  class="table__container custom-scroll-x"
-  *ngIf="settings$ | async as settings"
-  [ngClass]="settings.highlight"
->
-  <mat-tab-group
-    *ngIf="uniqueMain?.length > 1"
-    (selectedTabChange)="onTabChange($event)"
-  >
-    <mat-tab
-      [label]="getTranslation$(main, 'main') | async"
-      *ngFor="let main of uniqueMain; index as i"
-    >
+@if (settings$ | async; as settings) {
+<div class="table__container custom-scroll-x" [ngClass]="settings.highlight">
+  @if (uniqueMain?.length > 1) {
+  <mat-tab-group (selectedTabChange)="onTabChange($event)">
+    @for (main of uniqueMain; track main; let i = $index) {
+    <mat-tab [label]="getTranslation$(main, 'main') | async">
       <table mat-table [dataSource]="dataSources[i]">
         <!-- Placeholder Column -->
         <ng-container matColumnDef="placeholder" sticky>
@@ -19,36 +12,34 @@
             {{ getTranslation$(element.rowKey, "row") | async }}
           </td>
         </ng-container>
-
         <!-- Other Columns -->
-        <ng-container [matColumnDef]="col" *ngFor="let col of uniqueCol">
+        @for (col of uniqueCol; track col) {
+        <ng-container [matColumnDef]="col">
           <th mat-header-cell *matHeaderCellDef>
             {{ getTranslation$(col, "col") | async }}
           </th>
           <td mat-cell *matCellDef="let element">
             <span class="font-lg">
+              @if (element[col]) {
               <ww-tier
-                *ngIf="element[col]"
                 [data]="element[col]"
                 [tier]="displayTier"
                 [hasAudio]="true"
               ></ww-tier>
+              }
             </span>
-            <ng-container *ngFor="let tier of tiers$ | async">
-              <ng-container *ngIf="settings.level[tier.name]">
-                <br />
-                <span class="font-md">
-                  <ww-tier
-                    *ngIf="element[col]"
-                    [tier]="tier"
-                    [data]="element[col]"
-                  ></ww-tier>
-                </span>
-              </ng-container>
-            </ng-container>
+            @for (tier of tiers$ | async; track tier) { @if
+            (settings.level[tier.name]) {
+            <br />
+            <span class="font-md">
+              @if (element[col]) {
+              <ww-tier [tier]="tier" [data]="element[col]"></ww-tier>
+              }
+            </span>
+            } }
           </td>
         </ng-container>
-
+        }
         <tr
           mat-header-row
           *matHeaderRowDef="displayedColumns; sticky: true"
@@ -57,56 +48,55 @@
       </table>
       <!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
     </mat-tab>
+    }
   </mat-tab-group>
-  <ng-container *ngIf="uniqueMain?.length === 1">
-    <table mat-table [dataSource]="dataSources[0]">
-      <!-- Placeholder Column -->
-      <ng-container matColumnDef="placeholder" sticky>
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let element">
-          {{ getTranslation$(element.rowKey, "row") | async }}
-        </td>
-      </ng-container>
-
-      <!-- Other Columns -->
-      <ng-container [matColumnDef]="col" *ngFor="let col of uniqueCol">
-        <th mat-header-cell *matHeaderCellDef>
-          {{ getTranslation$(col, "col") | async }}
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <span class="font-lg">
-            <ww-tier
-              *ngIf="element[col]"
-              [data]="element[col]"
-              [tier]="displayTier"
-              [hasAudio]="true"
-            ></ww-tier>
-          </span>
-          <ng-container *ngFor="let tier of tiers$ | async">
-            <ng-container *ngIf="settings.level[tier.name]">
-              <br />
-              <span class="font-md">
-                <ww-tier
-                  *ngIf="element[col]"
-                  [tier]="tier"
-                  [data]="element[col]"
-                ></ww-tier>
-              </span>
-            </ng-container>
-          </ng-container>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-  </ng-container>
-  <ng-container *ngFor="let main of dataSources; index as i">
-    <mat-paginator
-      [hidden]="i !== currentTab"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 20]"
-      showFirstLastButtons
-    ></mat-paginator>
-  </ng-container>
+  } @if (uniqueMain?.length === 1) {
+  <table mat-table [dataSource]="dataSources[0]">
+    <!-- Placeholder Column -->
+    <ng-container matColumnDef="placeholder" sticky>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        {{ getTranslation$(element.rowKey, "row") | async }}
+      </td>
+    </ng-container>
+    <!-- Other Columns -->
+    @for (col of uniqueCol; track col) {
+    <ng-container [matColumnDef]="col">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ getTranslation$(col, "col") | async }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <span class="font-lg">
+          @if (element[col]) {
+          <ww-tier
+            [data]="element[col]"
+            [tier]="displayTier"
+            [hasAudio]="true"
+          ></ww-tier>
+          }
+        </span>
+        @for (tier of tiers$ | async; track tier) { @if
+        (settings.level[tier.name]) {
+        <br />
+        <span class="font-md">
+          @if (element[col]) {
+          <ww-tier [tier]="tier" [data]="element[col]"></ww-tier>
+          }
+        </span>
+        } }
+      </td>
+    </ng-container>
+    }
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  } @for (main of dataSources; track main; let i = $index) {
+  <mat-paginator
+    [hidden]="i !== currentTab"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+  }
 </div>
+}

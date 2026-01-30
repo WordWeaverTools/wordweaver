@@ -1,83 +1,82 @@
-<ng-container *ngIf="lang$ | async">
-  <div class="panel" *ngIf="selection$ | async as selection">
-    <div class="panel__header--tableview panel__header">
-      <h5 class="panel__title">
-        {{ "ww.pages.tableviewer.panels.pers.title" | translate }}
-      </h5>
-    </div>
-    <mat-form-field
-      class="control"
-      *ngIf="validationService.validate('display', 'categories', 'agents')"
-    >
-      <mat-label>{{
-        "ww.pages.tableviewer.panels.pers.select-agent" | translate
-      }}</mat-label>
-      <mat-select
-        [ngModel]="selection.agent"
-        multiple
-        (selectionChange)="onAgentSelect($event)"
-      >
-        <mat-select-trigger>
-          {{
-            (selection.agent
-              ? "ww-data.pronouns.agents." + selection.agent[0]?.tag
-              : ""
-            ) | translate
-          }}
-          <span
-            *ngIf="selection.agent.length > 1"
-            class="example-additional-selection"
-          >
-            (+{{ selection.agent.length - 1 }}
-            {{
-              (selection.agent.length === 2
-                ? "ww.pages.tableviewer.misc.other"
-                : "ww.pages.tableviewer.misc.others"
-              ) | translate
-            }})
-          </span>
-        </mat-select-trigger>
-        <mat-option *ngFor="let pn of possiblePronouns$ | async" [value]="pn">
-          {{ "ww-data.pronouns.agents." + pn.tag | translate }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field
-      class="control"
-      *ngIf="validationService.validate('display', 'categories', 'patients')"
-    >
-      <mat-label>{{
-        "ww.pages.tableviewer.panels.pers.select-patient" | translate
-      }}</mat-label>
-      <mat-select
-        [ngModel]="selection.patient"
-        multiple
-        (selectionChange)="onPatientSelect($event)"
-      >
-        <mat-select-trigger>
-          {{
-            (selection.patient
-              ? "ww-data.pronouns.patients." + selection.patient[0]?.tag
-              : ""
-            ) | translate
-          }}
-          <span
-            *ngIf="selection.patient.length > 1"
-            class="example-additional-selection"
-          >
-            (+{{ selection.patient.length - 1 }}
-            {{
-              (selection.patient.length === 2
-                ? "ww.pages.tableviewer.misc.other"
-                : "ww.pages.tableviewer.misc.others"
-              ) | translate
-            }})
-          </span>
-        </mat-select-trigger>
-        <mat-option *ngFor="let pn of possiblePronouns$ | async" [value]="pn">
-          {{ "ww-data.pronouns.patients." + pn.tag | translate }}</mat-option
-        >
-      </mat-select>
-    </mat-form-field>
+@if (lang$ | async) { @if (selection$ | async; as selection) {
+<div class="panel">
+  <div class="panel__header--tableview panel__header">
+    <h5 class="panel__title">
+      {{ "ww.pages.tableviewer.panels.pers.title" | translate }}
+    </h5>
   </div>
-</ng-container>
+  @if (validationService.validate('display', 'categories', 'agents')) {
+  <mat-form-field class="control">
+    <mat-label>{{
+      "ww.pages.tableviewer.panels.pers.select-agent" | translate
+    }}</mat-label>
+    <mat-select
+      [ngModel]="selection.agent"
+      multiple
+      (selectionChange)="onAgentSelect($event)"
+    >
+      <mat-select-trigger>
+        {{
+          (selection.agent
+            ? "ww-data.pronouns.agents." + selection.agent[0]?.tag
+            : ""
+          ) | translate
+        }}
+        @if (selection.agent.length > 1) {
+        <span class="example-additional-selection">
+          (+{{ selection.agent.length - 1 }}
+          {{
+            (selection.agent.length === 2
+              ? "ww.pages.tableviewer.misc.other"
+              : "ww.pages.tableviewer.misc.others"
+            ) | translate
+          }})
+        </span>
+        }
+      </mat-select-trigger>
+      @for (pn of possiblePronouns$ | async; track pn) {
+      <mat-option [value]="pn">
+        {{ "ww-data.pronouns.agents." + pn.tag | translate }}
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  } @if (validationService.validate('display', 'categories', 'patients')) {
+  <mat-form-field class="control">
+    <mat-label>{{
+      "ww.pages.tableviewer.panels.pers.select-patient" | translate
+    }}</mat-label>
+    <mat-select
+      [ngModel]="selection.patient"
+      multiple
+      (selectionChange)="onPatientSelect($event)"
+    >
+      <mat-select-trigger>
+        {{
+          (selection.patient
+            ? "ww-data.pronouns.patients." + selection.patient[0]?.tag
+            : ""
+          ) | translate
+        }}
+        @if (selection.patient.length > 1) {
+        <span class="example-additional-selection">
+          (+{{ selection.patient.length - 1 }}
+          {{
+            (selection.patient.length === 2
+              ? "ww.pages.tableviewer.misc.other"
+              : "ww.pages.tableviewer.misc.others"
+            ) | translate
+          }})
+        </span>
+        }
+      </mat-select-trigger>
+      @for (pn of possiblePronouns$ | async; track pn) {
+      <mat-option [value]="pn">
+        {{ "ww-data.pronouns.patients." + pn.tag | translate }}</mat-option
+      >
+      }
+    </mat-select>
+  </mat-form-field>
+  }
+</div>
+} }
