@@ -22,6 +22,7 @@ import {
 } from "../../../core/wordmaker-selection/wordmaker-selection.model";
 import { selectWordmaker } from "../../../core/wordmaker-selection/wordmaker-selection.selectors";
 import { META_DATA } from "../../../../config/config";
+import { OptionsByType } from "../../../core/option/option.service";
 
 @Component({
   selector: "ww-wordmaker-temp-step",
@@ -37,7 +38,7 @@ export class WordmakerTempStepComponent implements OnDestroy, OnInit {
   unsubscribe$ = new Subject<void>();
   conjugatedOptions$: Observable<any>;
   possibleOptions$: Observable<Option[]>;
-  possibleOptionsByType$: Observable<object>;
+  possibleOptionsByType$: Observable<OptionsByType[]>;
   displayTier: string = META_DATA.wordmaker.tempView;
   lang$ = this.store.pipe(
     takeUntil(this.unsubscribe$),

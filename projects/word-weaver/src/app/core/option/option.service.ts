@@ -9,6 +9,11 @@ import { selectSettingsState } from "../core.state";
 import { SettingsState } from "../settings/settings.model";
 import { environment } from "../../../environments/environment";
 
+export interface OptionsByType {
+  type: string;
+  options: Option[];
+}
+
 @Injectable({
   providedIn: "root",
 })
@@ -16,7 +21,7 @@ export class OptionService {
   path = environment.usePrecompressedData ? "options.json.gz" : "options.json";
   options;
   options$: Observable<Option[]>;
-  optionsByType$: Observable<object[]>;
+  optionsByType$: Observable<OptionsByType[]>;
   random$: Observable<Option>;
   suppressError = true;
   constructor(private http: HttpClient, private store: Store) {
