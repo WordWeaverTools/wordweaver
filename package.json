@@ -60,7 +60,7 @@
     "build-toy": "ng build --outputPath ./dist_toy",
     "heroku-postbuild": "echo 'no-op'",
     "lint": "ng lint",
-    "test": "ng lint && ng test --configuration=test",
+    "test": "ng lint && ng test --configuration=test --watch=false",
     "ci:test": "ng test --browsers=ChromeHeadless --watch=false --configuration=test",
     "watch": "ng test --configuration=test --browsers ChromeHeadless --watch --reporters dots",
     "release": "standard-version && git push --follow-tags origin master",
@@ -95,7 +95,7 @@
     ]
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^20.0.0",
+    "@angular-devkit/build-angular": "^20.3.15",
     "@angular-eslint/builder": "14.4.0",
     "@angular-eslint/eslint-plugin": "14.4.0",
     "@angular-eslint/eslint-plugin-template": "14.4.0",

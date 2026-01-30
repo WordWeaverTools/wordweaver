@@ -2,7 +2,7 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
 module.exports = function (config) {
-  var isWatch = config.buildWebpack.options.watch;
+  const isSingleRun = config.singleRun;
   config.set({
     basePath: "",
     frameworks: ["jasmine", "@angular-devkit/build-angular"],
@@ -40,7 +40,7 @@ module.exports = function (config) {
     autoWatch: true,
     usePolling: true,
     browsers: ["Chrome"],
-    singleRun: !isWatch,
+    singleRun: isSingleRun,
     customLaunchers: {
       ChromeTravisCi: {
         base: "Chrome",

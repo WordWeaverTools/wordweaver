@@ -2,7 +2,7 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
 module.exports = function (config) {
-  var isWatch = config.buildWebpack.options.watch;
+  const isSingleRun = config.singleRun;
   config.set({
     basePath: "",
     frameworks: ["jasmine", "@angular-devkit/build-angular"],
@@ -12,19 +12,19 @@ module.exports = function (config) {
       require("karma-jasmine-html-reporter"),
       require("karma-spec-reporter"),
       require("karma-coverage-istanbul-reporter"),
-      require("@angular-devkit/build-angular/plugins/karma")
+      require("@angular-devkit/build-angular/plugins/karma"),
     ],
     client: {
       captureConsole: true,
       jasmine: {
-        random: false
+        random: false,
       },
-      clearContext: true // leave Jasmine Spec Runner output visible in browser
+      clearContext: true, // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
       dir: require("path").join(__dirname, "../../coverage/word-weaver"),
       reports: ["html", "lcovonly", "text-summary"],
-      fixWebpackSourcePaths: true
+      fixWebpackSourcePaths: true,
     },
     reporters: ["spec", "coverage-istanbul"],
     port: 9876,
@@ -37,10 +37,10 @@ module.exports = function (config) {
     customLaunchers: {
       ChromeTravisCi: {
         base: "Chrome",
-        flags: ["--no-sandbox"]
-      }
+        flags: ["--no-sandbox"],
+      },
     },
     browserNoActivityTimeout: 50000,
-    singleRun: !isWatch
+    singleRun: isSingleRun,
   });
 };
