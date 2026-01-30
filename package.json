@@ -95,6 +95,7 @@
     ]
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^21.1.2",
     "@angular-eslint/builder": "14.4.0",
     "@angular-eslint/eslint-plugin": "14.4.0",
     "@angular-eslint/eslint-plugin-template": "14.4.0",
