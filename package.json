@@ -132,7 +132,6 @@
     "@ngx-translate/core": "14.0.0",
     "@ngx-translate/http-loader": "4.0.0",
     "@playwright/test": "^1.39.0",
-    "@types/echarts": "^5.0.0",
     "@types/file-saver-es": "^2.0.1",
     "@types/jasmine": "3.3.16",
     "@types/jasminewd2": "2.0.8",
