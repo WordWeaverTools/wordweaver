@@ -95,7 +95,7 @@
     ]
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^19.0.0",
+    "@angular-builders/custom-webpack": "^20.0.0",
     "@angular-eslint/builder": "14.4.0",
     "@angular-eslint/eslint-plugin": "14.4.0",
     "@angular-eslint/eslint-plugin-template": "14.4.0",
@@ -124,11 +124,11 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
-    "@ngrx/effects": "^19.0.0",
-    "@ngrx/entity": "^19.0.0",
-    "@ngrx/router-store": "^19",
-    "@ngrx/store": "^19.0.0",
-    "@ngrx/store-devtools": "^19.0.0",
+    "@ngrx/effects": "^20.0.0",
+    "@ngrx/entity": "^20.0.0",
+    "@ngrx/router-store": "^20",
+    "@ngrx/store": "^20.0.0",
+    "@ngrx/store-devtools": "^20.0.0",
     "@ngx-translate/core": "14.0.0",
     "@ngx-translate/http-loader": "4.0.0",
     "@playwright/test": "^1.39.0",
@@ -193,11 +193,11 @@
   "dependencies": {
     "@angular-devkit/schematics": "^20.3.15",
     "@auth0/auth0-angular": "^2.2.3",
-    "@ngrx/data": "^19.0.0",
+    "@ngrx/data": "^20.0.0",
     "docx": "^8.2.3",
     "echarts": "^6.0.0",
     "file-saver-es": "^2.0.5",
-    "ngx-echarts": "^19.0.0",
+    "ngx-echarts": "^20.0.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5"
   }
