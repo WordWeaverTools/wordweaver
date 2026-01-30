@@ -150,7 +150,7 @@
           "builder": "@angular/build:karma",
           "options": {
             "main": "projects/word-weaver/src/test.ts",
-            "polyfills": "projects/word-weaver/src/polyfills.ts",
+            "polyfills": ["projects/word-weaver/src/polyfills.ts"],
             "tsConfig": "projects/word-weaver/tsconfig.spec.json",
             "karmaConfig": "projects/word-weaver/karma.conf.js",
             "codeCoverage": true,
