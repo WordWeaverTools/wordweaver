@@ -3,7 +3,7 @@ import { LangChangeEvent, TranslateService } from "@ngx-translate/core";
 import { Subscription } from "rxjs";
 
 @Directive({
-  selector: "[rtl]",
+  selector: "[wwRtl]",
   standalone: false,
 })
 export class RtlSupportDirective implements OnInit, OnDestroy {
