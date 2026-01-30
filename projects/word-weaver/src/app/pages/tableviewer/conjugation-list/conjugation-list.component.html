@@ -1,77 +1,84 @@
-<div *ngIf="settings$ | async as settings" [ngClass]="settings.highlight">
-  <ng-container *ngIf="data$ | async as data">
-    <div id="table-container" class="rel">
-      <div class="error__container" *ngIf="isString(data)">
-        <h3 class="error__header">
-          {{ "ww.pages.tableviewer.panels.conj.error.title" | translate }}
-        </h3>
-        <p class="error__message">{{ data }}</p>
-        <p class="error__message">
-          {{ "ww.pages.tableviewer.panels.conj.error.message" | translate }}
-        </p>
-      </div>
-      <table class="full-width abs" *ngIf="!isString(data)">
-        <thead>
-          <tr>
-            <th *ngIf="isL2Showing(settings.level)">
-              <h3 class="center-text">
-                {{ "ww.common.language" | translate }}
-              </h3>
-            </th>
-            <th *ngIf="isL2Showing(settings.level)">
-              <h3 class="center-text">
-                {{ "ww.common.translation-language" | translate }}
-              </h3>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="b--bottom" *ngFor="let conjugation of data">
-            <td class="center-text">
-              <div *ngFor="let tier of tiers; let i = index">
-                <h3 *ngIf="tier.options.language === 'L1' && i === 0">
-                  <ww-tier
-                    [tier]="tier"
-                    [data]="conjugation"
-                    [hasAudio]="true"
-                  ></ww-tier>
-                </h3>
-                <h5
-                  *ngIf="
-                    settings.level[tier.name] &&
-                    tier.options.language === 'L1' &&
-                    i !== 0
-                  "
-                >
-                  <ww-tier [tier]="tier" [data]="conjugation"></ww-tier>
-                </h5>
-              </div>
-            </td>
-            <td class="center-text" *ngIf="isL2Showing(settings.level)">
-              <div *ngFor="let tier of tiers; let i = index">
-                <h3
-                  *ngIf="
-                    settings.level[tier.name] &&
-                    tier.options.language === 'L2' &&
-                    i === 0
-                  "
-                >
-                  <ww-tier [tier]="tier" [data]="conjugation"></ww-tier>
-                </h3>
-                <h5
-                  *ngIf="
-                    settings.level[tier.name] &&
-                    tier.options.language === 'L2' &&
-                    i !== 0
-                  "
-                >
-                  <ww-tier [tier]="tier" [data]="conjugation"></ww-tier>
-                </h5>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+@if (settings$ | async; as settings) {
+<div [ngClass]="settings.highlight">
+  @if (data$ | async; as data) {
+  <div id="table-container" class="rel">
+    @if (isString(data)) {
+    <div class="error__container">
+      <h3 class="error__header">
+        {{ "ww.pages.tableviewer.panels.conj.error.title" | translate }}
+      </h3>
+      <p class="error__message">{{ data }}</p>
+      <p class="error__message">
+        {{ "ww.pages.tableviewer.panels.conj.error.message" | translate }}
+      </p>
     </div>
-  </ng-container>
+    } @if (!isString(data)) {
+    <table class="full-width abs">
+      <thead>
+        <tr>
+          @if (isL2Showing(settings.level)) {
+          <th>
+            <h3 class="center-text">
+              {{ "ww.common.language" | translate }}
+            </h3>
+          </th>
+          } @if (isL2Showing(settings.level)) {
+          <th>
+            <h3 class="center-text">
+              {{ "ww.common.translation-language" | translate }}
+            </h3>
+          </th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (conjugation of data; track conjugation) {
+        <tr class="b--bottom">
+          <td class="center-text">
+            @for (tier of tiers; track tier; let i = $index) {
+            <div>
+              @if (tier.options.language === 'L1' && i === 0) {
+              <h3>
+                <ww-tier
+                  [tier]="tier"
+                  [data]="conjugation"
+                  [hasAudio]="true"
+                ></ww-tier>
+              </h3>
+              } @if ( settings.level[tier.name] && tier.options.language ===
+              'L1' && i !== 0 ) {
+              <h5>
+                <ww-tier [tier]="tier" [data]="conjugation"></ww-tier>
+              </h5>
+              }
+            </div>
+            }
+          </td>
+          @if (isL2Showing(settings.level)) {
+          <td class="center-text">
+            @for (tier of tiers; track tier; let i = $index) {
+            <div>
+              @if ( settings.level[tier.name] && tier.options.language === 'L2'
+              && i === 0 ) {
+              <h3>
+                <ww-tier [tier]="tier" [data]="conjugation"></ww-tier>
+              </h3>
+              } @if ( settings.level[tier.name] && tier.options.language ===
+              'L2' && i !== 0 ) {
+              <h5>
+                <ww-tier [tier]="tier" [data]="conjugation"></ww-tier>
+              </h5>
+              }
+            </div>
+            }
+          </td>
+          }
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+  </div>
+  }
 </div>
+}

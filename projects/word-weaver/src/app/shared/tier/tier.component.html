@@ -1,24 +1,22 @@
-<ng-container *ngIf="output">
-  <ng-container *ngIf="hasAudio">
-    <div>
-      <span [libEveryVoice]="rawText">
-        <ng-container *ngFor="let morpheme of output; last as isLast">
-          <span [ngClass]="morpheme[morphType]">{{ morpheme[tier.key] }}</span>
-          <span *ngIf="!isLast" class="separator">{{ tier.separator }}</span>
-        </ng-container>
-      </span>
-      <lib-every-voice
-        *ngIf="hasAudio"
-        [textToGenerate]="rawText"
-      ></lib-every-voice>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="!hasAudio">
-    <div>
-      <ng-container *ngFor="let morpheme of output; last as isLast">
-        <span [ngClass]="morpheme[morphType]">{{ morpheme[tier.key] }}</span>
-        <span *ngIf="!isLast" class="separator">{{ tier.separator }}</span>
-      </ng-container>
-    </div>
-  </ng-container>
-</ng-container>
+@if (output) { @if (hasAudio) {
+<div>
+  <span [libEveryVoice]="rawText">
+    @for (morpheme of output; track morpheme; let isLast = $last) {
+    <span [ngClass]="morpheme[morphType]">{{ morpheme[tier.key] }}</span>
+    @if (!isLast) {
+    <span class="separator">{{ tier.separator }}</span>
+    } }
+  </span>
+  @if (hasAudio) {
+  <lib-every-voice [textToGenerate]="rawText"></lib-every-voice>
+  }
+</div>
+} @if (!hasAudio) {
+<div>
+  @for (morpheme of output; track morpheme; let isLast = $last) {
+  <span [ngClass]="morpheme[morphType]">{{ morpheme[tier.key] }}</span>
+  @if (!isLast) {
+  <span class="separator">{{ tier.separator }}</span>
+  } }
+</div>
+} }

@@ -19,65 +19,72 @@
         {{ "ww.pages.about.contributors.title" | translate }}
       </h3>
       <div class="authors container centered center-text contributors">
-        <div
-          class="row contributor"
-          *ngFor="let contributor of contributors; index as i; last as isLast"
-        >
-          <ng-container *ngIf="contributor.img && i % 2 === 0">
-            <div class="col-lg-6">
-              <div class="img__container">
-                <img class="bio" [src]="contributor.img" />
-                <h5>
-                  <span class="contributor name">{{ contributor.name }}</span
-                  ><span class="contributor title" *ngIf="contributor.title"
-                    ><br />{{ contributor.title }}</span
-                  >
-                </h5>
-              </div>
-            </div>
-            <div
-              class="col-lg-6 contributor--text"
-              [innerHTML]="contributor.text | translate"
-            ></div>
-          </ng-container>
-          <ng-container *ngIf="contributor.img && i % 2 === 1">
-            <div class="img__container mobile-only">
+        @for (contributor of contributors; track contributor; let i = $index;
+        let isLast = $last) {
+        <div class="row contributor">
+          @if (contributor.img && i % 2 === 0) {
+          <div class="col-lg-6">
+            <div class="img__container">
               <img class="bio" [src]="contributor.img" />
               <h5>
                 <span class="contributor name">{{ contributor.name }}</span
-                ><span class="contributor title" *ngIf="contributor.title"
+                >@if (contributor.title) {
+                <span class="contributor title"
                   ><br />{{ contributor.title }}</span
                 >
+                }
               </h5>
             </div>
-            <div
-              class="col-lg-6 contributor--text"
-              [innerHTML]="contributor.text | translate"
-            ></div>
-            <div class="col-lg-6">
-              <div class="img__container desktop-only">
-                <img class="bio" [src]="contributor.img" />
-                <h5>
-                  <span class="contributor name">{{ contributor.name }}</span
-                  ><span class="contributor title" *ngIf="contributor.title"
-                    ><br />{{ contributor.title }}</span
-                  >
-                </h5>
-              </div>
-            </div>
-          </ng-container>
-          <ng-container *ngIf="!contributor.img">
-            <div class="col-lg-12">
+          </div>
+          <div
+            class="col-lg-6 contributor--text"
+            [innerHTML]="contributor.text | translate"
+          ></div>
+          } @if (contributor.img && i % 2 === 1) {
+          <div class="img__container mobile-only">
+            <img class="bio" [src]="contributor.img" />
+            <h5>
+              <span class="contributor name">{{ contributor.name }}</span
+              >@if (contributor.title) {
+              <span class="contributor title"
+                ><br />{{ contributor.title }}</span
+              >
+              }
+            </h5>
+          </div>
+          <div
+            class="col-lg-6 contributor--text"
+            [innerHTML]="contributor.text | translate"
+          ></div>
+          <div class="col-lg-6">
+            <div class="img__container desktop-only">
+              <img class="bio" [src]="contributor.img" />
               <h5>
                 <span class="contributor name">{{ contributor.name }}</span
-                ><span class="contributor title" *ngIf="contributor.title"
+                >@if (contributor.title) {
+                <span class="contributor title"
                   ><br />{{ contributor.title }}</span
                 >
+                }
               </h5>
             </div>
-          </ng-container>
-          <hr *ngIf="!isLast" />
+          </div>
+          } @if (!contributor.img) {
+          <div class="col-lg-12">
+            <h5>
+              <span class="contributor name">{{ contributor.name }}</span
+              >@if (contributor.title) {
+              <span class="contributor title"
+                ><br />{{ contributor.title }}</span
+              >
+              }
+            </h5>
+          </div>
+          } @if (!isLast) {
+          <hr />
+          }
         </div>
+        }
       </div>
     </div>
   </div>

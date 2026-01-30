@@ -1,4 +1,5 @@
-<div class="margin-top-20 panel centered full-width" *ngIf="lang$ | async">
+@if (lang$ | async) {
+<div class="margin-top-20 panel centered full-width">
   <div class="panel__header--small">
     <div class="container">
       <div class="row">
@@ -16,72 +17,74 @@
   </div>
   <hr class="margin-bottom-50" />
   <div class="panel__content--large">
-    <ng-template #loading>
-      <mat-spinner class="centered"></mat-spinner>
-    </ng-template>
     <div class="centered">
+      @if (displayTier !== 'default') {
       <div
-        *ngIf="displayTier !== 'default'"
         class="option__container custom-scroll centered pwidth-50--desktop pwidth-100--mobile"
       >
-        <mat-chip-listbox
-          *ngIf="conjugatedOptions$ | async as options; else loading"
-        >
+        @if (conjugatedOptions$ | async; as options) {
+        <mat-chip-listbox>
+          @for (conjugation of options; track conjugation) {
           <mat-chip-option
             (click)="onChipClick(conjugation.input.option)"
             class="bg-white color-black border-accent"
-            *ngFor="let conjugation of options"
           >
             <ww-tier
               [tier]="returnOptionTierFromName()"
               [data]="conjugation"
             ></ww-tier>
           </mat-chip-option>
+          }
         </mat-chip-listbox>
+        } @else {
+        <mat-spinner class="centered"></mat-spinner>
+        }
       </div>
-      <div
-        *ngIf="displayTier === 'default'"
-        class="option__container custom-scroll default-container pwidth-100"
-      >
-        <div
-          *ngIf="optionService.optionsUseType$() | async"
-          class="default-type__container"
-        >
-          <div
-            class="default-type"
-            *ngFor="let option of possibleOptionsByType$ | async as options"
-          >
+      } @if (displayTier === 'default') {
+      <div class="option__container custom-scroll default-container pwidth-100">
+        @if (optionService.optionsUseType$() | async) {
+        <div class="default-type__container">
+          @for (let option of possibleOptionsByType$|async) {
+          <div class="default-type">
             <h3>{{ "ww-data.options.types." + option.type | translate }}</h3>
             <mat-chip-listbox>
+              @for (opt of option.options; track opt) {
               <mat-chip-option
                 (click)="onChipClick(opt.tag)"
                 class="bg-white color-black border-accent"
-                *ngFor="let opt of option.options"
                 >{{
                   "ww-data.options.items." + opt.tag | translate
                 }}</mat-chip-option
               >
+              }
             </mat-chip-listbox>
           </div>
+          }
         </div>
+        } @if ((optionService.optionsUseType$() | async) === false) {
         <div
-          *ngIf="(optionService.optionsUseType$() | async) === false"
           class="option__container custom-scroll centered pwidth-50--desktop pwidth-100--mobile"
         >
-          <mat-chip-listbox
-            *ngIf="possibleOptions$ | async as options; else loading"
-          >
+          @if (possibleOptions$ | async; as options) {
+          <mat-chip-listbox>
+            @for (option of options; track option) {
             <mat-chip-option
               (click)="onChipClick(option.tag)"
               class="bg-white color-black border-accent"
-              *ngFor="let option of options"
               >{{
                 "ww-data.options.items." + option.tag | translate
               }}</mat-chip-option
             >
+            }
           </mat-chip-listbox>
+          } @else {
+          <mat-spinner class="centered"></mat-spinner>
+          }
         </div>
+        }
       </div>
+      }
     </div>
   </div>
 </div>
+}

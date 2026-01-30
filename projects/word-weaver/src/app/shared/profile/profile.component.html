@@ -7,20 +7,25 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm12" *ngIf="auth.isAuthenticated$ | async">
+    @if (auth.isAuthenticated$ | async) {
+    <div class="col-sm12">
+      @if (auth.user$ | async; as user) {
       <p
-        *ngIf="auth.user$ | async as user"
         [innerHTML]="
           'ww.pages.profile.welcome' | translate : { name: user.name }
         "
       ></p>
+      }
     </div>
-    <div class="col-sm12" *ngIf="(auth.isAuthenticated$ | async) === false">
+    } @if ((auth.isAuthenticated$ | async) === false) {
+    <div class="col-sm12">
       <p>{{ "ww.pages.profile.welcome-no-auth" | translate }}</p>
     </div>
+    }
   </div>
   <div class="row">
-    <div class="col-sm12" *ngIf="auth.isAuthenticated$ | async">
+    @if (auth.isAuthenticated$ | async) {
+    <div class="col-sm12">
       <button
         class="mb-5"
         mat-raised-button
@@ -31,6 +36,7 @@
         {{ "ww.pages.profile.logout" | translate }}
       </button>
     </div>
+    }
   </div>
   <div class="row"></div>
 </div>

@@ -3,75 +3,62 @@
     {{ "ww.pages.tableviewer.dialog.download.title" | translate }}
   </h2>
   <div mat-dialog-content>
-    <div
-      class="form-container"
-      [formGroup]="form"
-      *ngIf="settings$ | async as settings"
-    >
+    @if (settings$ | async; as settings) {
+    <div class="form-container" [formGroup]="form">
       <mat-form-field class="form-control">
         <mat-label>{{
           "ww.pages.tableviewer.dialog.download.settings.filetype" | translate
         }}</mat-label>
         <mat-select [formControlName]="'ftype'">
-          <mat-option *ngFor="let ftype of fileTypes$ | async" [value]="ftype">
+          @for (ftype of fileTypes$ | async; track ftype) {
+          <mat-option [value]="ftype">
             {{ ftype }}
           </mat-option>
+          }
         </mat-select>
       </mat-form-field>
-
-      <mat-form-field
-        class="example-full-width form-control"
-        *ngIf="
-          form.controls.ftype.value === 'docx' ||
-          form.controls.ftype.value === 'latex'
-        "
-      >
+      @if ( form.controls.ftype.value === 'docx' || form.controls.ftype.value
+      === 'latex' ) {
+      <mat-form-field class="example-full-width form-control">
         <mat-label>{{
           "ww.pages.tableviewer.dialog.download.settings.heading.title"
             | translate
         }}</mat-label>
         <input [formControlName]="'heading'" matInput />
       </mat-form-field>
-
-      <mat-checkbox
-        [formControlName]="'headers'"
-        class="form-control"
-        *ngIf="
-          form.controls.ftype.value === 'csv' ||
-          form.controls.ftype.value === 'xlsx'
-        "
-      >
+      } @if ( form.controls.ftype.value === 'csv' || form.controls.ftype.value
+      === 'xlsx' ) {
+      <mat-checkbox [formControlName]="'headers'" class="form-control">
         {{
           "ww.pages.tableviewer.dialog.download.settings.headers" | translate
         }}</mat-checkbox
       >
-
-      <div
-        class="form-control group"
-        *ngIf="objectkeys(settings.level).length > 0"
-      >
+      } @if (objectkeys(settings.level).length > 0) {
+      <div class="form-control group">
         <h4>{{ "ww.pages.settings.general.tiers.title" | translate }}</h4>
         <div class="icon-form-field checkboxes">
+          @for (key of objectkeys(settings.level); track key) {
           <mat-checkbox
-            *ngFor="let key of objectkeys(settings.level)"
             [checked]="settings.level[key]"
             (change)="onLevelSelect($event, key)"
           >
             {{ "ww.pages.settings.general.tiers." + key | translate }}
           </mat-checkbox>
+          }
         </div>
       </div>
+      }
     </div>
+    }
   </div>
 
   <mat-dialog-actions>
-    <div
-      class="centered dialog__buttons__container"
-      *ngIf="selection$ | async as selection"
-    >
-      <mat-spinner *ngIf="selection.loading"></mat-spinner>
+    @if (selection$ | async; as selection) {
+    <div class="centered dialog__buttons__container">
+      @if (selection.loading) {
+      <mat-spinner></mat-spinner>
+      } @if (!selection.loading) {
       <button
-        *ngIf="!selection.loading"
         class="mat-raised-button mat-primary dialog__buttons"
         (click)="download()"
         [matTooltip]="'ww.pages.tableviewer.dialog.download.exit' | translate"
@@ -81,6 +68,7 @@
       >
         {{ "ww.pages.tableviewer.dialog.download.download" | translate }}
       </button>
+      }
       <button
         (click)="exit()"
         class="exit-button dialog__buttons"
@@ -93,5 +81,6 @@
         {{ "ww.pages.tableviewer.dialog.download.exit" | translate }}
       </button>
     </div>
+    }
   </mat-dialog-actions>
 </div>

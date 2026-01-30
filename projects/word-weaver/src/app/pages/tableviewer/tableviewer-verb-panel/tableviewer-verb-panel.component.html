@@ -1,4 +1,5 @@
-<div class="panel" *ngIf="lang$ | async">
+@if (lang$ | async) {
+<div class="panel">
   <div class="panel__header panel__header--tableview">
     <h5 class="panel__title">
       {{ "ww.pages.tableviewer.panels.verb.title" | translate }}
@@ -7,44 +8,44 @@
       (click)="checkboxGroup.reset()">
       {{ 'ww.pages.tableviewer.panels.verb.deselect' | translate }}
     </button> -->
-    <ng-container *ngIf="selection$ | async as selection">
-      <mat-accordion
-        *ngIf="selection.length !== 0"
-        class="mat-accent ui-button"
-      >
-        <mat-expansion-panel class="selected-verb-panel" [expanded]="false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{ selection.length }}&nbsp;
-              <div *ngIf="selection.length === 1">
-                {{ "ww.pages.tableviewer.misc.selected-one" | translate }}
-              </div>
-              <div *ngIf="selection.length === 2">
-                {{ "ww.pages.tableviewer.misc.selected-two" | translate }}
-              </div>
-              <div *ngIf="selection.length > 2">
-                {{ "ww.pages.tableviewer.misc.selected-many" | translate }}
-              </div>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-
-          <mat-chip-listbox #chipList aria-label="Selected Verbs">
-            <mat-chip-option
-              class="mat-accent"
-              *ngFor="let verb of selection"
-              selectable="false"
-              [removable]="true"
-              (removed)="onVerbDeselect(verb)"
-            >
-              <div class="chip-text">
-                {{ "ww-data.verbs." + verb["tag"] | translate }}
-              </div>
-              <mat-icon matChipRemove>cancel</mat-icon>
-            </mat-chip-option>
-          </mat-chip-listbox>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </ng-container>
+    @if (selection$ | async; as selection) { @if (selection.length !== 0) {
+    <mat-accordion class="mat-accent ui-button">
+      <mat-expansion-panel class="selected-verb-panel" [expanded]="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ selection.length }}&nbsp; @if (selection.length === 1) {
+            <div>
+              {{ "ww.pages.tableviewer.misc.selected-one" | translate }}
+            </div>
+            } @if (selection.length === 2) {
+            <div>
+              {{ "ww.pages.tableviewer.misc.selected-two" | translate }}
+            </div>
+            } @if (selection.length > 2) {
+            <div>
+              {{ "ww.pages.tableviewer.misc.selected-many" | translate }}
+            </div>
+            }
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-chip-listbox #chipList aria-label="Selected Verbs">
+          @for (verb of selection; track verb) {
+          <mat-chip-option
+            class="mat-accent"
+            selectable="false"
+            [removable]="true"
+            (removed)="onVerbDeselect(verb)"
+          >
+            <div class="chip-text">
+              {{ "ww-data.verbs." + verb["tag"] | translate }}
+            </div>
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip-option>
+          }
+        </mat-chip-listbox>
+      </mat-expansion-panel>
+    </mat-accordion>
+    } }
   </div>
   <div class="panel__content">
     <form>
@@ -64,36 +65,34 @@
         </mat-form-field>
       </div>
     </form>
-    <mat-list class="panel__list" role="list" *ngIf="searchField.value !== ''">
-      <div
-        [formGroup]="checkboxGroup"
-        *ngFor="let value of viewableVerbs$ | async"
-      >
+    @if (searchField.value !== '') {
+    <mat-list class="panel__list" role="list">
+      @for (value of viewableVerbs$ | async; track value) {
+      <div [formGroup]="checkboxGroup">
+        @if (selection$ | async; as selection) {
         <mat-checkbox
           [disabled]="
             !selectedRoot(selection, value.tag) && selection.length >= 3
           "
-          *ngIf="selection$ | async as selection"
           class="margin-5"
           [formControlName]="value.tag"
         >
           {{ "ww-data.verbs." + value["tag"] | translate }}
           <!-- <span *ngIf='value.display'> - {{value.display}}</span> -->
         </mat-checkbox>
+        }
       </div>
+      }
     </mat-list>
-    <p
-      class="unfound"
-      *ngIf="
-        searchField.value !== '' &&
-        searchField.value !== null &&
-        (viewableVerbs$ | async)?.length === 0
-      "
-    >
+    } @if ( searchField.value !== '' && searchField.value !== null &&
+    (viewableVerbs$ | async)?.length === 0 ) {
+    <p class="unfound">
       <span>{{
         "ww.pages.tableviewer.panels.verb.no-matching-verb"
           | translate : { value: searchField.value }
       }}</span>
     </p>
+    }
   </div>
 </div>
+}

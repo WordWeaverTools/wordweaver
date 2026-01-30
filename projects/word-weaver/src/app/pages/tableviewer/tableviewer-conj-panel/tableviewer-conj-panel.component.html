@@ -1,20 +1,21 @@
-<div class="panel" *ngIf="settings$ | async as settings">
+@if (settings$ | async; as settings) {
+<div class="panel">
   <div class="panel__header__container">
-    <div *ngIf="showToolbar" class="panel__header panel__header--tableview">
+    @if (showToolbar) {
+    <div class="panel__header panel__header--tableview">
       <h5 #header class="panel__title">
         {{ "ww.pages.tableviewer.panels.conj.title" | translate }}
       </h5>
-      <div
-        class="panel__toolbar toolbar"
-        *ngIf="selection$ | async as selection"
-      >
+      @if (selection$ | async; as selection) {
+      <div class="panel__toolbar toolbar">
+        @if (loading$ | async) {
         <mat-spinner
-          *ngIf="loading$ | async"
           class="panel__toolbar__spinner"
           [color]="'accent'"
           [diameter]="20"
         >
         </mat-spinner>
+        }
         <button
           #conjugate
           (click)="onManualConjugation($event)"
@@ -24,8 +25,8 @@
           {{ "ww.pages.tableviewer.panels.conj.conjugate" | translate }}
         </button>
         <!-- TODO: The 'tickInterval' property no longer exists -->
+        @if (selection.view === 'tree') {
         <mat-slider
-          *ngIf="selection.view === 'tree'"
           [matTooltip]="
             'ww.pages.tableviewer.panels.conj.depth-tip' | translate
           "
@@ -48,8 +49,8 @@
             #ngSliderThumb="matSliderThumb"
             value="1"
         /></mat-slider>
+        } @if (selection.view === 'tree') {
         <button
-          *ngIf="selection.view === 'tree'"
           class="toolbar__tool ui-button"
           mat-icon-button
           (click)="onToggleTreeOrder()"
@@ -62,8 +63,8 @@
         >
           <mat-icon aria-label="Switch pronoun and temp">swap_horiz</mat-icon>
         </button>
+        } @if (selection.view === 'grid') {
         <button
-          *ngIf="selection.view === 'grid'"
           class="toolbar__tool ui-button"
           mat-icon-button
           (click)="
@@ -78,6 +79,7 @@
         >
           <mat-icon aria-label="Switch rows and columns">swap_horiz</mat-icon>
         </button>
+        }
         <button
           class="ui-button toolbar__tool"
           mat-icon-button
@@ -91,8 +93,8 @@
         >
           <mat-icon aria-label="Copy link">link</mat-icon>
         </button>
+        @if (selection.view !== 'tree') {
         <button
-          *ngIf="selection.view !== 'tree'"
           (click)="download()"
           class="ui-button toolbar__tool"
           mat-icon-button
@@ -105,6 +107,7 @@
         >
           <mat-icon aria-label="Download conjugations">get_app</mat-icon>
         </button>
+        }
         <button
           (click)="showSettings()"
           class="ui-button toolbar__tool"
@@ -119,54 +122,54 @@
           <mat-icon aria-label="Show setting">more_horiz</mat-icon>
         </button>
       </div>
+      }
     </div>
+    }
   </div>
-  <div *ngIf="selection$ | async as selection">
+  @if (selection$ | async; as selection) {
+  <div>
     <div>
+      @if (!selection.loading && selection.conjugations.length === 0) {
       <h4
         class="desktop-only center-text margin-top-50 padding-20"
-        *ngIf="!selection.loading && selection.conjugations.length === 0"
         [ngClass]="routeAnimationsElements"
         [innerHTML]="
           'ww.pages.tableviewer.panels.conj.instructions' | translate
         "
       ></h4>
+      } @if (!selection.loading && selection.conjugations.length === 0) {
       <h3
         class="mobile-only padding-15 center-text"
-        *ngIf="!selection.loading && selection.conjugations.length === 0"
         [innerHTML]="
           'ww.pages.tableviewer.panels.conj.instructions-mobile' | translate
         "
       ></h3>
+      }
     </div>
-
     <!-- Tree View -->
     <div class="panel__tree__container">
-      <div
-        *ngIf="selection.view === 'tree' && selection.conjugations.length > 0"
-        [hidden]="selection.view !== 'tree'"
-        class="full-width full-height"
-      >
+      @if (selection.view === 'tree' && selection.conjugations.length > 0) {
+      <div [hidden]="selection.view !== 'tree'" class="full-width full-height">
         <ww-conjugation-tree [data$]="treeData$"></ww-conjugation-tree>
       </div>
+      }
     </div>
-
     <!-- Grid View  -->
-    <div
-      *ngIf="selection.view === 'grid' && selection.conjugations.length > 0"
-      [hidden]="selection.view !== 'grid'"
-      class="grid__container"
-    >
+    @if (selection.view === 'grid' && selection.conjugations.length > 0) {
+    <div [hidden]="selection.view !== 'grid'" class="grid__container">
       <ww-conjugation-grid [data$]="gridData$"></ww-conjugation-grid>
     </div>
-
+    }
     <!-- List View -->
+    @if (selection.view === 'list' && selection.conjugations.length > 0) {
     <div
-      *ngIf="selection.view === 'list' && selection.conjugations.length > 0"
       [hidden]="selection.view !== 'list'"
       class="list__container custom-scroll-y full-width full-height"
     >
       <ww-conjugation-list [data$]="listData$"></ww-conjugation-list>
     </div>
+    }
   </div>
+  }
 </div>
+}

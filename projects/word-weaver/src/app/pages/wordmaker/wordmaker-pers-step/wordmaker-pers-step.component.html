@@ -1,211 +1,123 @@
-<ng-container *ngIf="lang$ | async">
-  <div
-    class="margin-top-20 panel centered full-width"
-    *ngIf="selection$ | async as selection"
-  >
-    <ng-template #loading>
-      <mat-spinner class="centered"></mat-spinner>
-    </ng-template>
-    <div class="panel__header--small">
-      <div class="container">
-        <div
-          *ngIf="
-            !validationService.validate(
-              'display',
-              'categories',
-              'patients',
-              selection
-            ) ||
-            !validationService.validate(
-              'display',
-              'categories',
-              'patients',
-              selection
-            )
-          "
-          class="row"
-        >
-          <br />
-        </div>
-        <div
-          *ngIf="
-            !validationService.validate(
-              'display',
-              'categories',
-              'patients',
-              selection
-            ) ||
-            !validationService.validate(
-              'display',
-              'categories',
-              'patients',
-              selection
-            )
-          "
-          class="row"
-        >
-          <br />
-        </div>
-        <div class="row">
-          <div class="instructions col-sm-12">
-            <p
-              *ngIf="
-                !validationService.validate(
-                  'display',
-                  'categories',
-                  'patients',
-                  selection
-                ) ||
-                !validationService.validate(
-                  'display',
-                  'categories',
-                  'patients',
-                  selection
-                )
-              "
-            >
-              {{
-                "ww.pages.wordmaker.steps.pers.select-intransitive-pronoun"
-                  | translate
-              }}
-            </p>
-            <p
-              *ngIf="
-                validationService.validate(
-                  'display',
-                  'categories',
-                  'patients',
-                  selection
-                ) &&
-                validationService.validate(
-                  'display',
-                  'categories',
-                  'patients',
-                  selection
-                )
-              "
-            >
-              {{
-                "ww.pages.wordmaker.steps.pers.select-transitive-pronoun"
-                  | translate
-              }}
-            </p>
-          </div>
-        </div>
+@if (lang$ | async) { @if (selection$ | async; as selection) {
+<div class="margin-top-20 panel centered full-width">
+  <div class="panel__header--small">
+    <div class="container">
+      @if ( !validationService.validate( 'display', 'categories', 'patients',
+      selection ) || !validationService.validate( 'display', 'categories',
+      'patients', selection ) ) {
+      <div class="row">
+        <br />
       </div>
-    </div>
-    <hr class="margin-bottom-50" />
-    <div class="panel__content--large">
-      <div
-        class="pwidth-50--desktop pwidth-100--mobile centered"
-        *ngIf="pronouns$ | async as pronouns; else loading"
-      >
-        <div
-          *ngIf="
-            validationService.validate(
-              'display',
-              'categories',
-              'agents',
-              selection
-            )
-          "
-        >
-          <h5
-            *ngIf="
-              validationService.validate(
-                'display',
-                'categories',
-                'patients',
-                selection
-              ) &&
-              validationService.validate(
-                'display',
-                'categories',
-                'patients',
-                selection
-              )
-            "
-          >
-            {{ "ww.pages.wordmaker.steps.pers.agent-informal" | translate }}
-          </h5>
-          <div class="pronoun__container custom-scroll">
-            <mat-chip-listbox>
-              <mat-chip-option
-                class="border-accent"
-                (click)="onAgentSelect(pn)"
-                *ngFor="let pn of pronouns"
-                [ngClass]="
-                  selection.agent === pn
-                    ? 'color-white bg-red'
-                    : 'bg-white color-black'
-                "
-              >
-                {{ "ww-data.pronouns.agents." + pn.tag | translate }}
-                <mat-icon
-                  class="margin-left-5 icon-md"
-                  [ngClass]="
-                    selection.agent === pn ? 'color-white' : 'color-red'
-                  "
-                  >person
-                </mat-icon>
-              </mat-chip-option>
-            </mat-chip-listbox>
-          </div>
-        </div>
-        <div
-          *ngIf="
-            validationService.validate(
-              'display',
-              'categories',
-              'patients',
-              selection
-            )
-          "
-        >
-          <h5
-            *ngIf="
-              validationService.validate(
-                'display',
-                'categories',
-                'patients',
-                selection
-              ) &&
-              validationService.validate(
-                'display',
-                'categories',
-                'patients',
-                selection
-              )
-            "
-          >
-            {{ "ww.pages.wordmaker.steps.pers.patient-informal" | translate }}
-          </h5>
-          <div class="pronoun__container custom-scroll">
-            <mat-chip-listbox>
-              <mat-chip-option
-                class="bg-white border-accent"
-                (click)="onPatientSelect(pn)"
-                *ngFor="let pn of pronouns"
-                [ngClass]="
-                  selection.patient === pn
-                    ? 'color-white bg-blue'
-                    : 'bg-white color-black'
-                "
-              >
-                {{ "ww-data.pronouns.patients." + pn.tag | translate }}
-                <mat-icon
-                  class="margin-left-5 icon-md"
-                  [ngClass]="
-                    selection.patient === pn ? 'color-white' : 'color-blue'
-                  "
-                >
-                  person
-                </mat-icon>
-              </mat-chip-option>
-            </mat-chip-listbox>
-          </div>
+      } @if ( !validationService.validate( 'display', 'categories', 'patients',
+      selection ) || !validationService.validate( 'display', 'categories',
+      'patients', selection ) ) {
+      <div class="row">
+        <br />
+      </div>
+      }
+      <div class="row">
+        <div class="instructions col-sm-12">
+          @if ( !validationService.validate( 'display', 'categories',
+          'patients', selection ) || !validationService.validate( 'display',
+          'categories', 'patients', selection ) ) {
+          <p>
+            {{
+              "ww.pages.wordmaker.steps.pers.select-intransitive-pronoun"
+                | translate
+            }}
+          </p>
+          } @if ( validationService.validate( 'display', 'categories',
+          'patients', selection ) && validationService.validate( 'display',
+          'categories', 'patients', selection ) ) {
+          <p>
+            {{
+              "ww.pages.wordmaker.steps.pers.select-transitive-pronoun"
+                | translate
+            }}
+          </p>
+          }
         </div>
       </div>
     </div>
   </div>
-</ng-container>
+  <hr class="margin-bottom-50" />
+  <div class="panel__content--large">
+    @if (pronouns$ | async; as pronouns) {
+    <div class="pwidth-50--desktop pwidth-100--mobile centered">
+      @if ( validationService.validate( 'display', 'categories', 'agents',
+      selection ) ) {
+      <div>
+        @if ( validationService.validate( 'display', 'categories', 'patients',
+        selection ) && validationService.validate( 'display', 'categories',
+        'patients', selection ) ) {
+        <h5>
+          {{ "ww.pages.wordmaker.steps.pers.agent-informal" | translate }}
+        </h5>
+        }
+        <div class="pronoun__container custom-scroll">
+          <mat-chip-listbox>
+            @for (pn of pronouns; track pn) {
+            <mat-chip-option
+              class="border-accent"
+              (click)="onAgentSelect(pn)"
+              [ngClass]="
+                selection.agent === pn
+                  ? 'color-white bg-red'
+                  : 'bg-white color-black'
+              "
+            >
+              {{ "ww-data.pronouns.agents." + pn.tag | translate }}
+              <mat-icon
+                class="margin-left-5 icon-md"
+                [ngClass]="selection.agent === pn ? 'color-white' : 'color-red'"
+                >person
+              </mat-icon>
+            </mat-chip-option>
+            }
+          </mat-chip-listbox>
+        </div>
+      </div>
+      } @if ( validationService.validate( 'display', 'categories', 'patients',
+      selection ) ) {
+      <div>
+        @if ( validationService.validate( 'display', 'categories', 'patients',
+        selection ) && validationService.validate( 'display', 'categories',
+        'patients', selection ) ) {
+        <h5>
+          {{ "ww.pages.wordmaker.steps.pers.patient-informal" | translate }}
+        </h5>
+        }
+        <div class="pronoun__container custom-scroll">
+          <mat-chip-listbox>
+            @for (pn of pronouns; track pn) {
+            <mat-chip-option
+              class="bg-white border-accent"
+              (click)="onPatientSelect(pn)"
+              [ngClass]="
+                selection.patient === pn
+                  ? 'color-white bg-blue'
+                  : 'bg-white color-black'
+              "
+            >
+              {{ "ww-data.pronouns.patients." + pn.tag | translate }}
+              <mat-icon
+                class="margin-left-5 icon-md"
+                [ngClass]="
+                  selection.patient === pn ? 'color-white' : 'color-blue'
+                "
+              >
+                person
+              </mat-icon>
+            </mat-chip-option>
+            }
+          </mat-chip-listbox>
+        </div>
+      </div>
+      }
+    </div>
+    } @else {
+    <mat-spinner class="centered"></mat-spinner>
+    }
+  </div>
+</div>
+} }

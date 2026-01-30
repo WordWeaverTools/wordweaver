@@ -1,10 +1,11 @@
+@if (settings$ | async; as settings) {
 <div
-  *ngIf="settings$ | async as settings"
   class="margin-top-20 panel centered full-width"
   [ngClass]="settings.highlight"
 >
   <div class="panel__header">
-    <div class="container" *ngIf="conjugation$ | async as conjugations">
+    @if (conjugation$ | async; as conjugations) {
+    <div class="container">
       <div class="row">
         <p class="margin-0 font-lg">
           {{
@@ -26,40 +27,43 @@
         </div>
       </div>
     </div>
+    }
   </div>
-  <hr *ngIf="conjugation$ | async as conjugations" class="margin-bottom-50" />
+  @if (conjugation$ | async; as conjugations) {
+  <hr class="margin-bottom-50" />
+  }
   <div class="panel__content">
-    <ng-template #loading>
-      <mat-spinner class="centered"></mat-spinner>
-    </ng-template>
-    <div
-      class="pwdith-50--desktop pwidth-100--mobile centered"
-      *ngIf="conjugation$ | async as conjugations; else loading"
-    >
-      <div
-        id="conjugation-result"
-        class="conjugation center-text"
-        *ngFor="let tier of tiers; let i = index"
-      >
-        <h3 *ngIf="i === 0">
+    @if (conjugation$ | async; as conjugations) {
+    <div class="pwdith-50--desktop pwidth-100--mobile centered">
+      @for (tier of tiers; track tier; let i = $index) {
+      <div id="conjugation-result" class="conjugation center-text">
+        @if (i === 0) {
+        <h3>
+          @if (conjugations[0]) {
           <ww-tier
-            *ngIf="conjugations[0]"
             [tier]="tier"
             [data]="conjugations[0]"
             [hasAudio]="true"
           ></ww-tier>
+          }
         </h3>
-        <h5 *ngIf="settings.level[tier.name] && i !== 0">
-          <ww-tier
-            *ngIf="conjugations[0]"
-            [tier]="tier"
-            [data]="conjugations[0]"
-          ></ww-tier>
+        } @if (settings.level[tier.name] && i !== 0) {
+        <h5>
+          @if (conjugations[0]) {
+          <ww-tier [tier]="tier" [data]="conjugations[0]"></ww-tier>
+          }
         </h5>
-        <h3 *ngIf="!conjugations[0] && i === 0">
+        } @if (!conjugations[0] && i === 0) {
+        <h3>
           {{ "ww.pages.wordmaker.notifications.noconjugation" | translate }}
         </h3>
+        }
       </div>
+      }
     </div>
+    } @else {
+    <mat-spinner class="centered"></mat-spinner>
+    }
   </div>
 </div>
+}

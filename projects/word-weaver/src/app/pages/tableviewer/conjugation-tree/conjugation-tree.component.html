@@ -1,4 +1,5 @@
-<div *ngIf="options$ | async as options">
+@if (options$ | async; as options) {
+<div>
   <div
     #explorer
     echarts
@@ -8,3 +9,4 @@
     class="demo-chart"
   ></div>
 </div>
+}
