@@ -15,6 +15,7 @@ import {
 import { actionChangeOptions } from "../../../core/tableviewer-selection/tableviewer-selection.actions";
 import { State } from "../../../core/tableviewer-selection/tableviewer-selection.model";
 import { selectTableViewerOption } from "../../../core/tableviewer-selection/tableviewer-selection.selectors";
+import { OptionsByType } from "../../../core/option/option.service";
 
 @Component({
   selector: "ww-tableviewer-temp-panel",
@@ -25,7 +26,7 @@ import { selectTableViewerOption } from "../../../core/tableviewer-selection/tab
 })
 export class TableviewerTempPanelComponent implements OnDestroy, OnInit {
   possibleOptions$: Observable<Option[]>;
-  possibleOptionsByType$: Observable<object>;
+  possibleOptionsByType$: Observable<OptionsByType[]>;
   selection$: Observable<Option[]>;
   unsubscribe$ = new Subject<void>();
   lang$ = this.store.pipe(

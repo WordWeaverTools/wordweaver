@@ -44,7 +44,7 @@
       <div class="option__container custom-scroll default-container pwidth-100">
         @if (optionService.optionsUseType$() | async) {
         <div class="default-type__container">
-          @for (let option of possibleOptionsByType$|async) {
+          @for (option of possibleOptionsByType$|async ; track option ) {
           <div class="default-type">
             <h3>{{ "ww-data.options.types." + option.type | translate }}</h3>
             <mat-chip-listbox>
