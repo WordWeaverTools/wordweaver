@@ -39,7 +39,7 @@ describe("SettingsEffects", () => {
         snapshot: {},
       },
       events: {
-        // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         pipe() {},
       },
     };
