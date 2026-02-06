@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from "@angular/core";
+import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 // import * as anime from "animejs";
 
@@ -8,21 +8,22 @@ import { Router } from "@angular/router";
   styleUrls: ["./logo.component.scss"],
   standalone: false,
 })
-export class LogoComponent implements AfterViewInit {
+export class LogoComponent {
   constructor(public router: Router) {}
-  ngAfterViewInit() {
-    // anime({
-    //   targets: "#lineDrawing .lines path",
-    //   strokeDashoffset: [anime.setDashoffset, 0],
-    //   easing: "easeInOutCubic",
-    //   color: "#fff",
-    //   duration: 550,
-    //   complete: function(anim) {
-    //     document.getElementById("svgGroup").classList.add("animated");
-    //   },
-    //   delay: function(el, i) {
-    //     return i * 450;
-    //   }
-    // });
-  }
+
+  // ngAfterViewInit() {
+  //   // anime({
+  //   //   targets: "#lineDrawing .lines path",
+  //   //   strokeDashoffset: [anime.setDashoffset, 0],
+  //   //   easing: "easeInOutCubic",
+  //   //   color: "#fff",
+  //   //   duration: 550,
+  //   //   complete: function(anim) {
+  //   //     document.getElementById("svgGroup").classList.add("animated");
+  //   //   },
+  //   //   delay: function(el, i) {
+  //   //     return i * 450;
+  //   //   }
+  //   // });
+  // }
 }

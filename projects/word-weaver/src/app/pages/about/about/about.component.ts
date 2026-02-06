@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { META_DATA } from "../../../../config/config";
 import { ROUTE_ANIMATIONS_ELEMENTS } from "../../../core/core.module";
 
@@ -16,9 +16,7 @@ export interface Contributor {
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   contributors = META_DATA.contributors;
-  constructor() {}
-  ngOnInit() {}
 }

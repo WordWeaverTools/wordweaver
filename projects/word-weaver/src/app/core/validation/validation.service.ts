@@ -7,7 +7,6 @@ import { environment } from "../../../environments/environment";
 })
 export class ValidationService {
   validation: Validation = environment.config.validation;
-  constructor() {}
 
   validateConditions(
     conditions: any[],

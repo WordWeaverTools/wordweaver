@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ROUTE_ANIMATIONS_ELEMENTS } from "../../../core/core.module";
 
 @Component({
@@ -8,9 +8,6 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from "../../../core/core.module";
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
-export class WordmakerHomeComponent implements OnInit {
+export class WordmakerHomeComponent {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -65,7 +65,7 @@ export class EveryVoiceService {
     this.status$.next({ id: "all", status: "READY" });
   }
 
-  generateSessionHash(length: number = 32): string {
+  generateSessionHash(length = 32): string {
     const characters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_";
     const charactersLength = characters.length;
