@@ -4,9 +4,9 @@
   "license": "MIT",
   "homepage": "https://github.com/WordWeaverTools/wordweaver",
   "peerDependencies": {
-    "@angular/common": "^14.2.0",
-    "@angular/core": "^14.2.0",
-    "@angular/material": "^14.2.7"
+    "@angular/common": "^21.1.2",
+    "@angular/core": "^21.1.2",
+    "@angular/material": "^21.1.2"
   },
   "dependencies": {
     "tslib": "^2.3.0"
