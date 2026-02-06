@@ -12,7 +12,7 @@ import { of, Subject } from "rxjs";
   standalone: false,
 })
 export class AuthCallbackComponent implements OnInit, OnDestroy {
-  unsubscribe$ = new Subject();
+  private unsubscribe$ = new Subject<void>();
   constructor(
     private route: ActivatedRoute,
     private router: Router,
