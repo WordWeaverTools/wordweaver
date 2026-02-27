@@ -43,7 +43,6 @@
   "keywords": [
     "angular",
     "angular 8",
-    "electron",
     "typescript",
     "eslint",
     "sass",
@@ -159,7 +158,6 @@
     "karma": "~6.4.1",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
-    "karma-electron": "^7.3.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "karma-spec-reporter": "0.0.32",
