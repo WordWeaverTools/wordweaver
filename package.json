@@ -46,7 +46,6 @@
     "electron",
     "typescript",
     "eslint",
-    "spectron",
     "sass",
     "language"
   ],
@@ -175,7 +174,6 @@
     "protractor": "~7.0.0",
     "rimraf": "^3.0.2",
     "rxjs": "6.5.5",
-    "spectron": "^19.0.0",
     "standard-version": "^9.5.0",
     "tslib": "^2.0.0",
     "tslint-config-prettier": "^1.18.0",
