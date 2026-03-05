@@ -61,22 +61,22 @@ export class ConjugationGridComponent
     private translate: TranslateService,
     private optionService: OptionService,
     private pronounService: PronounService,
-    private verbService: VerbService
+    private verbService: VerbService,
   ) {}
 
   ngOnInit(): void {
     this.settings$ = this.store.pipe(
       takeUntil(this.unsubscribe$),
-      select(selectSettings)
+      select(selectSettings),
     );
     this.tiers$ = this.settings$.pipe(
       takeUntil(this.unsubscribe$),
-      map((settings) => TIERS.filter((tier) => settings.level[tier.name]))
+      map((settings) => TIERS.filter((tier) => settings.level[tier.name])),
     );
     this.data$
       .pipe(takeUntil(this.unsubscribe$), distinctUntilChanged())
       .subscribe((data) => {
-        if (data) {
+        if (data && !Array.isArray(data)) {
           this.uniqueCol = data.uniqueCol;
           this.uniqueMain = data.uniqueMain;
           this.dataSources = data.structuredData.map(() => {
@@ -93,8 +93,7 @@ export class ConjugationGridComponent
     this.data$
       .pipe(takeUntil(this.unsubscribe$), distinctUntilChanged())
       .subscribe((data) => {
-        console.log(data);
-        if (data) {
+        if (data && !Array.isArray(data)) {
           data.structuredData.forEach((x, i) => {
             this.dataSources[i].paginator = this.paginators.toArray()[i]; // Currently not working for n>1
             this.dataSources[i].data = x;
@@ -111,7 +110,7 @@ export class ConjugationGridComponent
       map((gridState) => {
         if (gridState.gridOrder[type] === "root") {
           return this.translate.instant(
-            "ww-data.verbs." + this.verbService.getVerb(term)["tag"]
+            "ww-data.verbs." + this.verbService.getVerb(term)["tag"],
           );
         } else if (gridState.gridOrder[type] === "pn") {
           const pnSplit = term.split("→");
@@ -119,26 +118,27 @@ export class ConjugationGridComponent
             return (
               this.translate.instant(
                 "ww-data.pronouns.agents." +
-                  this.pronounService.getPronoun(pnSplit[0].trim())["tag"]
+                  this.pronounService.getPronoun(pnSplit[0].trim())["tag"],
               ) +
               " → " +
               this.translate.instant(
                 "ww-data.pronouns.patients." +
-                  this.pronounService.getPronoun(pnSplit[1].trim())["tag"]
+                  this.pronounService.getPronoun(pnSplit[1].trim())["tag"],
               )
             );
           } else {
             return this.translate.instant(
               "ww-data.pronouns.agents." +
-                this.pronounService.getPronoun(term)["tag"]
+                this.pronounService.getPronoun(term)["tag"],
             );
           }
         } else if (gridState.gridOrder[type] === "option") {
           return this.translate.instant(
-            "ww-data.options.items." + this.optionService.getOption(term)["tag"]
+            "ww-data.options.items." +
+              this.optionService.getOption(term)["tag"],
           );
         }
-      })
+      }),
     );
   }
 

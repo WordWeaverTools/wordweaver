@@ -109,7 +109,7 @@ export interface ITranslationResource {
 export class MultiTranslateHttpLoader implements TranslateLoader {
   constructor(
     private http: HttpClient,
-    private resources: ITranslationResource[]
+    private resources: ITranslationResource[],
   ) {}
 
   public getTranslation(lang: string): Observable<any> {
@@ -119,7 +119,7 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
         catchError((res) => {
           console.error("Could not find translation file:", path);
           return of({});
-        })
+        }),
       );
     });
     return forkJoin(requests).pipe(
@@ -131,8 +131,8 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
             }
           }
           return result;
-        }, {})
-      )
+        }, {}),
+      ),
     );
   }
 }
@@ -234,7 +234,7 @@ export class CoreModule {
     @Optional()
     @SkipSelf()
     parentModule: CoreModule,
-    faIconLibrary: FaIconLibrary
+    faIconLibrary: FaIconLibrary,
   ) {
     if (parentModule) {
       throw new Error("CoreModule is already loaded. Import only in AppModule");
@@ -252,7 +252,7 @@ export class CoreModule {
       faMusic,
       faTwitter,
       faInstagram,
-      faYoutube
+      faYoutube,
     );
   }
 }

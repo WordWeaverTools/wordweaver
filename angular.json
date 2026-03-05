@@ -148,6 +148,7 @@
         },
         "test": {
           "builder": "@angular/build:karma",
+          "defaultConfiguration": "test",
           "options": {
             "main": "projects/word-weaver/src/test.ts",
             "polyfills": ["projects/word-weaver/src/polyfills.ts"],

@@ -115,7 +115,7 @@ export class ConjugationTreeComponent implements OnDestroy, OnInit {
     this.options$ = this.data$.pipe(
       takeUntil(this.unsubscribe$),
       switchMap((selection) => {
-        if (selection && selection.conjugations.length > 0) {
+        if (selection && selection.conjugations?.length > 0) {
           return this.store.pipe(
             takeUntil(this.unsubscribe$),
             select(selectThemeColors),

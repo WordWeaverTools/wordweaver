@@ -54,6 +54,9 @@ export class WordmakerComponent implements OnDestroy, OnInit, AfterViewInit {
     );
     // Step 1: Labels
     this.selection$.subscribe((x) => {
+      if (!x) {
+        return;
+      }
       if (x.root) {
         this.verbLabel.next("ww-data.verbs." + x.root.tag);
       } else {
