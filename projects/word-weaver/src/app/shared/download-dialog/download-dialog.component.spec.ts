@@ -18,6 +18,10 @@ import {
 } from "@angular/material/dialog";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { TranslateModule } from "@ngx-translate/core";
+import { type AppState } from "../../core/core.state";
+import { initialState as settingsInitialState } from "../../core/settings/settings.reducer";
+import { initialState as tableViewerInitialState } from "../../core/tableviewer-selection/tableviewer-selection.reducer";
+import { initialState as wordMakerInitialState } from "../../core/wordmaker-selection/wordmaker-selection.reducer";
 
 describe("DownloadDialogComponent", () => {
   let component: DownloadDialogComponent;
@@ -30,7 +34,13 @@ describe("DownloadDialogComponent", () => {
       declarations: [DownloadDialogComponent],
       imports: [MatDialogModule, MatSnackBarModule, TranslateModule.forRoot()],
       providers: [
-        provideMockStore(),
+        provideMockStore<Omit<AppState, "router">>({
+          initialState: {
+            settings: settingsInitialState,
+            tableviewer: tableViewerInitialState,
+            wordmaker: wordMakerInitialState,
+          },
+        }),
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: [] },
         provideHttpClient(withInterceptorsFromDi()),

@@ -29,7 +29,7 @@ module.exports = function (config) {
     reporters: ["spec", "coverage-istanbul"],
     port: 9876,
     colors: true,
-    logLevel: config.NONE,
+    logLevel: config.DEBUG,
     autoWatch: true,
     usePolling: true,
     browsers: ["Chrome"],

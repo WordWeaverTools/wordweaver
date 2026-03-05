@@ -14,13 +14,12 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { SharedModule } from "../../../shared/shared.module";
 
 import { SettingsContainerComponent } from "./settings-container.component";
-import {
-  actionSettingsChangeAutoNightMode,
-  actionSettingsChangeTheme,
-  actionSettingsChangeStickyHeader,
-} from "../../../core/settings/settings.actions";
 import { selectSettings } from "../../../core/settings/settings.selectors";
 import { SettingsState } from "../../../core/settings/settings.model";
+import { type AppState } from "../../../core/core.state";
+import { initialState as settingsInitialState } from "../../../core/settings/settings.reducer";
+import { initialState as tableViewerInitialState } from "../../../core/tableviewer-selection/tableviewer-selection.reducer";
+import { initialState as wordMakerInitialState } from "../../../core/wordmaker-selection/wordmaker-selection.reducer";
 
 describe("SettingsComponent", () => {
   let component: SettingsContainerComponent;
@@ -37,15 +36,23 @@ describe("SettingsComponent", () => {
   const getSelectOptions = () =>
     fixture.debugElement.queryAll(By.css("mat-option"));
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [
         FontAwesomeModule,
         SharedModule,
         NoopAnimationsModule,
         TranslateModule.forRoot(),
       ],
-      providers: [provideMockStore()],
+      providers: [
+        provideMockStore<Omit<AppState, "router">>({
+          initialState: {
+            settings: settingsInitialState,
+            tableviewer: tableViewerInitialState,
+            wordmaker: wordMakerInitialState,
+          },
+        }),
+      ],
       declarations: [SettingsContainerComponent],
     }).compileComponents();
 
@@ -54,12 +61,12 @@ describe("SettingsComponent", () => {
     store = TestBed.inject(MockStore);
     mockSelectSettings = store.overrideSelector(
       selectSettings,
-      {} as SettingsState
+      {} as SettingsState,
     );
     fixture = TestBed.createComponent(SettingsContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   // it("should dispatch change theme action on theme selection", () => {
   //   dispatchSpy = spyOn(store, "dispatch");

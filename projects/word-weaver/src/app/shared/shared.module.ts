@@ -220,7 +220,7 @@ export class SharedModule {
       faKeyboard,
       faWindowMaximize,
       faStream,
-      faBook
+      faBook,
     );
   }
 }

@@ -16,6 +16,10 @@ import { TranslateModule } from "@ngx-translate/core";
 
 import { SharedModule } from "../../../shared/shared.module";
 import { TableviewerVerbPanelComponent } from "./tableviewer-verb-panel.component";
+import { type AppState } from "../../../core/core.state";
+import { initialState as settingsInitialState } from "../../../core/settings/settings.reducer";
+import { initialState as tableViewerInitialState } from "../../../core/tableviewer-selection/tableviewer-selection.reducer";
+import { initialState as wordMakerInitialState } from "../../../core/wordmaker-selection/wordmaker-selection.reducer";
 
 describe("TableviewerVerbPanelComponent", () => {
   let component: TableviewerVerbPanelComponent;
@@ -23,8 +27,9 @@ describe("TableviewerVerbPanelComponent", () => {
 
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [TableviewerVerbPanelComponent],
       imports: [
         SharedModule,
@@ -34,12 +39,19 @@ describe("TableviewerVerbPanelComponent", () => {
         MatFormFieldModule,
       ],
       providers: [
-        provideMockStore(),
+        provideMockStore<Omit<AppState, "router">>({
+          initialState: {
+            settings: settingsInitialState,
+            tableviewer: tableViewerInitialState,
+            wordmaker: wordMakerInitialState,
+          },
+        }),
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
     }).compileComponents();
-  }));
+  });
+
   beforeEach(() => {
     fixture = TestBed.createComponent(TableviewerVerbPanelComponent);
     component = fixture.componentInstance;

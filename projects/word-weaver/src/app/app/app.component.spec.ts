@@ -22,6 +22,10 @@ import {
 } from "@angular/common/http/testing";
 import { provideRouter } from "@angular/router";
 import { routes } from "../app-routing.module";
+import { type AppState } from "../core/core.state";
+import { initialState as settingsInitialState } from "../core/settings/settings.reducer";
+import { initialState as tableViewerInitialState } from "../core/tableviewer-selection/tableviewer-selection.reducer";
+import { initialState as wordMakerInitialState } from "../core/wordmaker-selection/wordmaker-selection.reducer";
 
 describe("AppComponent", () => {
   let store: MockStore;
@@ -33,7 +37,13 @@ describe("AppComponent", () => {
       imports: [SharedModule, NoopAnimationsModule, TranslateModule.forRoot()],
       providers: [
         provideRouter(routes),
-        provideMockStore(),
+        provideMockStore<Omit<AppState, "router">>({
+          initialState: {
+            settings: settingsInitialState,
+            tableviewer: tableViewerInitialState,
+            wordmaker: wordMakerInitialState,
+          },
+        }),
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
@@ -41,9 +51,6 @@ describe("AppComponent", () => {
     httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
     store = TestBed.inject(MockStore);
-    store.overrideSelector(selectSettingsStickyHeader, true);
-    store.overrideSelector(selectSettingsLanguage, "en");
-    store.overrideSelector(selectEffectiveTheme, "default");
   }));
 
   // it("should create the app", waitForAsync(() => {

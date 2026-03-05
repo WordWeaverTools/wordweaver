@@ -10,6 +10,10 @@ import {
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
 
 import { WordmakerVerbStepComponent } from "./wordmaker-verb-step.component";
+import { type AppState } from "../../../core/core.state";
+import { initialState as settingsInitialState } from "../../../core/settings/settings.reducer";
+import { initialState as tableViewerInitialState } from "../../../core/tableviewer-selection/tableviewer-selection.reducer";
+import { initialState as wordMakerInitialState } from "../../../core/wordmaker-selection/wordmaker-selection.reducer";
 
 describe("WordmakerVerbStepComponent", () => {
   let component: WordmakerVerbStepComponent;
@@ -20,7 +24,13 @@ describe("WordmakerVerbStepComponent", () => {
       declarations: [WordmakerVerbStepComponent],
       imports: [SharedModule, NoopAnimationsModule, TranslateModule.forRoot()],
       providers: [
-        provideMockStore(),
+        provideMockStore<Omit<AppState, "router">>({
+          initialState: {
+            settings: settingsInitialState,
+            tableviewer: tableViewerInitialState,
+            wordmaker: wordMakerInitialState,
+          },
+        }),
         provideHttpClient(withInterceptorsFromDi()),
       ],
     }).compileComponents();

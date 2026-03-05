@@ -14,6 +14,11 @@ import { MockStore, provideMockStore } from "@ngrx/store/testing";
 import { of } from "rxjs";
 import { ConjugationGridComponent } from "./conjugation-grid.component";
 import { SharedModule } from "../../../shared/shared.module";
+import { type AppState } from "../../../core/core.state";
+import { initialState as settingsInitialState } from "../../../core/settings/settings.reducer";
+import { initialState as tableViewerInitialState } from "../../../core/tableviewer-selection/tableviewer-selection.reducer";
+import { initialState as wordMakerInitialState } from "../../../core/wordmaker-selection/wordmaker-selection.reducer";
+
 describe("ConjugationGridComponent", () => {
   let component: ConjugationGridComponent;
   let fixture: ComponentFixture<ConjugationGridComponent>;
@@ -25,7 +30,13 @@ describe("ConjugationGridComponent", () => {
       declarations: [ConjugationGridComponent],
       imports: [SharedModule, NoopAnimationsModule, TranslateModule.forRoot()],
       providers: [
-        provideMockStore(),
+        provideMockStore<Omit<AppState, "router">>({
+          initialState: {
+            settings: settingsInitialState,
+            tableviewer: tableViewerInitialState,
+            wordmaker: wordMakerInitialState,
+          },
+        }),
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
