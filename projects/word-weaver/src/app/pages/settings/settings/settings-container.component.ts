@@ -75,6 +75,7 @@ export class SettingsContainerComponent implements OnDestroy, OnInit {
     label: marker(`ww.pages.settings.general.language.${x.value}`),
   }));
   showInstall = false;
+  showAnalyticsTooltip = false;
   unsubscribe$ = new Subject<void>();
   constructor(private store: Store<State>, public tts: EveryVoiceService) {}
 
@@ -150,5 +151,9 @@ export class SettingsContainerComponent implements OnDestroy, OnInit {
         }
       });
     });
+  }
+
+  toggleAnalyticsTooltip() {
+    this.showAnalyticsTooltip = !this.showAnalyticsTooltip;
   }
 }
