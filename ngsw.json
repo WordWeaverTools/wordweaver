@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1772055758041,
+  "timestamp": 1772831830521,
   "index": "/wordweaver/index.html",
   "assetGroups": [
     {
@@ -11,18 +11,18 @@
         "ignoreVary": true
       },
       "urls": [
-        "/wordweaver/169.9144dd76c8204bae.js",
+        "/wordweaver/169.4aba102ba73a21e2.js",
         "/wordweaver/407.2242778ca2bf2afa.js",
-        "/wordweaver/582.0ced8716d848d485.js",
+        "/wordweaver/582.062b4cf3eaa0768e.js",
         "/wordweaver/701.bc488aef2a01c42e.js",
         "/wordweaver/980.6e6e7d067606a2ac.js",
         "/wordweaver/common.4f1e8e2e97092549.js",
         "/wordweaver/favicon.ico",
         "/wordweaver/index.html",
-        "/wordweaver/main.4f1aefd481f9300e.js",
+        "/wordweaver/main.4951ce2eb9aed51e.js",
         "/wordweaver/manifest.webmanifest",
         "/wordweaver/polyfills.c29b11413222dc4e.js",
-        "/wordweaver/runtime.7b550462cc98db34.js",
+        "/wordweaver/runtime.9c800f2b51907d66.js",
         "/wordweaver/styles.e2f4b557ae88e98d.css"
       ],
       "patterns": []
@@ -83,9 +83,9 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/wordweaver/169.9144dd76c8204bae.js": "50406007eaf4b30422acf4b4c253e139ca12b295",
+    "/wordweaver/169.4aba102ba73a21e2.js": "5c5f4e7db6aa8e4e4455227c096a93af29429742",
     "/wordweaver/407.2242778ca2bf2afa.js": "a1adddd6ea9c538821d198349b82c65d9fd943d3",
-    "/wordweaver/582.0ced8716d848d485.js": "72cf2e937c7889163c63d698e6930b72814a8b59",
+    "/wordweaver/582.062b4cf3eaa0768e.js": "77fbfed56fd0e5acef75e458f2cc14e0218431a1",
     "/wordweaver/701.bc488aef2a01c42e.js": "6e4775ea25c53e7f0fbe7673463d8518b00bffb8",
     "/wordweaver/980.6e6e7d067606a2ac.js": "b8ba9792c485f0726dc2d339846136c7cb4e92c0",
     "/wordweaver/assets/data/fr/v1/conjugations.json": "0a22de1e0609eb711e48b4e63e9b8e88604a5672",
@@ -98,8 +98,8 @@
     "/wordweaver/assets/data/fr/v1/pronouns.json.gz": "0b79acabb17990c90404b6728fde484299e557f5",
     "/wordweaver/assets/data/fr/v1/verbs.json": "de12dc6eff0959fab4f67465b51f7aeb04dc1bdb",
     "/wordweaver/assets/data/fr/v1/verbs.json.gz": "bd5035aaaba58f842a59abf6358e26d756b61724",
-    "/wordweaver/assets/i18n/en.json": "a3b61d6660cacd6e9f9d917f194103a21e00e6fe",
-    "/wordweaver/assets/i18n/fr.json": "2886eab92c71ed024ddebc16a14a7b4d8fae5b23",
+    "/wordweaver/assets/i18n/en.json": "7f15aa8af14b45af742bf3d5b4e6300335ef7dee",
+    "/wordweaver/assets/i18n/fr.json": "3aa3f7b89e5a2e4c857e0430810e170d428e2ea9",
     "/wordweaver/assets/i18n/readme.md": "da33894197bd255b6130b4522c20a548851891b5",
     "/wordweaver/assets/icons/android-chrome-512x512.png": "f8df654b6b6dce12ba37b2c70370c97b40cb628d",
     "/wordweaver/assets/icons/apple-icon-120.png": "d226aecab08f894bcfc6a94012764f1a82e0c4fe",
@@ -132,11 +132,11 @@
     "/wordweaver/assets/logo.svg": "36da0c3ab640822a03e396813ff976ad066c1bf2",
     "/wordweaver/common.4f1e8e2e97092549.js": "875fca1054a53037c7f4cc7f003be68db73e7537",
     "/wordweaver/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/wordweaver/index.html": "709f66711a6381b721edee1b065cbbac02b0608f",
-    "/wordweaver/main.4f1aefd481f9300e.js": "fc0c2f473a87cc7f704ce41d415efc616c4ce314",
+    "/wordweaver/index.html": "beddba49a18a1d889f29c8f2c0f0b514aa430d74",
+    "/wordweaver/main.4951ce2eb9aed51e.js": "293ff6230f2538eca913cfe1dc574a86ceb98d70",
     "/wordweaver/manifest.webmanifest": "2e2ceff7d5713d23b6922cd5e0708db086522291",
     "/wordweaver/polyfills.c29b11413222dc4e.js": "8f2575d92954f5396f430edc6a67878c89fa2a2e",
-    "/wordweaver/runtime.7b550462cc98db34.js": "75dce0ce976f82454424d8304dc463e4401e7480",
+    "/wordweaver/runtime.9c800f2b51907d66.js": "f8093c8c843b7cab9527aa21be3a4f121cce97aa",
     "/wordweaver/styles.e2f4b557ae88e98d.css": "86c48035e6291c5241ff9f66bb40178eac1ec8d4"
   },
   "navigationUrls": [

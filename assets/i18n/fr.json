@@ -43,6 +43,7 @@
       "settings": {
         "advanced": "Paramètres avancés",
         "analytics": "Analytique Web",
+        "analytics-tooltip": "Les données relatives à votre visite ici ne sont jamais vendues et respectent votre vie privée. Nous utilisons ces données pour déterminer le nombre de visiteurs, les types d’appareils utilisés et d’autres indicateurs permettant d’améliorer le site. Pour la liste complète des données collectées, prière de consulter la <a href=\"https://plausible.io/data-policy\">politique des données de Plausible (en anglais)</a>.",
         "general": {
           "highlighting": {
             "aspect": "Aspect",
