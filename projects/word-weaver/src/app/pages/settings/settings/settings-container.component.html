@@ -49,7 +49,7 @@
       <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
         <h2>{{ "ww.pages.settings.general.title" | translate }}</h2>
         <div class="icon-form-field">
-          <mat-icon color="accent">
+          <mat-icon color="accent" style="margin-bottom: 6px">
             <fa-icon icon="language" color="accent"></fa-icon>
           </mat-icon>
           <mat-form-field class="control">
@@ -106,19 +106,45 @@
           >
           </mat-slide-toggle>
         </div>
-        <div class="icon-form-field" *ngIf="usesAnalytics">
-          <mat-icon color="accent">
-            <fa-icon icon="bars" color="accent"></fa-icon>
-          </mat-icon>
-          <mat-placeholder
-            >{{ "ww.pages.settings.analytics" | translate }}
-          </mat-placeholder>
+        <!-- <div class="icon-form-field" *ngIf="usesAnalytics"> -->
+        <div class="icon-form-field">
+          <div class="analyticsClick" (click)="toggleAnalyticsTooltip()">
+            <mat-icon color="accent">
+              <fa-icon icon="bars" color="accent"></fa-icon>
+            </mat-icon>
+
+            <mat-placeholder
+              >{{ "ww.pages.settings.analytics" | translate }}
+              <mat-icon
+                class="info"
+                color="accent"
+                style="font-size: 24px; margin: 0 0 0 2px"
+                >info</mat-icon
+              >
+            </mat-placeholder>
+          </div>
           <mat-slide-toggle
             [checked]="settings.analytics"
             (change)="onAnalyticsToggle($event)"
           >
           </mat-slide-toggle>
+          <div
+            class="tooltip"
+            *ngIf="showAnalyticsTooltip"
+            (click)="toggleAnalyticsTooltip()"
+            color="accent"
+          >
+            <mat-icon
+              style="margin: 2px; position: absolute; right: 3px; top: 2px"
+              >cancel</mat-icon
+            >
+            <span
+              class="tooltipText"
+              [innerHTML]="'ww.pages.settings.analytics-tooltip' | translate"
+            ></span>
+          </div>
         </div>
+
         <div class="icon-form-field">
           <mat-placeholder
             >{{ "ww.pages.settings.advanced" | translate }}
