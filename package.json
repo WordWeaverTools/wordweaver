@@ -43,8 +43,10 @@
   "keywords": [
     "angular",
     "angular 8",
+    "electron",
     "typescript",
     "eslint",
+    "spectron",
     "sass",
     "language"
   ],
@@ -158,6 +160,7 @@
     "karma": "~6.4.1",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-electron": "^7.3.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "karma-spec-reporter": "0.0.32",
@@ -172,6 +175,7 @@
     "protractor": "~7.0.0",
     "rimraf": "^3.0.2",
     "rxjs": "6.5.5",
+    "spectron": "^19.0.0",
     "standard-version": "^9.5.0",
     "tslib": "^2.0.0",
     "tslint-config-prettier": "^1.18.0",
