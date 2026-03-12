@@ -7,7 +7,7 @@
     </div>
   </div>
   <div></div>
-  @if (settings$ | async as settings) {
+  @if (settings$ | async; as settings) {
   <div class="row padding-5">
     @if ( objectkeys(settings.highlight).length > 0) {
     <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
@@ -15,7 +15,7 @@
         {{ "ww.pages.settings.general.highlighting.title" | translate }}
       </h2>
       <div class="icon-form-field checkboxes">
-        @for (key of objectkeys(settings.highlight)|track key) {
+        @for (key of objectkeys(settings.highlight);track key) {
         <mat-checkbox
           [class]="key"
           [checked]="settings.highlight[key]"
@@ -30,7 +30,7 @@
     <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
       <h2>{{ "ww.pages.settings.general.tiers.title" | translate }}</h2>
       <div class="icon-form-field checkboxes">
-        @for (key of objectkeys(settings.level)|track key) {
+        @for (key of objectkeys(settings.level);track key) {
         <mat-checkbox
           [checked]="settings.level[key]"
           (change)="onLevelSelect($event, key)"
@@ -56,7 +56,7 @@
             (selectionChange)="onLanguageSelect($event)"
             name="language"
           >
-            @for (l of languages | track l) {
+            @for (l of languages; track l) {
             <mat-option [value]="l.value">
               {{ l.label | translate }}
             </mat-option>
@@ -77,7 +77,7 @@
             (selectionChange)="onTtsSpeakerChange($event)"
             name="speaker"
           >
-            @for (s of tts.speakers$ | async) {
+            @for (s of tts.speakers$ | async; track s) {
             <mat-option [value]="s">
               {{ s["display"] }}
             </mat-option>
@@ -105,7 +105,7 @@
             <fa-icon icon="bars" color="accent"></fa-icon>
           </mat-icon>
 
-          <mat-placeholder
+          <mat-label
             >{{ "ww.pages.settings.analytics" | translate }}
             <mat-icon
               class="info"
@@ -113,7 +113,7 @@
               style="font-size: 24px; margin: 0 0 0 2px"
               >info</mat-icon
             >
-          </mat-placeholder>
+          </mat-label>
         </div>
         <mat-slide-toggle
           [checked]="settings.analytics"
@@ -135,9 +135,7 @@
       </div>
       }
       <div class="icon-form-field" hidden="True">
-        <mat-placeholder
-          >{{ "ww.pages.settings.advanced" | translate }}
-        </mat-placeholder>
+        <mat-label>{{ "ww.pages.settings.advanced" | translate }} </mat-label>
         <mat-slide-toggle
           [checked]="settings.testApi"
           (change)="onTestApiToggle($event)"
@@ -159,7 +157,7 @@
             (selectionChange)="onThemeSelect($event)"
             name="themes"
           >
-            @for (t of themes | track t) {
+            @for (t of themes; track t) {
             <mat-option [value]="t.value">
               {{ t.label | translate }}
             </mat-option>
