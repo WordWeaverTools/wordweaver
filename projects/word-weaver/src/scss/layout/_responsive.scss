@@ -1,15 +1,19 @@
 @use "sass:map";
 @use "../utilities/mixins";
 @use "../utilities/config";
+@use "../utilities/functions" as fns;
 
 .desktop-only {
-  @include mixins.mq(em(map.get(config.$breakpoints, medium)), "max-width") {
+  @include mixins.mq(
+    fns.em(map.get(config.$breakpoints, medium)),
+    "max-width"
+  ) {
     display: none;
   }
 }
 
 .mobile-only {
-  @include mixins.mq(em(map.get(config.$breakpoints, medium))) {
+  @include mixins.mq(fns.em(map.get(config.$breakpoints, medium))) {
     display: none;
   }
 }

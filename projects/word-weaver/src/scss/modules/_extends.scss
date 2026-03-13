@@ -1,15 +1,16 @@
 @use "sass:map";
 @use "../utilities/typography";
 @use "../utilities/config";
+@use "../utilities/functions" as fns;
 
 // Nav Items
 
 %nav-content {
-  // right: em(50);
-  // top: em(14);
-  margin-top: em(5);
-  margin-right: em(20);
-  font-size: em(map.get(typography.$font-sizes, lg));
+  // right:fns.em(50);
+  // top:fns.em(14);
+  margin-top: fns.em(5);
+  margin-right: fns.em(20);
+  font-size: fns.em(map.get(typography.$font-sizes, lg));
   // position: absolute;
   z-index: 999;
   float: right;
@@ -17,15 +18,15 @@
 
 %nav-item {
   position: relative;
-  font-size: em(20);
-  line-height: em(28);
-  margin: 0 em(1);
+  font-size: fns.em(20);
+  line-height: fns.em(28);
+  margin: 0 fns.em(1);
   z-index: map.get(config.$zindex, nav);
 }
 
 %nav-link {
   text-decoration: none;
-  padding: em(5);
+  padding: fns.em(5);
   &:hover {
     cursor: pointer;
   }

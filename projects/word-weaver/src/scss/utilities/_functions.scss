@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "../utilities/typography";
 
 // Functions
 
@@ -16,7 +17,7 @@
   @return $num / ($num * 0 + 1);
 }
 
-// em()
+//fns.em()
 //
 //  Convert pixel values to ems.
 //
@@ -26,7 +27,7 @@
 // @returns   - number
 // @source    - http://www.pjmccormick.com/sweet-sass-function-convert-px-em
 
-@function em($target, $context: $base-font-size) {
+@function em($target, $context: typography.$base-font-size) {
   @if not unitless($target) {
     $target: strip-units($target);
   }

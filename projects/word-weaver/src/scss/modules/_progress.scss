@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "../utilities/colors";
 @use "../utilities/typography";
+@use "../utilities/functions" as fns;
 @use "../base/borders";
 
 .progress {
@@ -8,37 +9,37 @@
   // width: 50% !important;
   width: fit-content !important;
   max-width: 25%;
-  margin-bottom: em(16);
+  margin-bottom: fns.em(16);
   // background: map.get(colors.$ui-colors, accent);
   background: transparent;
-  border: em(1) solid map.get(colors.$ui-colors, black);
+  border: fns.em(1) solid map.get(colors.$ui-colors, black);
   border-radius: borders.$border-radius-default;
-  padding-bottom: em(5);
+  padding-bottom: fns.em(5);
   &__row {
     overflow: auto;
-    height: em(24);
+    height: fns.em(24);
     &--tools {
       position: relative;
     }
     &--previous {
       .font-sm {
-        font-size: em(map.get(typography.$font-sizes, sm)) !important;
+        font-size: fns.em(map.get(typography.$font-sizes, sm)) !important;
       }
-      margin-bottom: em(8);
+      margin-bottom: fns.em(8);
     }
     &--header {
       // border-top: 1px solid #dedede;
     }
   }
   &__text {
-    font-size: em(12);
+    font-size: fns.em(12);
   }
 }
 #start-over {
-  border: em(1) solid map.get(colors.$ui-colors, black);
+  border: fns.em(1) solid map.get(colors.$ui-colors, black);
   // color: white;
-  margin-left: em(32);
-  height: em(36);
-  margin-top: em(16);
+  margin-left: fns.em(32);
+  height: fns.em(36);
+  margin-top: fns.em(16);
   line-height: inherit;
 }

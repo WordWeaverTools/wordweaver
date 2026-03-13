@@ -1,9 +1,11 @@
 @use "sass:map";
 @use "sass:list";
+@use "@angular/material" as mat;
 @use "../utilities/colors";
 @use "../utilities/typography";
 @use "../utilities/mixins";
 @use "../utilities/config";
+@use "../utilities/functions" as fns;
 
 @viewport {
   width: device-width;
@@ -117,7 +119,7 @@ button {
 
 @each $name, $value in typography.$font-sizes {
   .font-#{$name} {
-    font-size: em($value);
+    font-size: fns.em($value);
   }
 }
 
@@ -131,5 +133,5 @@ table {
 }
 
 .container {
-  max-width: em(map.get(config.$breakpoints, xlarge));
+  max-width: fns.em(map.get(config.$breakpoints, xlarge));
 }

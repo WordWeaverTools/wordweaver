@@ -1,6 +1,8 @@
+@use "../utilities/functions" as fns;
+
 %explorer-demo {
-  width: em(450);
-  min-width: em(450);
+  width: fns.em(450);
+  min-width: fns.em(450);
 }
 
 %right {

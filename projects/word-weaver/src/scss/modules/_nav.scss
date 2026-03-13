@@ -3,6 +3,7 @@
 @use "../utilities/config";
 @use "../utilities/colors";
 @use "../utilities/mixins";
+@use "../utilities/functions" as fns;
 @use "extends";
 
 .nav-container {
@@ -11,23 +12,26 @@
   height: 6em;
   background: map.get(colors.$ui-colors, white);
   &__subheader {
-    left: em(35);
-    top: em(80);
-    font-size: em(12);
+    left: fns.em(35);
+    top: fns.em(80);
+    font-size: fns.em(12);
     position: absolute;
     z-index: map.get(config.$zindex, nav);
   }
   &__content {
     @extend %nav-content;
-    @include mixins.mq(em(map.get(config.$breakpoints, medium)), "max-width") {
+    @include mixins.mq(
+      fns.em(map.get(config.$breakpoints, medium)),
+      "max-width"
+    ) {
       display: none;
     }
     &--mobile {
-      top: em(30);
-      right: em(20);
+      top: fns.em(30);
+      right: fns.em(20);
       @extend %nav-content;
       @include mixins.mq(
-        em(map.get(config.$breakpoints, medium)),
+        fns.em(map.get(config.$breakpoints, medium)),
         "min-width"
       ) {
         display: none !important;
@@ -46,7 +50,7 @@
   &__item {
     @extend %nav-item;
     &--active {
-      margin-top: em(1);
+      margin-top: fns.em(1);
       background: map.get(colors.$ui-colors, black);
       a {
         color: map.get(colors.$ui-colors, white);

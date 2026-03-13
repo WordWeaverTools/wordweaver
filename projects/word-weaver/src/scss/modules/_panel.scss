@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../utilities/config";
+@use "../utilities/functions" as fns;
 @use "../layout/spacing";
 @use "extends";
 
@@ -9,13 +10,13 @@ $panel-content-size: 0.75;
 $panel-adjustment: 0.1;
 
 %panel-header {
-  min-height: em($panel-size * $panel-header-size);
-  max-height: em($panel-size * $panel-header-size);
+  min-height: fns.em($panel-size * $panel-header-size);
+  max-height: fns.em($panel-size * $panel-header-size);
   @extend %full-width;
 }
 
 .panel {
-  max-width: em(map.get(config.$breakpoints, xlarge));
+  max-width: fns.em(map.get(config.$breakpoints, xlarge));
 
   &__header {
     justify-content: space-between;
@@ -27,27 +28,35 @@ $panel-adjustment: 0.1;
     }
 
     &--small {
-      min-height: em($panel-size * ($panel-header-size - $panel-adjustment));
-      max-height: em($panel-size * ($panel-header-size - $panel-adjustment));
+      min-height: fns.em(
+        $panel-size * ($panel-header-size - $panel-adjustment)
+      );
+      max-height: fns.em(
+        $panel-size * ($panel-header-size - $panel-adjustment)
+      );
       @extend %full-width;
     }
 
     &--large {
-      min-height: em($panel-size * ($panel-header-size + $panel-adjustment));
-      max-height: em($panel-size * ($panel-header-size + $panel-adjustment));
+      min-height: fns.em(
+        $panel-size * ($panel-header-size + $panel-adjustment)
+      );
+      max-height: fns.em(
+        $panel-size * ($panel-header-size + $panel-adjustment)
+      );
       @extend %full-width;
     }
 
     &--tableview {
       justify-content: space-between;
       display: inline-flex;
-      min-height: em(60);
+      min-height: fns.em(60);
     }
   }
 
   &__title {
     @extend %title;
-    margin: em(10);
+    margin: fns.em(10);
 
     &__underline {
     }
@@ -58,28 +67,36 @@ $panel-adjustment: 0.1;
 
     &__spinner {
       display: inline-block !important;
-      margin-right: em(15);
+      margin-right: fns.em(15);
     }
   }
 
   &__content {
-    max-height: em($panel-size * $panel-content-size);
-    min-height: em($panel-size * $panel-content-size);
+    max-height: fns.em($panel-size * $panel-content-size);
+    min-height: fns.em($panel-size * $panel-content-size);
     overflow-y: auto;
 
     &--small {
-      max-height: em($panel-size * ($panel-content-size - $panel-adjustment));
-      min-height: em($panel-size * ($panel-content-size - $panel-adjustment));
+      max-height: fns.em(
+        $panel-size * ($panel-content-size - $panel-adjustment)
+      );
+      min-height: fns.em(
+        $panel-size * ($panel-content-size - $panel-adjustment)
+      );
     }
 
     &--large {
-      max-height: em($panel-size * ($panel-content-size + $panel-adjustment));
-      min-height: em($panel-size * ($panel-content-size + $panel-adjustment));
+      max-height: fns.em(
+        $panel-size * ($panel-content-size + $panel-adjustment)
+      );
+      min-height: fns.em(
+        $panel-size * ($panel-content-size + $panel-adjustment)
+      );
     }
   }
 
   &__list {
-    margin: 0 em(15);
+    margin: 0 fns.em(15);
     display: inline-grid !important;
   }
 }
@@ -89,6 +106,6 @@ $panel-adjustment: 0.1;
   z-index: map.get(config.$zindex, ui-button);
 
   &__tool {
-    margin: em(5) !important;
+    margin: fns.em(5) !important;
   }
 }

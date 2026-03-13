@@ -1,5 +1,6 @@
 @use "sass:list";
 @use "config";
+@use "../utilities/functions" as fns;
 
 // Mixins
 
@@ -189,7 +190,7 @@
 @mixin border-colors($map) {
   @each $theme, $color in $map {
     &.border-#{"" + $theme + ""} {
-      border: em(1) solid $color !important;
+      border: fns.em(1) solid $color !important;
     }
   }
 }

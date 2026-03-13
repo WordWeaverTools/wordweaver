@@ -2,6 +2,7 @@
 @use "sass:math";
 @use "../utilities/mixins";
 @use "../utilities/config";
+@use "../utilities/functions" as fns;
 
 %full-width {
   max-width: 100%;
@@ -37,37 +38,37 @@ $space: 5;
 $space: 0;
 @while $space <= 25 {
   .margin-#{$space} {
-    margin: em($space);
+    margin: fns.em($space);
     &--centered {
-      margin: em($space) auto;
+      margin: fns.em($space) auto;
     }
   }
   .padding-#{$space} {
-    padding: em($space);
+    padding: fns.em($space);
   }
   .margin-top-#{$space} {
-    margin-top: em($space);
+    margin-top: fns.em($space);
   }
   .margin-bottom-#{$space} {
-    margin-bottom: em($space);
+    margin-bottom: fns.em($space);
   }
   .margin-left-#{$space} {
-    margin-left: em($space);
+    margin-left: fns.em($space);
   }
   .margin-right-#{$space} {
-    margin-right: em($space);
+    margin-right: fns.em($space);
   }
   .top-#{$space} {
-    top: em($space);
+    top: fns.em($space);
   }
   .bottom-#{$space} {
-    bottom: em($space);
+    bottom: fns.em($space);
   }
   .left-#{$space} {
-    left: em($space);
+    left: fns.em($space);
   }
   .right-#{$space} {
-    right: em($space);
+    right: fns.em($space);
   }
   $space: $space + 1;
 }
@@ -76,37 +77,37 @@ $space: 0;
 $space: 25;
 @while $space <= 100 {
   .margin-#{$space} {
-    margin: em($space);
+    margin: fns.em($space);
     &--centered {
-      margin: em($space) auto;
+      margin: fns.em($space) auto;
     }
   }
   .padding-#{$space} {
-    padding: em($space);
+    padding: fns.em($space);
   }
   .margin-top-#{$space} {
-    margin-top: em($space);
+    margin-top: fns.em($space);
   }
   .margin-bottom-#{$space} {
-    margin-bottom: em($space);
+    margin-bottom: fns.em($space);
   }
   .margin-left-#{$space} {
-    margin-left: em($space);
+    margin-left: fns.em($space);
   }
   .margin-right-#{$space} {
-    margin-right: em($space);
+    margin-right: fns.em($space);
   }
   .top-#{$space} {
-    top: em($space);
+    top: fns.em($space);
   }
   .bottom-#{$space} {
-    bottom: em($space);
+    bottom: fns.em($space);
   }
   .left-#{$space} {
-    left: em($space);
+    left: fns.em($space);
   }
   .right-#{$space} {
-    right: em($space);
+    right: fns.em($space);
   }
   $space: $space + 5;
 }
@@ -115,10 +116,10 @@ $space: 25;
 $size: 5;
 @while $size <= 100 {
   .height-#{$size} {
-    height: em($size);
+    height: fns.em($size);
   }
   .width-#{$size} {
-    width: em($size);
+    width: fns.em($size);
   }
   $size: $size + 5;
 }
@@ -132,13 +133,13 @@ $size: 5;
   .vwidth-#{$size} {
     width: #{$size}vw;
     &--desktop {
-      @include mixins.mq(em(map.get(config.$breakpoints, medium))) {
+      @include mixins.mq(fns.em(map.get(config.$breakpoints, medium))) {
         width: #{$size}vw;
       }
     }
     &--mobile {
       @include mixins.mq(
-        em(map.get(config.$breakpoints, medium)),
+        fns.em(map.get(config.$breakpoints, medium)),
         "max-width"
       ) {
         width: #{$size}vw;
@@ -151,13 +152,13 @@ $size: 5;
   .pwidth-#{$size} {
     width: math.percentage(calc($size/100));
     &--desktop {
-      @include mixins.mq(em(map.get(config.$breakpoints, medium))) {
+      @include mixins.mq(fns.em(map.get(config.$breakpoints, medium))) {
         width: math.percentage(calc($size/100));
       }
     }
     &--mobile {
       @include mixins.mq(
-        em(map.get(config.$breakpoints, medium)),
+        fns.em(map.get(config.$breakpoints, medium)),
         "max-width"
       ) {
         width: math.percentage(calc($size/100));

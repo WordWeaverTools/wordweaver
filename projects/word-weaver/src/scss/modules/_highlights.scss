@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../utilities/colors";
+@use "../utilities/functions" as fns;
 
 .highlight.agent {
   color: map.get(colors.$verb-highlight-colors, agent);
@@ -34,9 +35,9 @@
 }
 
 .circle {
-  width: em(8);
-  height: em(8);
-  min-height: em(8);
-  min-width: em(8);
-  border-radius: em(8);
+  width: fns.em(8);
+  height: fns.em(8);
+  min-height: fns.em(8);
+  min-width: fns.em(8);
+  border-radius: fns.em(8);
 }

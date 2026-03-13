@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "utilities/functions" as fns;
 @use "utilities/colors";
 @use "utilities/typography";
 @use "base/scroll";
@@ -59,18 +60,18 @@
 
 .mat-mdc-chip:not(.mat-mdc-basic-chip) {
   color: colors.$white;
-  margin: em(5);
+  margin: fns.em(5);
   cursor: pointer;
 }
 
 .mat-mdc-chip.selected {
   color: colors.$color-accent;
-  margin: em(5);
+  margin: fns.em(5);
   cursor: pointer;
 }
 
 .mat-mdc-chip:not(.mat-mdc-basic-chip) + .mat-chip:not(.mat-basic-chip) {
-  margin: em(5) !important;
+  margin: fns.em(5) !important;
 }
 
 // Let checkboxes be colored after verbs
@@ -85,9 +86,9 @@
   overflow: visible !important;
   @each $name, $value in typography.$font-sizes {
     &.icon-#{$name} {
-      height: em($value) !important;
-      width: em($value) !important;
-      font-size: em($value) !important;
+      height: fns.em($value) !important;
+      width: fns.em($value) !important;
+      font-size: fns.em($value) !important;
     }
   }
 }
@@ -95,14 +96,14 @@
 // Make toggle group smaller
 /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
 .mat-button-toggle-label-content {
-  line-height: em(30) !important;
-  padding: 0 em(16) !important;
+  line-height: fns.em(30) !important;
+  padding: 0 fns.em(16) !important;
 }
 
 /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
 mat-button-toggle-group {
   height: 2em;
-  font-size: em(map.get(typography.$font-sizes, sm));
+  font-size: fns.em(map.get(typography.$font-sizes, sm));
 }
 
 /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
