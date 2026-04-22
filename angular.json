@@ -19,7 +19,9 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "stylePreprocessorOptions": {
-              "includePaths": ["./node_modules"]
+              "includePaths": [
+                "./node_modules"
+              ]
             },
             "sourceMap": true,
             "outputPath": "dist/word-weaver",
@@ -232,12 +234,19 @@
       }
     }
   },
-  "defaultProject": "word-weaver",
   "cli": {
     "analytics": false,
     "schematicCollections": [
       "@angular-eslint/schematics",
       "@schematics/angular"
     ]
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
   }
 }

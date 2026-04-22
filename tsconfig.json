@@ -2,7 +2,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@everyvoice/every-voice": ["../dist/every-voice"]
+      "@everyvoice/every-voice": [
+        "../dist/every-voice"
+      ]
     },
     "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
@@ -14,9 +16,18 @@
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "module": "es2020",
-    "target": "es2020",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2018", "dom"]
+    "target": "ES2022",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "jasmine",
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
