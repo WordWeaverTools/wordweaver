@@ -36,10 +36,12 @@
 
 // Hack to add scroll bar to chip list. I didn't want to use ::deep or anything like that, so it goes here.
 
+/* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
 .mat-checkbox-layout .mat-checkbox-label {
   line-height: 1em;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
 .mat-chip-list-wrapper {
   @extend %scroll;
   margin: 0 !important;
@@ -48,24 +50,25 @@
 /* Mat Chip */
 // Mat chips have a bunch of annoying default styles when in a list. This overides that.
 
-.mat-chip:not(.mat-basic-chip) {
+.mat-mdc-chip:not(.mat-mdc-basic-chip) {
   color: $white;
   margin: em(5);
   cursor: pointer;
 }
 
-.mat-chip.selected {
+.mat-mdc-chip.selected {
   color: $color-accent;
   margin: em(5);
   cursor: pointer;
 }
 
-.mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+.mat-mdc-chip:not(.mat-mdc-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: em(5) !important;
 }
 
 // Let checkboxes be colored after verbs
 @each $theme, $color in $verb-highlight-color-names {
+  /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
   .mat-checkbox-checked.mat-#{"" + $theme + ""} .mat-checkbox-background {
     background-color: $color !important;
   }
@@ -83,20 +86,23 @@
 }
 
 // Make toggle group smaller
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
 .mat-button-toggle-label-content {
   line-height: em(30) !important;
   padding: 0 em(16) !important;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
 mat-button-toggle-group {
   height: 2em;
   font-size: em(map-get($font-sizes, sm));
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
 .mat-checkbox-layout {
   white-space: normal !important;
 }
 
-.mat-menu-panel {
+.mat-mdc-menu-panel {
   float: right;
 }

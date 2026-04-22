@@ -28,8 +28,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <mat-chip-list #chipList aria-label="Selected Verbs">
-            <mat-chip
+          <mat-chip-listbox #chipList aria-label="Selected Verbs">
+            <mat-chip-option
               class="mat-accent"
               *ngFor="let verb of selection"
               selectable="false"
@@ -40,8 +40,8 @@
                 {{ "ww-data.verbs." + verb["tag"] | translate }}
               </div>
               <mat-icon matChipRemove>cancel</mat-icon>
-            </mat-chip>
-          </mat-chip-list>
+            </mat-chip-option>
+          </mat-chip-listbox>
         </mat-expansion-panel>
       </mat-accordion>
     </ng-container>

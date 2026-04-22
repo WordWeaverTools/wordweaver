@@ -9,7 +9,7 @@ table {
   min-height: 100%;
 }
 
-.mat-paginator {
+.mat-mdc-paginator {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -17,7 +17,7 @@ table {
 
 th,
 td,
-th.mat-header-cell {
+th.mat-mdc-header-cell {
   width: 150px;
   text-align: center;
   overflow-wrap: break-word;
@@ -25,10 +25,11 @@ th.mat-header-cell {
   hyphens: auto;
 }
 
-.mat-tab-group {
+.mat-mdc-tab-group {
   height: 530px;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version. */
 .mat-tab-body-wrapper {
   height: 100%;
 }

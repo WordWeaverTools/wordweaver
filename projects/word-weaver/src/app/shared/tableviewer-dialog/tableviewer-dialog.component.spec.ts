@@ -2,10 +2,10 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
 import { TranslateModule } from "@ngx-translate/core";
 import {
-  MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
-  MatLegacyDialogModule as MatDialogModule,
-  MatLegacyDialogRef as MatDialogRef,
-} from "@angular/material/legacy-dialog";
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from "@angular/material/dialog";
 
 import { TableViewerDialogComponent } from "./tableviewer-dialog.component";
 

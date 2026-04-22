@@ -45,14 +45,14 @@
     <ng-template #loading>
       <mat-spinner class="centered"></mat-spinner>
     </ng-template>
-    <mat-chip-list
+    <mat-chip-listbox
       class="panel__list"
       *ngIf="viewableVerbs$ | async as verbs; else loading"
     >
       <p *ngIf="verbs.length === 0">
         {{ "ww.pages.wordmaker.steps.verb.try-again" | translate }}
       </p>
-      <mat-chip
+      <mat-chip-option
         class="margin-5 bg-white border-accent"
         (click)="onVerbSelect(verb)"
         *ngFor="let verb of verbs"
@@ -63,7 +63,7 @@
         <mat-icon class="icon-sm margin-left-5" [ngClass]="verb?.classes"
           >brightness_1
         </mat-icon>
-      </mat-chip>
-    </mat-chip-list>
+      </mat-chip-option>
+    </mat-chip-listbox>
   </div>
 </div>

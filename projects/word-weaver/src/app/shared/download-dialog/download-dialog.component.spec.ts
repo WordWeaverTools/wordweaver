@@ -8,11 +8,11 @@ import { MockStore, provideMockStore } from "@ngrx/store/testing";
 
 import { DownloadDialogComponent } from "./download-dialog.component";
 import {
-  MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
-  MatLegacyDialogModule as MatDialogModule,
-  MatLegacyDialogRef as MatDialogRef,
-} from "@angular/material/legacy-dialog";
-import { MatLegacySnackBarModule as MatSnackBarModule } from "@angular/material/legacy-snack-bar";
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from "@angular/material/dialog";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { TranslateModule } from "@ngx-translate/core";
 
 describe("DownloadDialogComponent", () => {

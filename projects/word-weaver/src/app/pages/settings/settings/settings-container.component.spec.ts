@@ -1,5 +1,5 @@
 import { By } from "@angular/platform-browser";
-import { MatLegacySlideToggle as MatSlideToggle } from "@angular/material/legacy-slide-toggle";
+import { MatSlideToggle } from "@angular/material/slide-toggle";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { TranslateModule } from "@ngx-translate/core";
