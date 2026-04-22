@@ -2,9 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@everyvoice/every-voice": [
-        "../dist/every-voice"
-      ]
+      "@everyvoice/every-voice": ["../dist/every-voice"]
     },
     "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
@@ -31,7 +29,6 @@
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "enableIvy": true
+    "strictInjectionParameters": true
   }
 }
