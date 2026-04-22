@@ -3,7 +3,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from "@angular/common/http/testing";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { provideMockStore } from "@ngrx/store/testing";
 import { TranslateModule } from "@ngx-translate/core";
@@ -17,7 +17,7 @@ describe("TableviewerPersPanelComponent", () => {
   let fixture: ComponentFixture<TableviewerPersPanelComponent>;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TableviewerPersPanelComponent],
       imports: [
@@ -36,8 +36,8 @@ describe("TableviewerPersPanelComponent", () => {
     fixture = TestBed.createComponent(TableviewerPersPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it("should create", () => {

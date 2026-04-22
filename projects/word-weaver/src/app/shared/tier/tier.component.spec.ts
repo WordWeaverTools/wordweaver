@@ -3,7 +3,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from "@angular/common/http/testing";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { EveryVoiceModule } from "@everyvoice/every-voice";
 import { TierComponent } from "./tier.component";
 import { everyVoiceConfig } from "../../../environments/environment";
@@ -12,7 +12,7 @@ describe("TierComponent", () => {
   let fixture: ComponentFixture<TierComponent>;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         EveryVoiceModule.forRoot(everyVoiceConfig),
@@ -37,8 +37,8 @@ describe("TierComponent", () => {
       output: [],
     };
     fixture.detectChanges();
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it("should create", () => {

@@ -3,7 +3,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from "@angular/common/http/testing";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
 
 import { DownloadDialogComponent } from "./download-dialog.component";
@@ -21,7 +21,7 @@ describe("DownloadDialogComponent", () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let store: MockStore;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         MatDialogModule,
@@ -43,8 +43,8 @@ describe("DownloadDialogComponent", () => {
     store = TestBed.inject(MockStore);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it("should create", () => {

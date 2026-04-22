@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { TranslateModule } from "@ngx-translate/core";
 import { HttpClientModule } from "@angular/common/http";
@@ -11,7 +11,7 @@ describe("WordmakerPersStepComponent", () => {
   let component: WordmakerPersStepComponent;
   let fixture: ComponentFixture<WordmakerPersStepComponent>;
   let store: MockStore;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [WordmakerPersStepComponent],
       providers: [provideMockStore()],

@@ -6,7 +6,7 @@ import {
 import { TranslateModule } from "@ngx-translate/core";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { of } from "rxjs";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { ConjugationTreeComponent } from "./conjugation-tree.component";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
 import { SharedModule } from "../../../shared/shared.module";
@@ -18,7 +18,7 @@ describe("ConjugationTreeComponent", () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let store: MockStore;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         SharedModule,
@@ -39,8 +39,8 @@ describe("ConjugationTreeComponent", () => {
     // @ts-ignore
     component.data$ = of([]);
     fixture.detectChanges();
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it("should create", () => {

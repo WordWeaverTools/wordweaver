@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
 
 import { ConjugationListComponent } from "./conjugation-list.component";
@@ -7,7 +7,7 @@ describe("ConjugationListComponent", () => {
   let component: ConjugationListComponent;
   let fixture: ComponentFixture<ConjugationListComponent>;
   let store: MockStore;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ConjugationListComponent],
       providers: [provideMockStore()],
