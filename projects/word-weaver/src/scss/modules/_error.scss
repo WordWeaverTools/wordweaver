@@ -1,18 +1,22 @@
+@use "sass:map";
+@use "../utilities/colors";
+@use "../utilities/functions" as fns;
+
 .error {
   &__container {
-    margin: em(50);
-    border: em(1) solid map-get($ui-colors, black);
-    padding: em(20);
-    border-radius: em(5);
-    background: map-get($ui-colors, accent);
+    margin: fns.em(50);
+    border: fns.em(1) solid map.get(colors.$ui-colors, black);
+    padding: fns.em(20);
+    border-radius: fns.em(5);
+    background: map.get(colors.$ui-colors, accent);
   }
 
   &__header {
     text-decoration: underline;
-    color: map-get($ui-colors, white);
+    color: map.get(colors.$ui-colors, white);
   }
 
   &__message {
-    color: map-get($ui-colors, white);
+    color: map.get(colors.$ui-colors, white);
   }
 }

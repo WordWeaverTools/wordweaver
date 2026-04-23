@@ -1,31 +1,43 @@
+@use "sass:map";
+@use "../utilities/mixins";
+@use "../utilities/config";
+@use "../utilities/functions" as fns;
+
 .page {
-  min-height: em(644);
+  min-height: fns.em(644);
+  max-height: fns.em(644);
+
   &__content {
-    margin-top: em(50);
-    @include mq(em(1920), "min-width") {
+    margin-top: fns.em(50);
+    @include mixins.mq(fns.em(1920), "min-width") {
       margin-top: 10vh;
     }
-    @include mq(em(map-get($breakpoints, medium)), "max-width") {
+    @include mixins.mq(
+      fns.em(map.get(config.$breakpoints, medium)),
+      "max-width"
+    ) {
       width: 100%;
       padding: 0;
       margin: 0 !important;
       min-height: 100%;
     }
-    max-height: em(644);
   }
 }
 
 .welcome {
-  @include mq(em(map-get($breakpoints, medium)), "max-width") {
+  @include mixins.mq(
+    fns.em(map.get(config.$breakpoints, medium)),
+    "max-width"
+  ) {
     margin-top: 0;
   }
 }
 
 .contributor--text {
-  @include mq(em(991)) {
+  @include mixins.mq(fns.em(991)) {
     margin-top: 80px;
   }
-  @include mq(em(991), "max-width") {
+  @include mixins.mq(fns.em(991), "max-width") {
     margin-top: 0px;
   }
 }

@@ -1,3 +1,5 @@
+@use "../utilities/config";
+
 .abs {
   position: absolute !important;
 }
@@ -29,7 +31,7 @@
 
 // z-indexing
 
-@each $name, $value in $zindex {
+@each $name, $value in config.$zindex {
   .#{$name} {
     z-index: $value;
   }

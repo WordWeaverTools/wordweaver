@@ -1,3 +1,7 @@
+@use "sass:list";
+@use "config";
+@use "../utilities/functions" as fns;
+
 // Mixins
 
 // Reset List
@@ -58,8 +62,8 @@
 // $type - Defaults to `screen`.
 
 @mixin mq($breakpoint, $query: "min-width", $type: "screen") {
-  @if $fix-mqs {
-    @if $fix-mqs >= $breakpoint {
+  @if config.$fix-mqs {
+    @if config.$fix-mqs >= $breakpoint {
       @content;
     }
   } @else {
@@ -186,7 +190,7 @@
 @mixin border-colors($map) {
   @each $theme, $color in $map {
     &.border-#{"" + $theme + ""} {
-      border: em(1) solid $color !important;
+      border: fns.em(1) solid $color !important;
     }
   }
 }
@@ -197,7 +201,7 @@
 //
 
 @mixin animate-palette($map) {
-  $no-of-colors: length($map);
+  $no-of-colors: list.length($map);
   @each $name, $color in $map {
     $i: index($map, $name $color);
     $percent: ($i / $no-of-colors) * 100;

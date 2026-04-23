@@ -1,20 +1,21 @@
-$ww-purple-theme-primary--light: mat-palette($mat-grey, 200, 500, 300);
-$ww-purple-theme-primary--dark: mat-palette($mat-grey, 700, 300, 900);
+@use "@angular/material" as mat;
 
-$ww-purple-theme-accent--light: mat-palette($mat-deep-purple, 300);
-$ww-purple-theme-accent--dark: mat-palette($mat-deep-purple, 300);
-
-$ww-purple-theme-warn--light: mat-palette($mat-deep-orange, 200);
-$ww-purple-theme-warn--dark: mat-palette($mat-red, 500);
-
-$ww-purple-theme--light: mat-light-theme(
-  $ww-purple-theme-primary--light,
-  $ww-purple-theme-accent--light,
-  $ww-purple-theme-warn--light
+$ww-purple-theme--light: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$grey-palette, 200, 500, 300),
+      accent: mat.define-palette(mat.$deep-purple-palette, 300),
+      warn: mat.define-palette(mat.$deep-orange-palette, 200),
+    ),
+  )
 );
 
-$ww-purple-theme--dark: mat-dark-theme(
-  $ww-purple-theme-primary--dark,
-  $ww-purple-theme-accent--dark,
-  $ww-purple-theme-warn--dark
+$ww-purple-theme--dark: mat.define-dark-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$grey-palette, 700, 300, 900),
+      accent: mat.define-palette(mat.$deep-purple-palette, 300),
+      warn: mat.define-palette(mat.$red-palette, 500),
+    ),
+  )
 );

@@ -1,9 +1,11 @@
-$ww-dark-theme-primary: mat-palette($mat-grey, 700, 300, 900);
-$ww-dark-theme-accent: mat-palette($mat-blue-grey, 400);
-$ww-dark-theme-warn: mat-palette($mat-red, 500);
+@use "@angular/material" as mat;
 
-$ww-dark-theme: mat-dark-theme(
-  $ww-dark-theme-primary,
-  $ww-dark-theme-accent,
-  $ww-dark-theme-warn
+$ww-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$grey-palette, 700, 300, 900),
+      accent: mat.define-palette(mat.$blue-grey-palette, 400),
+      warn: mat.define-palette(mat.$red-palette, 500),
+    ),
+  )
 );

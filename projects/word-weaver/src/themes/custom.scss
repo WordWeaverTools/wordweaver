@@ -22,36 +22,60 @@
 //  verb: boolean;
 // }
 
+@use "sass:map";
+@use "sass:color";
+@use "@angular/material" as mat;
+
 @mixin ww-custom-highlights-theme-common-moh($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background-palette: map.get($theme, background);
+  $foreground-palette: map.get($theme, foreground);
 
   .aspect {
     .aspect.affix {
-      color: mix(mat-color($foreground-palette, base), mediumseagreen, 30%);
+      color: color.mix(
+        mat.get-color-from-palette($foreground-palette, base),
+        mediumseagreen,
+        30%
+      );
     }
   }
 
   .post-aspectual {
     .post_aspectual_suffix.affix {
-      color: mix(mat-color($foreground-palette, base), mediumseagreen, 30%);
+      color: color.mix(
+        mat.get-color-from-palette($foreground-palette, base),
+        mediumseagreen,
+        30%
+      );
     }
   }
 
   .pronouns {
     .pronoun.transitive {
-      color: mix(mat-color($foreground-palette, base), mediumpurple, 30%);
+      color: color.mix(
+        mat.get-color-from-palette($foreground-palette, base),
+        mediumpurple,
+        30%
+      );
     }
 
     .pronoun.agent {
-      color: mix(mat-color($foreground-palette, base), indianred, 20%);
+      color: color.mix(
+        mat.get-color-from-palette($foreground-palette, base),
+        indianred,
+        20%
+      );
     }
 
     .pronoun.patient {
-      color: mix(mat-color($foreground-palette, base), cornflowerblue, 30%);
+      color: color.mix(
+        mat.get-color-from-palette($foreground-palette, base),
+        cornflowerblue,
+        30%
+      );
     }
   }
 
@@ -60,13 +84,21 @@
 
   .temp {
     .tmp_affix.affix {
-      color: mix(mat-color($foreground-palette, base), mediumseagreen, 30%);
+      color: color.mix(
+        mat.get-color-from-palette($foreground-palette, base),
+        mediumseagreen,
+        30%
+      );
     }
   }
 
   .verb {
     .root {
-      color: mix(mat-color($foreground-palette, base), orangered, 40%);
+      color: color.mix(
+        mat.get-color-from-palette($foreground-palette, base),
+        orangered,
+        40%
+      );
     }
   }
 }
@@ -82,17 +114,17 @@
 // }
 
 @mixin ww-custom-highlights-theme-common-fr($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background-palette: map.get($theme, background);
+  $foreground-palette: map.get($theme, foreground);
 
   .ending {
     .ending {
-      color: mix(
-        map-get(map-get($primary, contrast), A100),
-        mat-color($accent, A100),
+      color: color.mix(
+        map.get(map.get($primary, contrast), A100),
+        mat.get-color-from-palette($accent, A100),
         50%
       );
     }
@@ -100,9 +132,9 @@
 
   .root {
     .root {
-      color: mix(
-        mat-color($foreground-palette, base),
-        mat-color($accent, A100),
+      color: color.mix(
+        mat.get-color-from-palette($foreground-palette, base),
+        mat.get-color-from-palette($accent, A100),
         80%
       );
     }
@@ -110,17 +142,17 @@
 }
 
 // @mixin ww-custom-highlights-theme-light($theme) {
-//   $primary: map-get($theme, primary);
-//   $accent: map-get($theme, accent);
-//   $warn: map-get($theme, warn);
-//   $background-palette: map-get($theme, background);
-//   $foreground-palette: map-get($theme, foreground);
+//   $primary: map.get($theme, primary);
+//   $accent: map.get($theme, accent);
+//   $warn: map.get($theme, warn);
+//   $background-palette: map.get($theme, background);
+//   $foreground-palette: map.get($theme, foreground);
 // }
 
 // @mixin ww-custom-highlights-theme-dark($theme) {
-//   $primary: map-get($theme, primary);
-//   $accent: map-get($theme, accent);
-//   $warn: map-get($theme, warn);
-//   $background-palette: map-get($theme, background);
-//   $foreground-palette: map-get($theme, foreground);
+//   $primary: map.get($theme, primary);
+//   $accent: map.get($theme, accent);
+//   $warn: map.get($theme, warn);
+//   $background-palette: map.get($theme, background);
+//   $foreground-palette: map.get($theme, foreground);
 // }
