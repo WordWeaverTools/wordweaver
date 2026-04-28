@@ -6,8 +6,7 @@
 @use "styles-reset";
 
 // Themes
-@use "./themes/dark-theme";
-@use "./themes/light-theme";
+@use "./themes/default-theme";
 @use "./themes/purple-theme";
 @use "./themes/purple-blue-theme";
 @use "./themes/purple-gold-theme";
@@ -117,8 +116,8 @@
 //   }
 
 // TODO(swl) in Angular 18?
-//@include mat.elevation-classes();
-//@include mat.app-background();
+// @include mat.elevation-classes();
+// @include mat.app-background();
 @include mat.core();
 
 @mixin custom-components-theme-common($theme) {
@@ -145,80 +144,60 @@
   @include settings-component.ww-settings-component-theme-dark($theme);
 }
 
-@mixin custom-highlights-theme-common($theme, $highlight) {
-  @include common.ww-custom-highlights-theme-common($theme, $highlight);
-}
+// TODO(swl): custom-highlights-theme-common is never called, and
+// ww-custom-highlights-theme-common does not exist.
+// @mixin custom-highlights-theme-common($theme, $highlight) {
+//   // @include common.ww-custom-highlights-theme-common($theme, $highlight);
+// }
+
+// defines a single default theme with density and typography defaults.
+// `all-component-themes()` is used once.
+@include mat.all-component-themes(default-theme.$light);
 
 .default-theme,
 .light-theme {
-  @include mat.all-component-colors(light-theme.$ww-light-theme);
-  //mat.all-component-colors($ww-light-theme);
-  @include custom-components-theme-common(light-theme.$ww-light-theme);
-  @include custom-components-theme-light(light-theme.$ww-light-theme);
+  @include custom-components-theme-common(default-theme.$light);
+  @include custom-components-theme-light(default-theme.$light);
 }
 
 .dark-theme {
-  @include mat.all-component-colors(dark-theme.$ww-dark-theme);
-  @include custom-components-theme-common(dark-theme.$ww-dark-theme);
-  @include custom-components-theme-dark(dark-theme.$ww-dark-theme);
+  @include mat.all-component-colors(default-theme.$dark);
+  @include custom-components-theme-common(default-theme.$dark);
+  @include custom-components-theme-dark(default-theme.$dark);
 }
 
 .purple-theme--light {
-  @include mat.all-component-colors(purple-theme.$ww-purple-theme--light);
-  @include custom-components-theme-common(purple-theme.$ww-purple-theme--light);
-  @include custom-components-theme-light(purple-theme.$ww-purple-theme--light);
+  @include mat.all-component-colors(purple-theme.$light);
+  @include custom-components-theme-common(purple-theme.$light);
+  @include custom-components-theme-light(purple-theme.$light);
 }
 
 .purple-theme--dark {
-  @include mat.all-component-colors(purple-theme.$ww-purple-theme--dark);
-  @include custom-components-theme-common(purple-theme.$ww-purple-theme--dark);
-  @include custom-components-theme-dark(purple-theme.$ww-purple-theme--dark);
+  @include mat.all-component-colors(purple-theme.$dark);
+  @include custom-components-theme-common(purple-theme.$dark);
+  @include custom-components-theme-dark(purple-theme.$dark);
 }
 
 .purple-blue-theme--light {
-  @include mat.all-component-colors(
-    purple-blue-theme.$ww-purple-blue-theme--light
-  );
-  @include custom-components-theme-common(
-    purple-blue-theme.$ww-purple-blue-theme--light
-  );
-  @include custom-components-theme-light(
-    purple-blue-theme.$ww-purple-blue-theme--light
-  );
+  @include mat.all-component-colors(purple-blue-theme.$light);
+  @include custom-components-theme-common(purple-blue-theme.$light);
+  @include custom-components-theme-light(purple-blue-theme.$light);
 }
 
 .purple-blue-theme--dark {
-  @include mat.all-component-colors(
-    purple-blue-theme.$ww-purple-blue-theme--dark
-  );
-  @include custom-components-theme-common(
-    purple-blue-theme.$ww-purple-blue-theme--dark
-  );
-  @include custom-components-theme-dark(
-    purple-blue-theme.$ww-purple-blue-theme--dark
-  );
+  @include mat.all-component-colors(purple-blue-theme.$dark);
+  @include custom-components-theme-common(purple-blue-theme.$dark);
+  @include custom-components-theme-dark(purple-blue-theme.$dark);
 }
 
 .purple-gold-theme--light {
-  @include mat.all-component-colors(
-    purple-gold-theme.$ww-purple-gold-theme--light
-  );
-  @include custom-components-theme-common(
-    purple-gold-theme.$ww-purple-gold-theme--light
-  );
-  @include custom-components-theme-light(
-    purple-gold-theme.$ww-purple-gold-theme--light
-  );
+  @include mat.all-component-colors(purple-gold-theme.$light);
+  @include custom-components-theme-common(purple-gold-theme.$light);
+  @include custom-components-theme-light(purple-gold-theme.$light);
 }
 
 .purple-gold-theme--dark {
-  @include mat.all-component-colors(
-    purple-gold-theme.$ww-purple-gold-theme--dark
-  );
-  @include custom-components-theme-common(
-    purple-gold-theme.$ww-purple-gold-theme--dark
-  );
-  @include custom-components-theme-dark(
-    purple-gold-theme.$ww-purple-gold-theme--dark
-  );
+  @include mat.all-component-colors(purple-gold-theme.$dark);
+  @include custom-components-theme-common(purple-gold-theme.$dark);
+  @include custom-components-theme-dark(purple-gold-theme.$dark);
 }

@@ -3,8 +3,8 @@
 $light: mat.define-light-theme(
   (
     color: (
-      primary: mat.define-palette(mat.$grey-palette, 200, 500, 300),
-      accent: mat.define-palette(mat.$deep-purple-palette, 300),
+      primary: mat.define-palette(mat.$grey-palette, 300, 500, 300),
+      accent: mat.define-palette(mat.$brown-palette, 400),
       warn: mat.define-palette(mat.$deep-orange-palette, 200),
     ),
   )
@@ -14,7 +14,7 @@ $dark: mat.define-dark-theme(
   (
     color: (
       primary: mat.define-palette(mat.$grey-palette, 700, 300, 900),
-      accent: mat.define-palette(mat.$deep-purple-palette, 300),
+      accent: mat.define-palette(mat.$blue-grey-palette, 400),
       warn: mat.define-palette(mat.$red-palette, 500),
     ),
   )

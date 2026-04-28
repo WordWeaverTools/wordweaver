@@ -53,6 +53,9 @@
             <fa-icon icon="language" color="accent"></fa-icon>
           </mat-icon>
           <mat-form-field class="control">
+            <mat-label>{{
+              "ww.pages.settings.general.placeholder" | translate
+            }}</mat-label>
             <mat-select
               [placeholder]="
                 'ww.pages.settings.general.placeholder' | translate
@@ -76,6 +79,9 @@
         >
           <mat-icon color="accent"> record_voice_over </mat-icon>
           <mat-form-field class="control">
+            <mat-label>{{
+              "ww.pages.settings.general.ttsPlaceholder" | translate
+            }}</mat-label>
             <mat-select
               [placeholder]="
                 'ww.pages.settings.general.ttsPlaceholder' | translate
@@ -160,6 +166,9 @@
             <fa-icon icon="paint-brush" color="accent"></fa-icon>
           </mat-icon>
           <mat-form-field class="control">
+            <mat-label>{{
+              "ww.pages.settings.themes.placeholder" | translate
+            }}</mat-label>
             <mat-select
               [placeholder]="'ww.pages.settings.themes.placeholder' | translate"
               [ngModel]="settings.theme"

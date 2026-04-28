@@ -1,19 +1,26 @@
-@import "@angular/material/theming";
+@use "@angular/material" as mat;
+@use "sass:map";
 
+// Placeholder mixin for future common theming.
 @mixin ww-settings-component-theme-common($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, "primary");
+  $accent: map.get($color-config, "accent");
+  $warn: map.get($color-config, "warn");
+  $background-palette: map.get($color-config, "background");
+  $foreground-palette: map.get($color-config, "foreground");
 }
 
 @mixin ww-settings-component-theme-dark($theme) {
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $background-palette: map.get($color-config, "background");
+  $foreground-palette: map.get($color-config, "foreground");
 
-  $background: lighten(mat-color($background-palette, background), 10%);
-  $foreground: mat-color($foreground-palette, base);
+  $background: lighten(
+    mat.get-color-from-palette($background-palette, "background"),
+    10%
+  );
+  $foreground: mat.get-color-from-palette($foreground-palette, "base");
 
   .settings-container {
     background-color: $background;
@@ -44,11 +51,18 @@
 }
 
 @mixin ww-settings-component-theme-light($theme) {
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $background-palette: map.get($color-config, "background");
+  $foreground-palette: map.get($color-config, "foreground");
 
-  $background: darken(mat-color($background-palette, background), 10%);
-  $foreground: lighten(mat-color($foreground-palette, base), 20%);
+  $background: darken(
+    mat.get-color-from-palette($background-palette, "background"),
+    10%
+  );
+  $foreground: lighten(
+    mat.get-color-from-palette($foreground-palette, "base"),
+    20%
+  );
 
   .settings-container {
     background-color: $background;

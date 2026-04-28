@@ -1,8 +1,6 @@
-@import "@angular/material/theming";
 .content {
   &:after {
     z-index: -1;
-    background-size: cover;
     content: " ";
     display: block;
     position: absolute;
@@ -26,7 +24,7 @@
   .content {
     &:after {
       // You can mixin background images for example:
-      // background-image: url("https://wordweavertools.github.io/wordweaver/dist_toy/assets/img/bg.jpg");
+      //background-image: url("https://wordweavertools.github.io/wordweaver/dist_toy/assets/img/bg.jpg");
     }
   }
 }

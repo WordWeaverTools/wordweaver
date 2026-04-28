@@ -1,6 +1,6 @@
 @use "@angular/material" as mat;
 
-$ww-purple-blue-theme--dark: mat.define-dark-theme(
+$dark: mat.define-dark-theme(
   (
     color: (
       primary: mat.define-palette(mat.$deep-purple-palette, 400),
@@ -10,7 +10,7 @@ $ww-purple-blue-theme--dark: mat.define-dark-theme(
   )
 );
 
-$ww-purple-blue-theme--light: mat.define-light-theme(
+$light: mat.define-light-theme(
   (
     color: (
       primary: mat.define-palette(mat.$deep-purple-palette, 400),

@@ -27,16 +27,17 @@
 @use "@angular/material" as mat;
 
 @mixin ww-custom-highlights-theme-common-moh($theme) {
-  $primary: map.get($theme, primary);
-  $accent: map.get($theme, accent);
-  $warn: map.get($theme, warn);
-  $background-palette: map.get($theme, background);
-  $foreground-palette: map.get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, "primary");
+  $accent: map.get($color-config, "accent");
+  $warn: map.get($color-config, "warn");
+  $background-palette: map.get($color-config, "background");
+  $foreground-palette: map.get($color-config, "foreground");
 
   .aspect {
     .aspect.affix {
       color: color.mix(
-        mat.get-color-from-palette($foreground-palette, base),
+        mat.get-color-from-palette($foreground-palette, "base"),
         mediumseagreen,
         30%
       );
@@ -46,7 +47,7 @@
   .post-aspectual {
     .post_aspectual_suffix.affix {
       color: color.mix(
-        mat.get-color-from-palette($foreground-palette, base),
+        mat.get-color-from-palette($foreground-palette, "base"),
         mediumseagreen,
         30%
       );
@@ -56,7 +57,7 @@
   .pronouns {
     .pronoun.transitive {
       color: color.mix(
-        mat.get-color-from-palette($foreground-palette, base),
+        mat.get-color-from-palette($foreground-palette, "base"),
         mediumpurple,
         30%
       );
@@ -64,7 +65,7 @@
 
     .pronoun.agent {
       color: color.mix(
-        mat.get-color-from-palette($foreground-palette, base),
+        mat.get-color-from-palette($foreground-palette, "base"),
         indianred,
         20%
       );
@@ -72,7 +73,7 @@
 
     .pronoun.patient {
       color: color.mix(
-        mat.get-color-from-palette($foreground-palette, base),
+        mat.get-color-from-palette($foreground-palette, "base"),
         cornflowerblue,
         30%
       );
@@ -85,7 +86,7 @@
   .temp {
     .tmp_affix.affix {
       color: color.mix(
-        mat.get-color-from-palette($foreground-palette, base),
+        mat.get-color-from-palette($foreground-palette, "base"),
         mediumseagreen,
         30%
       );
@@ -95,7 +96,7 @@
   .verb {
     .root {
       color: color.mix(
-        mat.get-color-from-palette($foreground-palette, base),
+        mat.get-color-from-palette($foreground-palette, "base"),
         orangered,
         40%
       );
@@ -114,16 +115,17 @@
 // }
 
 @mixin ww-custom-highlights-theme-common-fr($theme) {
-  $primary: map.get($theme, primary);
-  $accent: map.get($theme, accent);
-  $warn: map.get($theme, warn);
-  $background-palette: map.get($theme, background);
-  $foreground-palette: map.get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, "primary");
+  $accent: map.get($color-config, "accent");
+  $warn: map.get($color-config, "warn");
+  $background-palette: map.get($color-config, "background");
+  $foreground-palette: map.get($color-config, "foreground");
 
   .ending {
     .ending {
       color: color.mix(
-        map.get(map.get($primary, contrast), A100),
+        mat.get-color-from-palette($primary, "500-contrast"),
         mat.get-color-from-palette($accent, A100),
         50%
       );

@@ -1,21 +1,24 @@
-@import "../../../../scss/utilities/colors";
-@import "@angular/material/theming";
+@use "@angular/material" as mat;
+@use "sass:map";
 
 @mixin ww-tableviewer-component-theme-common($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $foreground-palette: map-get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, "primary");
+  $accent: map.get($color-config, "accent");
+  $warn: map.get($color-config, "warn");
+  $foreground-palette: map.get($color-config, "foreground");
 
   th.mat-mdc-header-cell {
-    border-bottom: 1px solid mat-color($foreground-palette, base);
+    border-bottom: 1px solid
+      mat.get-color-from-palette($foreground-palette, "base");
   }
 
   th.mat-mdc-header-cell:first-of-type,
   td.mat-mdc-cell:first-of-type,
   td.mat-mdc-footer-cell:first-of-type {
     padding: 0;
-    border-right: 1px solid mat-color($foreground-palette, base);
+    border-right: 1px solid
+      mat.get-color-from-palette($foreground-palette, "base");
   }
 
   td.mat-mdc-cell {
@@ -23,32 +26,36 @@
   }
   /* TODO(mdc-migration): The following rule targets internal classes of option that may no longer apply for the MDC version.*/
   .mat-option-text {
-    color: mat-color($foreground-palette, base);
+    color: mat.get-color-from-palette($foreground-palette, "base");
   }
 
   // .error__container {
-  //   background-color: mat-color($warn);
+  //   background-color: mat.get-color-from-palette($warn);
   // }
 
   // .error__header,
   // .error__message {
-  //   color: mat-color($warn, default-contrast);
+  //   color: mat.get-color-from-palette($warn, "default-contrast");
   // }
 
   .mat-pseudo-checkbox-checked {
-    background-color: mat-color($accent) !important;
+    background-color: mat.get-color-from-palette($accent) !important;
   }
 }
 
 @mixin ww-tableviewer-component-theme-dark($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, "primary");
+  $accent: map.get($color-config, "accent");
+  $warn: map.get($color-config, "warn");
+  $background-palette: map.get($color-config, "background");
+  $foreground-palette: map.get($color-config, "foreground");
 
-  $background: lighten(mat-color($background-palette, background), 10%);
-  $foreground: mat-color($foreground-palette, base);
+  $background: lighten(
+    mat.get-color-from-palette($background-palette, "background"),
+    10%
+  );
+  $foreground: mat.get-color-from-palette($foreground-palette, "base");
 
   ww-tableviewer {
     .mat-figure,
@@ -69,14 +76,15 @@
 }
 
 @mixin ww-tableviewer-component-theme-light($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background-palette: map-get($theme, background);
-  $foreground-palette: map-get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, "primary");
+  $accent: map.get($color-config, "accent");
+  $warn: map.get($color-config, "warn");
+  $background-palette: map.get($color-config, "background");
+  $foreground-palette: map.get($color-config, "foreground");
 
-  $background: mat-color($background-palette, background);
-  $foreground: mat-color($foreground-palette, base);
+  $background: mat.get-color-from-palette($background-palette, "background");
+  $foreground: mat.get-color-from-palette($foreground-palette, "base");
 
   .control {
     /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
@@ -142,7 +150,7 @@
       label,
       input,
       span {
-        color: mat-color($accent, default-contrast);
+        color: mat.get-color-from-palette($accent, "default-contrast");
       }
     }
 
