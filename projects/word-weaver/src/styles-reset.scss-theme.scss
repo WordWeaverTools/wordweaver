@@ -1,6 +1,23 @@
 @use "@angular/material" as mat;
 @use "sass:map";
 
+// Angular Material v15 MDC migration seems to have an inconsistent API.
+// These are corrections to get a similar look&feel from angular v14
+// while documenting and respecting Angular v15's variable names
+// (where possible).
+@mixin angular-v15-migration($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, "primary");
+
+  // this increases the contrast for the <mat-select /> element in the
+  // settings pages
+  --mdc-theme-primary: mat.get-color-from-palette($primary);
+
+  // this increases the contrast for the <mat-select /> element in
+  // the language selection
+  --mdc-list-list-item-label-text-color: mat.get-color-from-palette($primary);
+}
+
 @mixin ww-styles-reset-theme($theme) {
   $color-config: mat.get-color-config($theme);
   $primary: map.get($color-config, "primary");
@@ -26,4 +43,6 @@
       }
     }
   }
+
+  @include angular-v15-migration($theme);
 }

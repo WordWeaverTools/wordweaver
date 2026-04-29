@@ -114,3 +114,17 @@ mat-button-toggle-group {
 .mat-mdc-menu-panel {
   float: right;
 }
+
+// To control the width of the language <mat-select /> element Angular v15
+// does not support the `panelWidth`. The following works.
+//
+// Angular v16 implements panelWidth which might resolve this.
+//
+.cdk-overlay-pane:has(.language-select) {
+  width: 5em !important;
+  margin: -2em 0 0 -2em;
+
+  .mat-mdc-option {
+    font-size: 14px;
+  }
+}

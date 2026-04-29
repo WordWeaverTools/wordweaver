@@ -57,6 +57,7 @@
               "ww.pages.settings.general.placeholder" | translate
             }}</mat-label>
             <mat-select
+              hideSingleSelectionIndicator
               [placeholder]="
                 'ww.pages.settings.general.placeholder' | translate
               "
@@ -83,6 +84,7 @@
               "ww.pages.settings.general.ttsPlaceholder" | translate
             }}</mat-label>
             <mat-select
+              hideSingleSelectionIndicator
               [placeholder]="
                 'ww.pages.settings.general.ttsPlaceholder' | translate
               "
@@ -170,6 +172,7 @@
               "ww.pages.settings.themes.placeholder" | translate
             }}</mat-label>
             <mat-select
+              hideSingleSelectionIndicator
               [placeholder]="'ww.pages.settings.themes.placeholder' | translate"
               [ngModel]="settings.theme"
               (selectionChange)="onThemeSelect($event)"

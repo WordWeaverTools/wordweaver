@@ -88,6 +88,8 @@
 
           <span *ngIf="language$ | async as language">
             <mat-select
+              panelClass="language-select"
+              hideSingleSelectionIndicator
               [ngModel]="language"
               (selectionChange)="onLanguageSelect($event)"
             >
