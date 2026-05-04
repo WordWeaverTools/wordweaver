@@ -43,51 +43,33 @@
 
 // Hack to add scroll bar to chip list. I didn't want to use ::deep or anything like that, so it goes here.
 
-/* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
-.mat-checkbox-layout .mat-checkbox-label {
-  line-height: 1em;
+.mat-mdc-checkbox {
+  label {
+    line-height: 1em;
+  }
 }
 
 /****** Mat Chip ******/
 // Mat chips have a bunch of annoying default styles when in a list. This overrides that.
 
-// TODO(mdc-migration): The following rule targets internal classes of chips
-// that may no longer apply for the MDC version.
-//
-// The class `.mat-chip-list-wrapper` no longer exists, but in
-// Angular v15 `.mdc-evolution-chip-set__chips` does. Leaving TODO here
-// since we need to revisit this in the future.
 .mdc-evolution-chip-set__chips {
   margin: 0 !important;
 }
 
 .mat-mdc-chip:not(.mat-mdc-basic-chip) {
+  color: colors.$white;
   margin: fns.em(5);
   cursor: pointer;
 
-  // force white color on the chips...
-  --mdc-chip-elevated-container-color: colors.$white;
-  --mdc-chip-flat-container-color: colors.$white;
-  background-color: colors.$white !important;
-
-  // ... and define a border around it
-  border: 0.0625em solid #5a4761 !important;
-
-  // 3. Ensure the text is dark enough for the white background
-  .mdc-chip__text-label {
-    color: rgba(0, 0, 0, 0.87) !important;
-  }
-
-  // 4. Handle the "Selected" state
   &.mat-mdc-chip-selected {
-    background-color: #f5f5f5 !important; // Subtle grey for selected
-    border-color: #000000 !important; // Darken border when active
-    cursor: pointer;
     color: colors.$color-accent;
+    margin: fns.em(5);
+    cursor: pointer;
   }
 }
 
-.mat-mdc-chip:not(.mat-mdc-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+.mat-mdc-chip:not(.mat-mdc-basic-chip)
+  + .mat-mdc-chip:not(.mat-mdc-basic-chip) {
   margin: fns.em(5) !important;
 }
 
@@ -99,11 +81,18 @@
 }
 
 // Let checkboxes be colored after verbs
+//
+// TODO(swl) - I'm not certain this is correct, with
+// colors.$verb-highlight-color-names it generates mat-red, mat-blue, mat-purple
+// instead of the mat-agent, mat-patient, mat-transitive that we would get
+// with colors.$verb-highlight-colors.
+//
+// The source code contains none of the 6 classes above
 @each $theme, $color in colors.$verb-highlight-color-names {
-  /* TODO(mdc-migration): The following rule targets internal classes of
-  checkbox that may no longer apply for the MDC version.*/
-  .mat-checkbox-checked.mat-#{"" + $theme + ""} .mat-checkbox-background {
-    background-color: $color !important;
+  .mat-mdc-checkbox.mat-mdc-checkbox-checked.mat-#{"" + $theme} {
+    .mdc-checkbox__background {
+      background-color: $color !important;
+    }
   }
 }
 
@@ -119,21 +108,31 @@
 }
 
 // Make toggle group smaller
-/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
-.mat-button-toggle-label-content {
+//
+// TODO(swl) - could not find any references to <mat-button-toggle /> maybe
+// this is not longer required?
+.mat-mdc-button-toggle-label-content {
   line-height: fns.em(30) !important;
   padding: 0 fns.em(16) !important;
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
-mat-button-toggle-group {
+// TODO(swl) - could not find any references to <mat-button-toggle /> maybe
+// this is not longer required?
+.mat-mdc-button-toggle-group {
   height: 2em;
   font-size: fns.em(map.get(typography.$font-sizes, sm));
+
+  .mat-mdc-button-toggle-button {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
-.mat-checkbox-layout {
-  white-space: normal !important;
+.mat-mdc-checkbox {
+  .mdc-label {
+    white-space: normal !important;
+  }
 }
 
 .mat-mdc-menu-panel {

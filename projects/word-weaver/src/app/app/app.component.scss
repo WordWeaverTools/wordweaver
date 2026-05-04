@@ -49,11 +49,7 @@ mat-sidenav-container {
       flex: 1 1 auto;
     }
 
-    // TODO(mdc-migration): The following rule targets internal classes of
-    // select that may no longer apply for the MDC version.
-    //
-    // Angular v15: this works.
-    mat-select {
+    .mat-mdc-select {
       margin: 0 0 0 20px;
       width: 40px;
       font-size: 14px;

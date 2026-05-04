@@ -8,25 +8,32 @@
   $warn: map.get($color-config, "warn");
   $foreground-palette: map.get($color-config, "foreground");
 
+  $foreground: mat.get-color-from-palette($foreground-palette, "base");
   th.mat-mdc-header-cell {
-    border-bottom: 1px solid
-      mat.get-color-from-palette($foreground-palette, "base");
+    border-bottom: 1px solid $foreground;
   }
 
   th.mat-mdc-header-cell:first-of-type,
   td.mat-mdc-cell:first-of-type,
   td.mat-mdc-footer-cell:first-of-type {
     padding: 0;
-    border-right: 1px solid
-      mat.get-color-from-palette($foreground-palette, "base");
+    border-right: 1px solid $foreground;
   }
 
   td.mat-mdc-cell {
     padding: 16px 0;
   }
-  /* TODO(mdc-migration): The following rule targets internal classes of option that may no longer apply for the MDC version.*/
-  .mat-option-text {
-    color: mat.get-color-from-palette($foreground-palette, "base");
+
+  .mat-mdc-option {
+    border-color: $foreground !important;
+
+    .mdc-list-item__primary-text {
+      color: $foreground !important;
+    }
+
+    .mat-pseudo-checkbox-checked {
+      background-color: mat.get-color-from-palette($accent) !important;
+    }
   }
 
   // .error__container {
@@ -37,10 +44,6 @@
   // .error__message {
   //   color: mat.get-color-from-palette($warn, "default-contrast");
   // }
-
-  .mat-pseudo-checkbox-checked {
-    background-color: mat.get-color-from-palette($accent) !important;
-  }
 }
 
 @mixin ww-tableviewer-component-theme-dark($theme) {
@@ -87,30 +90,25 @@
   $foreground: mat.get-color-from-palette($foreground-palette, "base");
 
   .control {
-    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-    .mat-form-field-underline {
-      background-color: $foreground;
+    .mdc-line-ripple::before {
+      border-bottom-color: $foreground;
     }
-  }
+    .mdc-line-ripple::after {
+      border-bottom-color: $foreground;
+    }
 
-  .control.mat-focused {
-    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-    .mat-form-field-underline {
-      background-color: transparent;
-    }
-    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-    .mat-form-field-ripple {
-      background-color: $foreground !important;
+    &.mat-focused {
+      .mdc-line-ripple::before {
+        border-bottom-color: transparent;
+      }
+      .mdc-line-ripple::after {
+        border-bottom-color: $foreground;
+      }
     }
   }
 
   ww-tableviewer {
-    /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
-    .mat-checkbox-frame {
-      border-color: $foreground !important;
-    }
-    /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
-    mat-checkbox {
+    .mat-mdc-checkbox {
       label,
       span {
         color: $foreground !important;
@@ -120,10 +118,15 @@
     .mat-drawer-container {
       background-color: $foreground !important;
     }
-    /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version.*/
-    .mat-select-arrow,
-    mat-label {
+
+    .mat-mdc-select-arrow {
       color: $foreground !important;
+    }
+
+    .mat-mdc-form-field {
+      .mdc-floating-label {
+        color: $foreground !important;
+      }
     }
 
     h1,

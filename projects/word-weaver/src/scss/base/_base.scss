@@ -63,10 +63,9 @@ h6 {
   @include mixins.colors(colors.$verb-highlight-colors);
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
 p,
-mat-chip,
-mat-tab-label,
+.mat-mdc-chip-option,
+.mat-mdc-tab,
 span,
 button,
 a {
@@ -87,31 +86,28 @@ a {
   }
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
 span,
 p,
-mat-chip,
-mat-button-toggle,
+.mat-mdc-chip-option,
+.mat-mdc-button-toggle,
 button,
 mat-icon {
   @include mixins.colors(colors.$ui-colors);
   @include mixins.colors(colors.$verb-highlight-color-names);
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
 div,
 nav,
 button,
-mat-chip,
-mat-toolbar,
-mat-grid-tile {
+.mat-mdc-chip-option,
+.mat-mdc-toolbar,
+.mat-mdc-grid-tile {
   @include mixins.bg-colors(colors.$ui-colors);
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
 div,
-mat-chip,
-mat-button-toggle,
+.mat-mdc-chip-option,
+.mat-mdc-button-toggle,
 button {
   @include mixins.bg-colors(colors.$verb-highlight-color-names);
 }
