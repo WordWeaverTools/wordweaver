@@ -19,6 +19,7 @@ th,
 td,
 th.mat-mdc-header-cell {
   width: 150px;
+  min-width: 150px;
   text-align: center;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -31,4 +32,25 @@ th.mat-mdc-header-cell {
 
 :host ::ng-deep .mat-mdc-tab-body-wrapper {
   height: 100%;
+}
+
+// Add contrast to the tab's labels.
+:host ::ng-deep {
+  .mat-mdc-tab.mdc-tab--active {
+    .mdc-tab__text-label {
+      color: #000000 !important;
+      opacity: 1 !important;
+      font-weight: 700;
+    }
+
+    .mdc-tab__icon {
+      color: #000000 !important;
+      opacity: 1 !important;
+    }
+  }
+
+  .mat-mdc-tab:not(.mdc-tab--active) .mdc-tab__text-label {
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 400;
+  }
 }
