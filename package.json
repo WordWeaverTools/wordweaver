@@ -53,7 +53,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build every-voice && ng build",
+    "build": "ng build every-voice && ng build word-weaver",
     "build-ev": "ng build every-voice",
     "build-toy": "ng build --outputPath ./dist_toy",
     "heroku-postbuild": "echo 'no-op'",
