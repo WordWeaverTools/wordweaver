@@ -25,6 +25,7 @@
     },
     "pronouns": {
       "agents": {
+        "inf": "(Infinitive)",
         "1-sg": "I",
         "2-sg": "You",
         "3-sg-f": "She",
@@ -97,6 +98,7 @@
       "depecer": "dismember",
       "enfievrer": "have a fever",
       "envoyer": "have a feversend",
+      "ester": "appear in court",
       "execrer": "execute",
       "extraire": "extract",
       "faire": "make",

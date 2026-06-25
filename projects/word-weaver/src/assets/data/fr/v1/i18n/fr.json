@@ -25,6 +25,7 @@
     },
     "pronouns": {
       "agents": {
+        "inf": "(Infinitif)",
         "1-sg": "Je",
         "2-sg": "Tu",
         "3-sg-f": "Elle",
@@ -97,6 +98,7 @@
       "depecer": "d\u00e9pecer",
       "enfievrer": "enfi\u00e9vrer",
       "envoyer": "envoyer",
+      "ester": "ester en justice",
       "execrer": "ex\u00e9crer",
       "extraire": "extraire",
       "faire": "faire",
