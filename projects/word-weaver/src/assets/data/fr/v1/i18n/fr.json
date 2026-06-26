@@ -25,6 +25,7 @@
     },
     "pronouns": {
       "agents": {
+        "inf": "(Infinitif)",
         "1-sg": "Je",
         "2-sg": "Tu",
         "3-sg-f": "Elle",
@@ -74,6 +75,7 @@
       "ceder": "c\u00e9der",
       "choir": "choir",
       "chaloir": "chaloir",
+      "chauvir": "chauvir",
       "circoncire": "circoncire",
       "clore": "clore",
       "conclure": "conclure",
@@ -97,6 +99,7 @@
       "depecer": "d\u00e9pecer",
       "enfievrer": "enfi\u00e9vrer",
       "envoyer": "envoyer",
+      "ester": "ester en justice",
       "execrer": "ex\u00e9crer",
       "extraire": "extraire",
       "faire": "faire",
@@ -105,6 +108,7 @@
       "finir": "finir",
       "fleurir": "fleurir",
       "forclore": "forclore",
+      "foutre": "foutre",
       "frire": "frire",
       "fuir": "fuir",
       "ferir": "f\u00e9rir",
