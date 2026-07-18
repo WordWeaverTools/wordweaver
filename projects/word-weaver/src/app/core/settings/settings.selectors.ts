@@ -75,7 +75,7 @@ export const selectTtsSpeaker = createSelector(
 export const selectIsNightHour = createSelector(
   selectAutoNightMode,
   selectHour,
-  (autoNightMode, hour) => autoNightMode && (hour >= 21 || hour <= 7)
+  (autoNightMode, hour) => autoNightMode && (hour >= 21 || hour < 7)
 );
 
 export const selectEffectiveTheme = createSelector(

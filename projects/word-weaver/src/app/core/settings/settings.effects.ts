@@ -4,7 +4,7 @@ import { marker } from "@colsen1991/ngx-translate-extract-marker";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { select, Store } from "@ngrx/store";
 import { TranslateService } from "@ngx-translate/core";
-import { combineLatest, interval, merge, of } from "rxjs";
+import { combineLatest, merge, of, timer } from "rxjs";
 import {
   distinctUntilChanged,
   map,
@@ -78,9 +78,18 @@ export class SettingsEffects {
 
   changeHour = createEffect(() =>
     merge(
-      interval(60_000),
+      timer(0, 60_000),
       this.actions$.pipe(ofType(actionSettingsChangeAutoNightMode))
     ).pipe(
+      // TODO: the following mapTo() is a bug and should be replaced with:
+      //     map(() => new Date().getHours())
+      //
+      // but doing so would trigger issue #159 at the top of every hour.
+      //
+      // By maintaining this we keep a partial implementation of
+      // day/night theme toggling, without user data loss at every hour.
+      //
+      // Ref: https://github.com/WordWeaverTools/wordweaver/issues/159
       mapTo(new Date().getHours()),
       distinctUntilChanged(),
       map((hour) => actionSettingsChangeHour({ hour }))
