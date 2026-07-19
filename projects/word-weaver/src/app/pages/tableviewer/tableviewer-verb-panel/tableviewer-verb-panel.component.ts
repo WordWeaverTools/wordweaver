@@ -101,7 +101,7 @@ export class TableviewerVerbPanelComponent implements OnDestroy, OnInit {
   }
 
   selectedRoot(selection: Verb[], root: string) {
-    return selection.map((x) => x.tag).indexOf(root) > 0;
+    return selection.map((x) => x.tag).indexOf(root) >= 0;
   }
 
   getEntriesFrom$(term: string) {
