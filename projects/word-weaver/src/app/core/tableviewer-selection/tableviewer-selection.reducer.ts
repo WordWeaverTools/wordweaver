@@ -37,14 +37,18 @@ export const initialState: TableviewerState = {
   ...initialTableViewerSettings,
 };
 
+interface tagType {
+  tag: string;
+}
+const sameTags = (a: tagType[] = [], b: tagType[] = []): boolean =>
+  a.length === b.length &&
+  a.every((verb, index) => verb?.tag === b[index]?.tag);
+
 const reducer = createReducer(
   initialState,
   // Basic updates
   on(
-    actionChangeAgents,
-    actionChangeOptions,
     actionChangePatients,
-    actionChangeVerbs,
     actionChangeTreeViewDepth,
     actionChangeConjugations,
     actionChangeLoading,
@@ -53,18 +57,38 @@ const reducer = createReducer(
     // actionChangeGridOrder,
     (state, action) => ({ ...state, ...action })
   ),
+  on(actionChangeVerbs, (state, { root }) => {
+    if (sameTags(state.root, root)) {
+      return state;
+    }
+
+    console.log("SERGE", state.root, root);
+    return { ...state, root };
+  }),
+  on(actionChangeAgents, (state, action) => {
+    if (sameTags(state.agent, action.agent)) {
+      return state;
+    }
+
+    console.log("SERGE", state, action);
+    return { ...state, ...action };
+  }),
+  on(actionChangeOptions, (state, action) => {
+    if (sameTags(state.option, action.option)) {
+      return state;
+    }
+    return { ...state, ...action };
+  }),
+
   // Toggles
   on(actionToggleTreeViewOrder, (state, action) => {
-    const toggledState = {};
-    toggledState[action.name] = !state[action.name];
-    return { ...state, ...toggledState };
+    return { ...state, [action.name]: !state[action.name] };
   }),
+
   // Partials
   on(actionChangeGridOrder, (state, action) => {
     const partialState = { ...state[action.name], ...action.partial };
-    const actionState = {};
-    actionState[action.name] = partialState;
-    return { ...state, ...actionState };
+    return { ...state, [action.name]: partialState };
   })
 );
 

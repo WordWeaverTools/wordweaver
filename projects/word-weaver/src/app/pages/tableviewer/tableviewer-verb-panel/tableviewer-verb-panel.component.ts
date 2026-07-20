@@ -8,7 +8,14 @@ import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { select, Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { TranslateService } from "@ngx-translate/core";
-import { debounceTime, map, switchMap, takeUntil, tap } from "rxjs/operators";
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  switchMap,
+  takeUntil,
+  tap,
+} from "rxjs/operators";
 import { Verb } from "../../../../config/config";
 import { selectSettingsLanguage, VerbService } from "../../../core/core.module";
 import { actionChangeVerbs } from "../../../core/tableviewer-selection/tableviewer-selection.actions";
@@ -66,6 +73,11 @@ export class TableviewerVerbPanelComponent implements OnDestroy, OnInit {
               map((verbTags) =>
                 verbTags.map((verbTag) => this.verbService.getVerb(verbTag))
               ),
+              distinctUntilChanged(
+                (prev, curr) =>
+                  prev.length === curr.length &&
+                  prev.every((v, i) => v?.tag === curr[i]?.tag)
+              ),
               // Dispatch action to store
               tap((selectedVerbs) => this.onVerbSelect(selectedVerbs))
             )
@@ -83,7 +95,17 @@ export class TableviewerVerbPanelComponent implements OnDestroy, OnInit {
     // populate with store's selection
     this.selection$ = this.store.pipe(
       takeUntil(this.unsubscribe$),
-      select(selectTableViewerRoot)
+      select(selectTableViewerRoot),
+      tap((selection) => {
+        const selected = new Set((selection ?? []).map((v) => v?.tag));
+        Object.keys(this.checkboxGroup.controls).forEach((tag) => {
+          const control = this.checkboxGroup.controls[tag];
+          const shouldBeChecked = selected.has(tag);
+          if (control && control.value !== shouldBeChecked) {
+            control.setValue(shouldBeChecked, { emitEvent: false });
+          }
+        });
+      })
     );
   }
 
@@ -97,7 +119,11 @@ export class TableviewerVerbPanelComponent implements OnDestroy, OnInit {
   }
 
   onVerbDeselect(verb) {
-    this.checkboxGroup.controls[verb.tag].setValue(false);
+    this.checkboxGroup.controls[verb.tag].setValue(false, { emitEvent: false });
+    const currentSelection = Object.keys(this.checkboxGroup.controls)
+      .filter((k) => this.checkboxGroup.controls[k].value)
+      .map((verbTag) => this.verbService.getVerb(verbTag));
+    this.onVerbSelect(currentSelection);
   }
 
   selectedRoot(selection: Verb[], root: string) {

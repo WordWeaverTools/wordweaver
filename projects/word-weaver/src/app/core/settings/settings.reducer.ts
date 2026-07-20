@@ -66,6 +66,12 @@ const reducer = createReducer(
     actionSettingsChangeBaseUrl,
     (state, action) => ({ ...state, ...action })
   ),
+  on(actionSettingsChangeHour, (state, action) => {
+    if (action.hour === state.hour) {
+      return state;
+    }
+    return { ...state, ...action };
+  }),
   on(
     actionSettingsChangeAnimationsPageDisabled,
     (state, { pageAnimationsDisabled }) => ({
