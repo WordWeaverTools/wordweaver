@@ -2,10 +2,10 @@
   <h2 mat-dialog-title>
     {{ "ww.pages.tableviewer.dialog.advanced.title" | translate }}
   </h2>
-  <div mat-dialog-content *ngIf="selection$ | async as selection">
+  <div mat-dialog-content *ngIf="view$ | async as view">
     <mat-radio-group
       class="radio-group"
-      [ngModel]="selection.view"
+      [ngModel]="view"
       (change)="onSelecteViewMode($event)"
     >
       <mat-radio-button

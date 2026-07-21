@@ -65,22 +65,22 @@
   </div>
 
   <mat-dialog-actions>
-    <div
-      class="centered dialog__buttons__container"
-      *ngIf="selection$ | async as selection"
-    >
-      <mat-spinner *ngIf="selection.loading"></mat-spinner>
-      <button
-        *ngIf="!selection.loading"
-        class="mat-raised-button mat-primary dialog__buttons"
-        (click)="download()"
-        [matTooltip]="'ww.pages.tableviewer.dialog.download.exit' | translate"
-        [matTooltipShowDelay]="showDelay.value"
-        [matTooltipHideDelay]="hideDelay.value"
-        [matTooltipPosition]="tooltipPosition"
-      >
-        {{ "ww.pages.tableviewer.dialog.download.download" | translate }}
-      </button>
+    <div class="centered dialog__buttons__container">
+      <ng-container *ngIf="loading$ | async; else downloadButton">
+        <mat-spinner></mat-spinner>
+      </ng-container>
+      <ng-template #downloadButton>
+        <button
+          class="mat-raised-button mat-primary dialog__buttons"
+          (click)="download()"
+          [matTooltip]="'ww.pages.tableviewer.dialog.download.exit' | translate"
+          [matTooltipShowDelay]="showDelay.value"
+          [matTooltipHideDelay]="hideDelay.value"
+          [matTooltipPosition]="tooltipPosition"
+        >
+          {{ "ww.pages.tableviewer.dialog.download.download" | translate }}
+        </button>
+      </ng-template>
       <button
         (click)="exit()"
         class="exit-button dialog__buttons"

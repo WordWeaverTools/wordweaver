@@ -4,12 +4,13 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { select, Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { take } from "rxjs/operators";
-import { META_DATA } from "../../../config/config";
-import { selectTableviewerState } from "../../core/core.state";
+import { META_DATA, TableviewerViewModes } from "../../../config/config";
 import { State } from "../../core/settings/settings.model";
 import { actionChangeViewMode } from "../../core/tableviewer-selection/tableviewer-selection.actions";
-import { TableviewerState } from "../../core/tableviewer-selection/tableviewer-selection.model";
-import { selectTableViewerGridOrder } from "../../core/tableviewer-selection/tableviewer-selection.selectors";
+import {
+  selectTableViewerGridOrder,
+  selectTableViewerView,
+} from "../../core/tableviewer-selection/tableviewer-selection.selectors";
 import { GridOrderOptions } from "../../pages/tableviewer/conjugation-grid/conjugation-grid.component";
 
 @Component({
@@ -23,7 +24,7 @@ export class TableViewerDialogComponent implements OnInit {
   hideDelay = new FormControl(200);
   tooltipPosition = "above";
   metaData = META_DATA;
-  selection$: Observable<TableviewerState>;
+  view$: Observable<TableviewerViewModes>;
   gridOrderTitles = ["Tabs", "Rows", "Columns"];
   gridOrder$;
   gridOrderValues: GridOrderOptions[];
@@ -38,7 +39,7 @@ export class TableViewerDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selection$ = this.store.pipe(select(selectTableviewerState));
+    this.view$ = this.store.pipe(select(selectTableViewerView));
   }
 
   onSelecteViewMode(event) {

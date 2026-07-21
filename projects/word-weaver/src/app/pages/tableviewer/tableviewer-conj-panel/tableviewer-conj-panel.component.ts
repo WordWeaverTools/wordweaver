@@ -22,8 +22,7 @@ import {
   ROUTE_ANIMATIONS_ELEMENTS,
 } from "../../../core/core.module";
 import { actionSettingsChangeThemeColors } from "../../../core/settings/settings.actions";
-import { SettingsState, State } from "../../../core/settings/settings.model";
-import { selectSettings } from "../../../core/settings/settings.selectors";
+import { State } from "../../../core/settings/settings.model";
 import {
   actionChangeGridOrder,
   actionChangeTreeViewDepth,
@@ -64,7 +63,6 @@ export class TableviewerConjPanelComponent
   @ViewChild("header") header;
   @ViewChild("conjugate") conjugateBtn;
   // Basic config
-  settings$: Observable<SettingsState>;
   selection$: Observable<TableviewerState>;
   gridDataState$: Observable<Partial<TableviewerState>>;
   listDataState$: Observable<Partial<TableviewerState>>;
@@ -99,10 +97,6 @@ export class TableviewerConjPanelComponent
 
   ngOnInit(): void {
     // populate with store's selection
-    this.settings$ = this.store.pipe(
-      takeUntil(this.unsubscribe$),
-      select(selectSettings)
-    );
     this.selection$ = this.store.pipe(
       takeUntil(this.unsubscribe$),
       select(selectTableviewer)

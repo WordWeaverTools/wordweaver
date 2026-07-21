@@ -9,8 +9,11 @@ import { select, Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { Conjugations, TIERS } from "../../../../config/config";
-import { SettingsState, State } from "../../../core/settings/settings.model";
-import { selectSettings } from "../../../core/settings/settings.selectors";
+import {
+  HighlightAndLevel,
+  State,
+} from "../../../core/settings/settings.model";
+import { selectSettingsHighlightAndLevel } from "../../../core/settings/settings.selectors";
 
 @Component({
   selector: "ww-conjugation-list",
@@ -21,7 +24,7 @@ import { selectSettings } from "../../../core/settings/settings.selectors";
 export class ConjugationListComponent implements OnDestroy, OnInit {
   @Input() data$: Observable<Conjugations>;
 
-  settings$: Observable<SettingsState>;
+  settings$: Observable<HighlightAndLevel>;
   tiers = TIERS;
   // selection$: Observable<TableviewerState>;
   unsubscribe$ = new Subject<void>();
@@ -30,7 +33,7 @@ export class ConjugationListComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.settings$ = this.store.pipe(
       takeUntil(this.unsubscribe$),
-      select(selectSettings)
+      select(selectSettingsHighlightAndLevel)
     );
   }
 
