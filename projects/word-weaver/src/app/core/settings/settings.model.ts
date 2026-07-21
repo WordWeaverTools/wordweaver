@@ -37,3 +37,15 @@ export interface SettingsState {
 export interface State extends AppState {
   settings: SettingsState;
 }
+
+// Narrow, reusable slices of SettingsState for components/templates that
+// only need a couple of fields, not the whole settings object.
+export interface HighlightAndLevel {
+  highlight: Highlight;
+  level: Level;
+}
+
+export interface LevelAndBaseUrl {
+  level: Level;
+  baseUrl: string;
+}

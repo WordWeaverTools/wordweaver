@@ -15,10 +15,11 @@ import {
 } from "../../core/core.module";
 import { selectTableviewerState } from "../../core/core.state";
 import { actionSettingsChangeLevel } from "../../core/settings/settings.actions";
-import { SettingsState, State } from "../../core/settings/settings.model";
-import { selectSettings } from "../../core/settings/settings.selectors";
+import { LevelAndBaseUrl, State } from "../../core/settings/settings.model";
+import { selectSettingsLevelAndBaseUrl } from "../../core/settings/settings.selectors";
 import { actionChangeLoading } from "../../core/tableviewer-selection/tableviewer-selection.actions";
 import { TableviewerState } from "../../core/tableviewer-selection/tableviewer-selection.model";
+import { selectTableViewerLoading } from "../../core/tableviewer-selection/tableviewer-selection.selectors";
 
 @Component({
   selector: "ww-download-dialog",
@@ -28,9 +29,10 @@ import { TableviewerState } from "../../core/tableviewer-selection/tableviewer-s
 })
 export class DownloadDialogComponent implements OnInit {
   objectkeys = Object.keys;
-  settings$: Observable<SettingsState>;
+  settings$: Observable<LevelAndBaseUrl>;
   selection$: Observable<TableviewerState>;
-  selectionAndSettings$: Observable<[TableviewerState, SettingsState]>;
+  loading$: Observable<boolean>;
+  selectionAndSettings$: Observable<[TableviewerState, LevelAndBaseUrl]>;
   fileTypes = {
     list: ["docx"],
     grid: ["xlsx"],
@@ -63,7 +65,8 @@ export class DownloadDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.selection$ = this.store.pipe(select(selectTableviewerState));
-    this.settings$ = this.store.pipe(select(selectSettings));
+    this.settings$ = this.store.pipe(select(selectSettingsLevelAndBaseUrl));
+    this.loading$ = this.store.pipe(select(selectTableViewerLoading));
     this.selectionAndSettings$ = combineLatest([
       this.selection$,
       this.settings$,

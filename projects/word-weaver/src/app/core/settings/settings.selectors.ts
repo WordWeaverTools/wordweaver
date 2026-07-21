@@ -27,6 +27,32 @@ export const selectSettingsBaseUrl = createSelector(
   (state: SettingsState) => state.baseUrl
 );
 
+export const selectSettingsHighlight = createSelector(
+  selectSettings,
+  (state: SettingsState) => state.highlight
+);
+
+export const selectSettingsLevel = createSelector(
+  selectSettings,
+  (state: SettingsState) => state.level
+);
+
+// Combined, narrow selectors for components that only need the
+// tier-display fields (not the whole SettingsState), so unrelated
+// settings changes (theme, hour, language, ...) don't produce a new
+// reference for these and trigger avoidable re-renders/re-fetches.
+export const selectSettingsHighlightAndLevel = createSelector(
+  selectSettingsHighlight,
+  selectSettingsLevel,
+  (highlight, level) => ({ highlight, level })
+);
+
+export const selectSettingsLevelAndBaseUrl = createSelector(
+  selectSettingsLevel,
+  selectSettingsBaseUrl,
+  (level, baseUrl) => ({ level, baseUrl })
+);
+
 export const selectTheme = createSelector(
   selectSettings,
   (settings) => settings.theme

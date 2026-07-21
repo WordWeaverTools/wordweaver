@@ -8,9 +8,12 @@ import { Observable, Subject } from "rxjs";
 import { switchMap, map, takeUntil } from "rxjs/operators";
 import { WordmakerState } from "../../../core/wordmaker-selection/wordmaker-selection.model";
 import { selectWordmaker } from "../../../core/wordmaker-selection/wordmaker-selection.selectors";
-import { SettingsState, State } from "../../../core/settings/settings.model";
+import {
+  HighlightAndLevel,
+  State,
+} from "../../../core/settings/settings.model";
 import { Store, select } from "@ngrx/store";
-import { selectSettings } from "../../../core/settings/settings.selectors";
+import { selectSettingsHighlightAndLevel } from "../../../core/settings/settings.selectors";
 import { ConjugationService } from "../../../core/core.module";
 import { TIERS } from "../../../../config/config";
 
@@ -21,7 +24,7 @@ import { TIERS } from "../../../../config/config";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WordmakerConjStepComponent implements OnDestroy, OnInit {
-  settings$: Observable<SettingsState>;
+  settings$: Observable<HighlightAndLevel>;
   selection$: Observable<WordmakerState>;
   conjugation$: Observable<any>;
   unsubscribe$ = new Subject<void>();
@@ -34,7 +37,7 @@ export class WordmakerConjStepComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.settings$ = this.store.pipe(
       takeUntil(this.unsubscribe$),
-      select(selectSettings)
+      select(selectSettingsHighlightAndLevel)
     );
     this.selection$ = this.store.pipe(
       takeUntil(this.unsubscribe$),
