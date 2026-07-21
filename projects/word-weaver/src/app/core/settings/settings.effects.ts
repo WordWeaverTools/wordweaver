@@ -40,6 +40,7 @@ import {
   selectPageAnimations,
   selectSettingsAnalytics,
   selectSettingsLanguage,
+  selectTestApi,
   selectTtsSpeaker,
 } from "./settings.selectors";
 import { NotificationService } from "../core.module";
@@ -158,9 +159,9 @@ export class SettingsEffects {
     () =>
       this.actions$.pipe(
         ofType(actionSettingsChangeTestApi),
-        withLatestFrom(this.store.pipe(select(selectSettingsState))),
-        tap(([action, settings]) => {
-          if (settings.testApi) {
+        withLatestFrom(this.store.pipe(select(selectTestApi))),
+        tap(([action, testApi]) => {
+          if (testApi) {
             this.store.dispatch(
               actionSettingsChangeBaseUrl({ baseUrl: this.testBaseUrl })
             );

@@ -1,17 +1,11 @@
 import { Injectable } from "@angular/core";
 import { marker } from "@colsen1991/ngx-translate-extract-marker";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { select, Store } from "@ngrx/store";
+import { Store } from "@ngrx/store";
 import { EMPTY } from "rxjs";
-import {
-  concatMap,
-  map,
-  switchMap,
-  take,
-  withLatestFrom,
-} from "rxjs/operators";
+import { concatMap, map, switchMap, withLatestFrom } from "rxjs/operators";
 import { ConjugationService } from "../../core/conjugation/conjugation.service";
-import { selectSettingsState, selectTableviewerState } from "../core.state";
+import { selectTableviewerState } from "../core.state";
 // import { LocalStorageService } from "../local-storage/local-storage.service";
 import { NotificationService } from "../notifications/notification.service";
 import {
@@ -88,21 +82,14 @@ export class TableviewerEffects {
 
         this.store.dispatch(actionChangeLoading({ loading: true }));
 
-        return this.store.pipe(
-          select(selectSettingsState),
-          take(1),
-          switchMap((settings) => {
-            console.log("conjugated");
-            return this.conjugationService.conjugations$.pipe(
-              map((data) =>
-                this.conjugationService.filterConjugations(data, selection)
-              ),
-              map((filtered) => [
-                actionChangeLoading({ loading: false }),
-                actionChangeConjugations({ conjugations: filtered }),
-              ])
-            );
-          }),
+        return this.conjugationService.conjugations$.pipe(
+          map((data) =>
+            this.conjugationService.filterConjugations(data, selection)
+          ),
+          map((filtered) => [
+            actionChangeLoading({ loading: false }),
+            actionChangeConjugations({ conjugations: filtered }),
+          ]),
           concatMap((actions) => actions) // emit actions one by one
         );
       })

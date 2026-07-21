@@ -1,5 +1,6 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { initialTableViewerSettings } from "../../../config/config";
+import { sameTagged } from "../../shared/utils/tagged-array.util";
 import {
   actionChangeAgents,
   actionChangeConjugations,
@@ -41,10 +42,6 @@ const reducer = createReducer(
   initialState,
   // Basic updates
   on(
-    actionChangeAgents,
-    actionChangeOptions,
-    actionChangePatients,
-    actionChangeVerbs,
     actionChangeTreeViewDepth,
     actionChangeConjugations,
     actionChangeLoading,
@@ -52,6 +49,22 @@ const reducer = createReducer(
     actionChangeVerbSearchTerm,
     // actionChangeGridOrder,
     (state, action) => ({ ...state, ...action })
+  ),
+  // Tagged-array selections: guarded so a spurious re-dispatch with a
+  // semantically identical selection (e.g. from a rebuilt checkbox group)
+  // doesn't hand out a new state reference and cascade into unnecessary
+  // re-renders/re-fetches downstream.
+  on(actionChangeVerbs, (state, { root }) =>
+    sameTagged(state.root, root) ? state : { ...state, root }
+  ),
+  on(actionChangeAgents, (state, { agent }) =>
+    sameTagged(state.agent, agent) ? state : { ...state, agent }
+  ),
+  on(actionChangePatients, (state, { patient }) =>
+    sameTagged(state.patient, patient) ? state : { ...state, patient }
+  ),
+  on(actionChangeOptions, (state, { option }) =>
+    sameTagged(state.option, option) ? state : { ...state, option }
   ),
   // Toggles
   on(actionToggleTreeViewOrder, (state, action) => {

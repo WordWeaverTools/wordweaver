@@ -43,18 +43,30 @@ export class TableviewerVerbPanelComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.searchField = new FormControl();
     this.verbForm = this.fb.group({ search: this.searchField });
+    let checkboxValueChangesSubscribed = false;
     // Get Verbs
     this.verbs$
       .pipe(
         takeUntil(this.unsubscribe$),
-        // Create checkbox group
+        // Create checkbox group, skipping verbs that already have a
+        // control so a re-emission of verbs$ doesn't reset the user's
+        // existing selection back to unchecked.
         tap((verbs) =>
-          verbs.map((verb) =>
-            this.checkboxGroup.addControl(verb["tag"], new FormControl(false))
-          )
+          verbs.forEach((verb) => {
+            if (!this.checkboxGroup.contains(verb["tag"])) {
+              this.checkboxGroup.addControl(
+                verb["tag"],
+                new FormControl(false)
+              );
+            }
+          })
         ),
-        // Subscribe to checkbox valuechanges
-        tap((x) =>
+        // Subscribe to checkbox valuechanges exactly once
+        tap(() => {
+          if (checkboxValueChangesSubscribed) {
+            return;
+          }
+          checkboxValueChangesSubscribed = true;
           this.checkboxGroup.valueChanges
             .pipe(
               takeUntil(this.unsubscribe$),
@@ -69,10 +81,10 @@ export class TableviewerVerbPanelComponent implements OnDestroy, OnInit {
               // Dispatch action to store
               tap((selectedVerbs) => this.onVerbSelect(selectedVerbs))
             )
-            .subscribe()
-        )
+            .subscribe();
+        })
       )
-      .subscribe((x) => {
+      .subscribe(() => {
         // change viewable verbs
         this.viewableVerbs$ = this.searchField.valueChanges.pipe(
           takeUntil(this.unsubscribe$),
@@ -80,10 +92,22 @@ export class TableviewerVerbPanelComponent implements OnDestroy, OnInit {
           switchMap((term) => this.getEntriesFrom$(term))
         );
       });
-    // populate with store's selection
+    // populate with store's selection, and reconcile the checkbox group
+    // with the store so external changes (the 3-item cap, deselecting a
+    // chip, deep links) stay in sync without re-dispatching to the store.
     this.selection$ = this.store.pipe(
       takeUntil(this.unsubscribe$),
-      select(selectTableViewerRoot)
+      select(selectTableViewerRoot),
+      tap((selection) => {
+        const selectedTags = new Set(selection.map((verb) => verb["tag"]));
+        Object.keys(this.checkboxGroup.controls).forEach((tag) => {
+          const control = this.checkboxGroup.controls[tag];
+          const shouldBeChecked = selectedTags.has(tag);
+          if (control.value !== shouldBeChecked) {
+            control.setValue(shouldBeChecked, { emitEvent: false });
+          }
+        });
+      })
     );
   }
 

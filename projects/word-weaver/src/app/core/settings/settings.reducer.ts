@@ -62,9 +62,15 @@ const reducer = createReducer(
     actionSettingsChangeStickyHeader,
     actionSettingsChangeAnimationsPage,
     actionSettingsChangeAnimationsElements,
-    actionSettingsChangeHour,
     actionSettingsChangeBaseUrl,
     (state, action) => ({ ...state, ...action })
+  ),
+  // Guarded separately: the hourly timer re-dispatches this action even
+  // when the hour hasn't changed, and an unconditional spread would hand
+  // out a new SettingsState reference on every tick, cascading into
+  // needless downstream re-fetches for every settings-state consumer.
+  on(actionSettingsChangeHour, (state, action) =>
+    action.hour === state.hour ? state : { ...state, ...action }
   ),
   on(
     actionSettingsChangeAnimationsPageDisabled,
