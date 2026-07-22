@@ -21,8 +21,11 @@ import {
   PronounService,
   VerbService,
 } from "../../../core/core.module";
-import { SettingsState, State } from "../../../core/settings/settings.model";
-import { selectSettings } from "../../../core/settings/settings.selectors";
+import {
+  HighlightAndLevel,
+  State,
+} from "../../../core/settings/settings.model";
+import { selectSettingsHighlightAndLevel } from "../../../core/settings/settings.selectors";
 import { selectTableviewerGridSlice } from "../../../core/tableviewer-selection/tableviewer-selection.selectors";
 
 export type GridOrderOptions = "root" | "pn" | "option";
@@ -47,7 +50,7 @@ export class ConjugationGridComponent
   keys = Object.keys;
   displayTier = TIERS[0];
   tiers$: Observable<Tier[]>;
-  settings$: Observable<SettingsState>;
+  settings$: Observable<HighlightAndLevel>;
   dataSources: MatTableDataSource<Conjugations>[];
   uniqueCol: string[];
   uniqueMain: string[];
@@ -66,7 +69,7 @@ export class ConjugationGridComponent
   ngOnInit(): void {
     this.settings$ = this.store.pipe(
       takeUntil(this.unsubscribe$),
-      select(selectSettings)
+      select(selectSettingsHighlightAndLevel)
     );
     this.tiers$ = this.settings$.pipe(
       takeUntil(this.unsubscribe$),

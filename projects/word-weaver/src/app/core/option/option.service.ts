@@ -2,11 +2,18 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { Observable, throwError } from "rxjs";
-import { map, shareReplay, switchMap, retry, catchError } from "rxjs/operators";
+import {
+  distinctUntilChanged,
+  map,
+  shareReplay,
+  switchMap,
+  retry,
+  catchError,
+} from "rxjs/operators";
 
 import { Option } from "../../../config/config";
-import { selectSettingsState } from "../core.state";
-import { SettingsState } from "../settings/settings.model";
+import { AppState } from "../core.state";
+import { selectSettingsBaseUrl } from "../settings/settings.selectors";
 import { environment } from "../../../environments/environment";
 
 @Injectable({
@@ -19,11 +26,12 @@ export class OptionService {
   optionsByType$: Observable<object[]>;
   random$: Observable<Option>;
   suppressError = true;
-  constructor(private http: HttpClient, private store: Store) {
+  constructor(private http: HttpClient, private store: Store<AppState>) {
     this.options$ = this.store.pipe(
-      select(selectSettingsState),
-      switchMap((settings: SettingsState) =>
-        this.http.get<Option[]>(settings?.baseUrl + this.path)
+      select(selectSettingsBaseUrl),
+      distinctUntilChanged(),
+      switchMap((baseUrl: string) =>
+        this.http.get<Option[]>(baseUrl + this.path)
       ),
       retry(2),
       shareReplay(1),

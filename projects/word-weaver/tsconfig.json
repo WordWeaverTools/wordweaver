@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.app.json",
+  "files": [],
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "types": ["node", "jasmine"],
+    "noUnusedLocals": false
+  }
+}

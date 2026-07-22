@@ -2,7 +2,14 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { Observable, throwError } from "rxjs";
-import { map, shareReplay, switchMap, retry, catchError } from "rxjs/operators";
+import {
+  distinctUntilChanged,
+  map,
+  shareReplay,
+  switchMap,
+  retry,
+  catchError,
+} from "rxjs/operators";
 
 import {
   ConjugationObject,
@@ -12,8 +19,8 @@ import {
   Verb,
 } from "../../../config/config";
 import { GridOrder } from "../../pages/tableviewer/conjugation-grid/conjugation-grid.component";
-import { selectSettingsState } from "../core.state";
-import { SettingsState } from "../settings/settings.model";
+import { AppState } from "../core.state";
+import { selectSettingsBaseUrl } from "../settings/settings.selectors";
 import { TableviewerState } from "../tableviewer-selection/tableviewer-selection.model";
 import { WordmakerState } from "../wordmaker-selection/wordmaker-selection.model";
 import { environment } from "../../../environments/environment";
@@ -29,11 +36,12 @@ export class ConjugationService {
     ? "conjugations.json.gz"
     : "conjugations.json";
   suppressError = true;
-  constructor(private http: HttpClient, private store: Store) {
+  constructor(private http: HttpClient, private store: Store<AppState>) {
     this.conjugations$ = this.store.pipe(
-      select(selectSettingsState),
-      switchMap((settings: SettingsState) =>
-        this.http.get<Conjugations>(settings?.baseUrl + this.path)
+      select(selectSettingsBaseUrl),
+      distinctUntilChanged(),
+      switchMap((baseUrl: string) =>
+        this.http.get<Conjugations>(baseUrl + this.path)
       ),
       retry(2),
       shareReplay(1),

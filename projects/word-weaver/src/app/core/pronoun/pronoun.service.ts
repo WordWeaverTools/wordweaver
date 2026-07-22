@@ -2,11 +2,18 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { Observable, throwError } from "rxjs";
-import { map, shareReplay, switchMap, retry, catchError } from "rxjs/operators";
+import {
+  distinctUntilChanged,
+  map,
+  shareReplay,
+  switchMap,
+  retry,
+  catchError,
+} from "rxjs/operators";
 
 import { Pronoun } from "../../../config/config";
-import { selectSettingsState } from "../core.state";
-import { SettingsState } from "../settings/settings.model";
+import { AppState } from "../core.state";
+import { selectSettingsBaseUrl } from "../settings/settings.selectors";
 import { environment } from "../../../environments/environment";
 
 @Injectable({
@@ -20,11 +27,12 @@ export class PronounService {
   pronouns$: Observable<Pronoun[]>;
   random$: Observable<Pronoun>;
   suppressError = true;
-  constructor(private http: HttpClient, private store: Store) {
+  constructor(private http: HttpClient, private store: Store<AppState>) {
     this.pronouns$ = this.store.pipe(
-      select(selectSettingsState),
-      switchMap((settings: SettingsState) =>
-        this.http.get<Pronoun[]>(settings?.baseUrl + this.path)
+      select(selectSettingsBaseUrl),
+      distinctUntilChanged(),
+      switchMap((baseUrl: string) =>
+        this.http.get<Pronoun[]>(baseUrl + this.path)
       ),
       retry(2),
       shareReplay(1),
@@ -36,7 +44,7 @@ export class PronounService {
     this.random$ = this.pronouns$.pipe(map((res) => this.getRandomPro(res)));
     this.pronouns$.subscribe((pns) => (this.pronouns = pns));
   }
-  getPronoun(tag) {
+  getPronoun(tag: string) {
     return this.pronouns.filter((p) => p.tag === tag)[0];
   }
 
